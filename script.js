@@ -205,6 +205,32 @@ function showAllProducts(categoryKey) {
     button.style.display = 'none';
 }
 
+// Generate slug from product name
+function generateSlug(name) {
+    return name
+        .toLowerCase()
+        .replace(/[а-яё]/g, function(char) {
+            const map = {
+                'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e',
+                'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
+                'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+                'ф': 'f', 'х': 'h', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch',
+                'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'
+            };
+            return map[char] || char;
+        })
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+}
+
+// Get product URL
+function getProductUrl(product) {
+    const slug = product.slug || generateSlug(product.name);
+    return `product/${slug}-${product.id}`;
+}
+
 // Create product card
 function createProductCard(product, index) {
     const col = document.createElement('div');
@@ -218,15 +244,22 @@ function createProductCard(product, index) {
     // Get first image or placeholder
     const productImage = product.images && product.images.length > 0 ? product.images[0] : `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center`;
     
+    // Get product URL
+    const productUrl = getProductUrl(product);
+    
     col.innerHTML = `
         <div class="product-card">
             <div class="product-image">
-                <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                <a href="${productUrl}" class="product-image-link">
+                    <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                </a>
                 ${discountPercent > 0 ? `<div class="product-badge">-${discountPercent}%</div>` : ''}
-                ${product.badge ? `<div class="product-badge product-badge-secondary">${product.badge}</div>` : ''}
+                ${product.badge ? `<div="product-badge product-badge-secondary">${product.badge}</div>` : ''}
             </div>
             <div class="product-content">
-                <h4 class="product-title">${product.name}</h4>
+                <h4 class="product-title">
+                    <a href="${productUrl}" class="product-title-link">${product.name}</a>
+                </h4>
                 <div class="product-rating">
                     <div class="stars">
                         ${generateStars(product.rating)}
@@ -249,9 +282,9 @@ function createProductCard(product, index) {
                     <button class="btn btn-primary btn-sm" onclick="showProductModal(${product.id})">
                         <i class="fas fa-play"></i> Смотреть тест
                     </button>
-                    <button class="btn btn-outline-primary btn-sm" onclick="showProductDetails(${product.id})">
+                    <a href="${productUrl}" class="btn btn-outline-primary btn-sm">
                         <i class="fas fa-search"></i> Подробнее
-                    </button>
+                    </a>
                 </div>
                 <div class="product-gift">
                     <i class="fas fa-gift"></i> Водозащитный наматрасник в подарок

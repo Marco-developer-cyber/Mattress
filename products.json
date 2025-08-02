@@ -5,7 +5,9 @@
     "category": "children",
     "price": 15000,
     "originalPrice": 18000,
-    "images": ["img/матрасы/детские матрасы/Baby happy/51664_big.jpg"],
+    "images": [
+      "img/матрасы/детские матрасы/Baby happy/51664_big.jpg"
+    ],
     "description": "Ортопедический детский матрас Kids Happy ППУ 10 предоставляет необходимую поддержку во время сна. В основе — монолит из пенополиуретана 10 см, легкий и упругий материал.",
     "features": [
       "Монолит из пенополиуретана 10 см",
@@ -15,13 +17,26 @@
       "Срок службы: 6–7 лет"
     ],
     "sizes": [
-      { "name": "60x120", "price": 15000, "originalPrice": 18000 },
-      { "name": "80x190", "price": 26000, "originalPrice": 30000 },
-      { "name": "140x200", "price": 42000, "originalPrice": 46000 }
+      {
+        "name": "60x120",
+        "price": 15000,
+        "originalPrice": 18000
+      },
+      {
+        "name": "80x190",
+        "price": 26000,
+        "originalPrice": 30000
+      },
+      {
+        "name": "140x200",
+        "price": 42000,
+        "originalPrice": 46000
+      }
     ],
     "rating": 4.7,
     "reviews": 119,
-    "badge": "Редко"
+    "badge": "Редко",
+    "slug": "detskiy-matras-baby-happy"
   },
   {
     "id": 2,
@@ -29,7 +44,9 @@
     "category": "children",
     "price": 24000,
     "originalPrice": 27000,
-    "images": ["img/матрасы/детские матрасы/Kids/16225_0.jpeg"],
+    "images": [
+      "img/матрасы/детские матрасы/Kids/16225_0.jpeg"
+    ],
     "description": "Матрас с разной жесткостью сторон. ППУ и кокос обеспечивают упругость и поддержку. Экологичный, гипоаллергенный и воздухопроницаемый материал для комфорта и здоровья ребёнка.",
     "features": [
       "Монолит из ППУ 9 см",
@@ -40,12 +57,25 @@
       "Срок службы: 6–7 лет"
     ],
     "sizes": [
-      { "name": "60x120", "price": 24000, "originalPrice": 27000 },
-      { "name": "70x140", "price": 27000, "originalPrice": 30000 },
-      { "name": "140x200", "price": 55000, "originalPrice": 60000 }
+      {
+        "name": "60x120",
+        "price": 24000,
+        "originalPrice": 27000
+      },
+      {
+        "name": "70x140",
+        "price": 27000,
+        "originalPrice": 30000
+      },
+      {
+        "name": "140x200",
+        "price": 55000,
+        "originalPrice": 60000
+      }
     ],
     "rating": 4.8,
-    "reviews": 152
+    "reviews": 152,
+    "slug": "detskiy-matras-kids-comfort"
   },
   {
     "id": 3,
@@ -68,15 +98,40 @@
       "Высота: 17 см"
     ],
     "sizes": [
-      { "name": "80x190", "price": 23000, "originalPrice": 26000 },
-      { "name": "90x190", "price": 26000, "originalPrice": 29000 },
-      { "name": "120x200", "price": 29000, "originalPrice": 32000 },
-      { "name": "140x200", "price": 31000, "originalPrice": 34000 },
-      { "name": "160x200", "price": 33000, "originalPrice": 36000 },
-      { "name": "180x200", "price": 35000, "originalPrice": 38000 }
+      {
+        "name": "80x190",
+        "price": 23000,
+        "originalPrice": 26000
+      },
+      {
+        "name": "90x190",
+        "price": 26000,
+        "originalPrice": 29000
+      },
+      {
+        "name": "120x200",
+        "price": 29000,
+        "originalPrice": 32000
+      },
+      {
+        "name": "140x200",
+        "price": 31000,
+        "originalPrice": 34000
+      },
+      {
+        "name": "160x200",
+        "price": 33000,
+        "originalPrice": 36000
+      },
+      {
+        "name": "180x200",
+        "price": 35000,
+        "originalPrice": 38000
+      }
     ],
     "rating": 4.6,
-    "reviews": 87
+    "reviews": 87,
+    "slug": "matras-bonnel-econom"
   },
   {
     "id": 4,
@@ -99,15 +154,40 @@
       "Высота: 22 см"
     ],
     "sizes": [
-      { "name": "80x190", "price": 29500, "originalPrice": 32500 },
-      { "name": "90x200", "price": 32000, "originalPrice": 35000 },
-      { "name": "120x200", "price": 37000, "originalPrice": 40000 },
-      { "name": "140x200", "price": 42000, "originalPrice": 45000 },
-      { "name": "160x200", "price": 47000, "originalPrice": 50000 },
-      { "name": "180x200", "price": 50000, "originalPrice": 53000 }
+      {
+        "name": "80x190",
+        "price": 29500,
+        "originalPrice": 32500
+      },
+      {
+        "name": "90x200",
+        "price": 32000,
+        "originalPrice": 35000
+      },
+      {
+        "name": "120x200",
+        "price": 37000,
+        "originalPrice": 40000
+      },
+      {
+        "name": "140x200",
+        "price": 42000,
+        "originalPrice": 45000
+      },
+      {
+        "name": "160x200",
+        "price": 47000,
+        "originalPrice": 50000
+      },
+      {
+        "name": "180x200",
+        "price": 50000,
+        "originalPrice": 53000
+      }
     ],
     "rating": 4.8,
-    "reviews": 104
+    "reviews": 104,
+    "slug": "matras-bonnel-1"
   },
   {
     "id": 5,
@@ -130,15 +210,40 @@
       "Высота: 24 см"
     ],
     "sizes": [
-      { "name": "80x190", "price": 33000, "originalPrice": 36000 },
-      { "name": "90x190", "price": 36000, "originalPrice": 39000 },
-      { "name": "120x200", "price": 42000, "originalPrice": 46000 },
-      { "name": "140x200", "price": 48000, "originalPrice": 52000 },
-      { "name": "160x200", "price": 54000, "originalPrice": 58000 },
-      { "name": "180x200", "price": 62000, "originalPrice": 66000 }
+      {
+        "name": "80x190",
+        "price": 33000,
+        "originalPrice": 36000
+      },
+      {
+        "name": "90x190",
+        "price": 36000,
+        "originalPrice": 39000
+      },
+      {
+        "name": "120x200",
+        "price": 42000,
+        "originalPrice": 46000
+      },
+      {
+        "name": "140x200",
+        "price": 48000,
+        "originalPrice": 52000
+      },
+      {
+        "name": "160x200",
+        "price": 54000,
+        "originalPrice": 58000
+      },
+      {
+        "name": "180x200",
+        "price": 62000,
+        "originalPrice": 66000
+      }
     ],
     "rating": 4.9,
-    "reviews": 141
+    "reviews": 141,
+    "slug": "matras-bonnel-2"
   },
   {
     "id": 6,
@@ -164,15 +269,40 @@
       "Гарантия: 5 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 55000, "originalPrice": 58000 },
-      { "name": "90x190", "price": 58000, "originalPrice": 61000 },
-      { "name": "120x200", "price": 64000, "originalPrice": 68000 },
-      { "name": "140x200", "price": 70000, "originalPrice": 74000 },
-      { "name": "160x200", "price": 76000, "originalPrice": 80000 },
-      { "name": "180x200", "price": 84000, "originalPrice": 88000 }
+      {
+        "name": "80x190",
+        "price": 55000,
+        "originalPrice": 58000
+      },
+      {
+        "name": "90x190",
+        "price": 58000,
+        "originalPrice": 61000
+      },
+      {
+        "name": "120x200",
+        "price": 64000,
+        "originalPrice": 68000
+      },
+      {
+        "name": "140x200",
+        "price": 70000,
+        "originalPrice": 74000
+      },
+      {
+        "name": "160x200",
+        "price": 76000,
+        "originalPrice": 80000
+      },
+      {
+        "name": "180x200",
+        "price": 84000,
+        "originalPrice": 88000
+      }
     ],
     "rating": 4.9,
-    "reviews": 127
+    "reviews": 127,
+    "slug": "orma-tech-mix"
   },
   {
     "id": 7,
@@ -193,16 +323,41 @@
       "Гарантия: 1 год"
     ],
     "sizes": [
-      { "name": "80x190", "price": 21000, "originalPrice": 24000 },
-      { "name": "90x190", "price": 23000, "originalPrice": 26000 },
-      { "name": "120x200", "price": 28000, "originalPrice": 31000 },
-      { "name": "140x200", "price": 32000, "originalPrice": 35000 },
-      { "name": "160x200", "price": 36000, "originalPrice": 39000 },
-      { "name": "180x200", "price": 41000, "originalPrice": 44000 }
+      {
+        "name": "80x190",
+        "price": 21000,
+        "originalPrice": 24000
+      },
+      {
+        "name": "90x190",
+        "price": 23000,
+        "originalPrice": 26000
+      },
+      {
+        "name": "120x200",
+        "price": 28000,
+        "originalPrice": 31000
+      },
+      {
+        "name": "140x200",
+        "price": 32000,
+        "originalPrice": 35000
+      },
+      {
+        "name": "160x200",
+        "price": 36000,
+        "originalPrice": 39000
+      },
+      {
+        "name": "180x200",
+        "price": 41000,
+        "originalPrice": 44000
+      }
     ],
     "rating": 4.7,
     "reviews": 89,
-    "badge": "Бюджет"
+    "badge": "Бюджет",
+    "slug": "ecoroll-kokos"
   },
   {
     "id": 8,
@@ -225,15 +380,40 @@
       "Срок службы: до 20 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 75000, "originalPrice": 79000 },
-      { "name": "90x190", "price": 78000, "originalPrice": 82000 },
-      { "name": "120x200", "price": 85000, "originalPrice": 89000 },
-      { "name": "140x200", "price": 92000, "originalPrice": 96000 },
-      { "name": "160x200", "price": 99000, "originalPrice": 103000 },
-      { "name": "180x200", "price": 108000, "originalPrice": 112000 }
+      {
+        "name": "80x190",
+        "price": 75000,
+        "originalPrice": 79000
+      },
+      {
+        "name": "90x190",
+        "price": 78000,
+        "originalPrice": 82000
+      },
+      {
+        "name": "120x200",
+        "price": 85000,
+        "originalPrice": 89000
+      },
+      {
+        "name": "140x200",
+        "price": 92000,
+        "originalPrice": 96000
+      },
+      {
+        "name": "160x200",
+        "price": 99000,
+        "originalPrice": 103000
+      },
+      {
+        "name": "180x200",
+        "price": 108000,
+        "originalPrice": 112000
+      }
     ],
     "rating": 4.95,
-    "reviews": 176
+    "reviews": 176,
+    "slug": "latex-soft"
   },
   {
     "id": 9,
@@ -259,15 +439,40 @@
       "Срок службы: 8–9 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 31000, "originalPrice": 35000 },
-      { "name": "90x190", "price": 33500, "originalPrice": 37000 },
-      { "name": "120x200", "price": 41000, "originalPrice": 46000 },
-      { "name": "140x200", "price": 46000, "originalPrice": 46800 },
-      { "name": "160x200", "price": 52000, "originalPrice": 58000 },
-      { "name": "180x200", "price": 57000, "originalPrice": 64000 }
+      {
+        "name": "80x190",
+        "price": 31000,
+        "originalPrice": 35000
+      },
+      {
+        "name": "90x190",
+        "price": 33500,
+        "originalPrice": 37000
+      },
+      {
+        "name": "120x200",
+        "price": 41000,
+        "originalPrice": 46000
+      },
+      {
+        "name": "140x200",
+        "price": 46000,
+        "originalPrice": 46800
+      },
+      {
+        "name": "160x200",
+        "price": 52000,
+        "originalPrice": 58000
+      },
+      {
+        "name": "180x200",
+        "price": 57000,
+        "originalPrice": 64000
+      }
     ],
     "rating": 4.8,
-    "reviews": 153
+    "reviews": 153,
+    "slug": "orto-max-sale-1"
   },
   {
     "id": 10,
@@ -295,12 +500,25 @@
       "Срок службы: 15 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 59000, "originalPrice": 64000 },
-      { "name": "160x200", "price": 87000, "originalPrice": 92000 },
-      { "name": "180x200", "price": 96000, "originalPrice": 102000 }
+      {
+        "name": "80x190",
+        "price": 59000,
+        "originalPrice": 64000
+      },
+      {
+        "name": "160x200",
+        "price": 87000,
+        "originalPrice": 92000
+      },
+      {
+        "name": "180x200",
+        "price": 96000,
+        "originalPrice": 102000
+      }
     ],
     "rating": 4.9,
-    "reviews": 162
+    "reviews": 162,
+    "slug": "balance-p"
   },
   {
     "id": 11,
@@ -326,12 +544,25 @@
       "Срок службы: 20–25 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 69000, "originalPrice": 74000 },
-      { "name": "160x200", "price": 119000, "originalPrice": 124000 },
-      { "name": "180x200", "price": 132000, "originalPrice": 138000 }
+      {
+        "name": "80x190",
+        "price": 69000,
+        "originalPrice": 74000
+      },
+      {
+        "name": "160x200",
+        "price": 119000,
+        "originalPrice": 124000
+      },
+      {
+        "name": "180x200",
+        "price": 132000,
+        "originalPrice": 138000
+      }
     ],
     "rating": 4.95,
-    "reviews": 185
+    "reviews": 185,
+    "slug": "multipocket-luxe"
   },
   {
     "id": 12,
@@ -356,15 +587,40 @@
       "Срок службы: 10–12 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 49000, "originalPrice": 53000 },
-      { "name": "90x190", "price": 52000, "originalPrice": 56000 },
-      { "name": "120x200", "price": 58000, "originalPrice": 62000 },
-      { "name": "140x200", "price": 63000, "originalPrice": 67000 },
-      { "name": "160x200", "price": 69000, "originalPrice": 73000 },
-      { "name": "180x200", "price": 76000, "originalPrice": 80000 }
+      {
+        "name": "80x190",
+        "price": 49000,
+        "originalPrice": 53000
+      },
+      {
+        "name": "90x190",
+        "price": 52000,
+        "originalPrice": 56000
+      },
+      {
+        "name": "120x200",
+        "price": 58000,
+        "originalPrice": 62000
+      },
+      {
+        "name": "140x200",
+        "price": 63000,
+        "originalPrice": 67000
+      },
+      {
+        "name": "160x200",
+        "price": 69000,
+        "originalPrice": 73000
+      },
+      {
+        "name": "180x200",
+        "price": 76000,
+        "originalPrice": 80000
+      }
     ],
     "rating": 4.85,
-    "reviews": 144
+    "reviews": 144,
+    "slug": "dream-zone"
   },
   {
     "id": 13,
@@ -390,15 +646,40 @@
       "Срок службы: до 15 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 52000, "originalPrice": 65000 },
-      { "name": "90x190", "price": 55000, "originalPrice": 68000 },
-      { "name": "120x200", "price": 66000, "originalPrice": 89000 },
-      { "name": "140x200", "price": 72000, "originalPrice": 105000 },
-      { "name": "160x200", "price": 80000, "originalPrice": 118000 },
-      { "name": "180x200", "price": 87000, "originalPrice": 125000 }
+      {
+        "name": "80x190",
+        "price": 52000,
+        "originalPrice": 65000
+      },
+      {
+        "name": "90x190",
+        "price": 55000,
+        "originalPrice": 68000
+      },
+      {
+        "name": "120x200",
+        "price": 66000,
+        "originalPrice": 89000
+      },
+      {
+        "name": "140x200",
+        "price": 72000,
+        "originalPrice": 105000
+      },
+      {
+        "name": "160x200",
+        "price": 80000,
+        "originalPrice": 118000
+      },
+      {
+        "name": "180x200",
+        "price": 87000,
+        "originalPrice": 125000
+      }
     ],
     "rating": 4.92,
-    "reviews": 203
+    "reviews": 203,
+    "slug": "energy"
   },
   {
     "id": 14,
@@ -424,12 +705,22 @@
       "Срок службы: 10–12 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 59000 },
-      { "name": "160x200", "price": 101000 },
-      { "name": "180x200", "price": 115000 }
+      {
+        "name": "80x190",
+        "price": 59000
+      },
+      {
+        "name": "160x200",
+        "price": 101000
+      },
+      {
+        "name": "180x200",
+        "price": 115000
+      }
     ],
     "rating": 4.87,
-    "reviews": 178
+    "reviews": 178,
+    "slug": "memory-soft"
   },
   {
     "id": 15,
@@ -455,15 +746,40 @@
       "Срок службы: до 8 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 28000, "originalPrice": 35000 },
-      { "name": "90x190", "price": 31000, "originalPrice": 39000 },
-      { "name": "120x200", "price": 36800, "originalPrice": 46000 },
-      { "name": "140x200", "price": 42400, "originalPrice": 53000 },
-      { "name": "160x200", "price": 46000, "originalPrice": 58000 },
-      { "name": "180x200", "price": 52000, "originalPrice": 65000 }
+      {
+        "name": "80x190",
+        "price": 28000,
+        "originalPrice": 35000
+      },
+      {
+        "name": "90x190",
+        "price": 31000,
+        "originalPrice": 39000
+      },
+      {
+        "name": "120x200",
+        "price": 36800,
+        "originalPrice": 46000
+      },
+      {
+        "name": "140x200",
+        "price": 42400,
+        "originalPrice": 53000
+      },
+      {
+        "name": "160x200",
+        "price": 46000,
+        "originalPrice": 58000
+      },
+      {
+        "name": "180x200",
+        "price": 52000,
+        "originalPrice": 65000
+      }
     ],
     "rating": 4.72,
-    "reviews": 96
+    "reviews": 96,
+    "slug": "orto-max-sale"
   },
   {
     "id": 16,
@@ -489,11 +805,20 @@
       "Гарантия: 7 лет, срок службы: до 15 лет"
     ],
     "sizes": [
-      { "name": "160x200", "price": 190000, "originalPrice": 190000 },
-      { "name": "180x200", "price": 220000, "originalPrice": 220000 }
+      {
+        "name": "160x200",
+        "price": 190000,
+        "originalPrice": 190000
+      },
+      {
+        "name": "180x200",
+        "price": 220000,
+        "originalPrice": 220000
+      }
     ],
     "rating": 4.94,
-    "reviews": 47
+    "reviews": 47,
+    "slug": "premium-soft"
   },
   {
     "id": 17,
@@ -518,15 +843,40 @@
       "Гарантия: 3 года, срок службы: до 10 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 43500, "originalPrice": 43500 },
-      { "name": "90x190", "price": 48000, "originalPrice": 48000 },
-      { "name": "120x200", "price": 57000, "originalPrice": 57000 },
-      { "name": "140x200", "price": 65000, "originalPrice": 65000 },
-      { "name": "160x200", "price": 78000, "originalPrice": 78000 },
-      { "name": "180x200", "price": 88000, "originalPrice": 88000 }
+      {
+        "name": "80x190",
+        "price": 43500,
+        "originalPrice": 43500
+      },
+      {
+        "name": "90x190",
+        "price": 48000,
+        "originalPrice": 48000
+      },
+      {
+        "name": "120x200",
+        "price": 57000,
+        "originalPrice": 57000
+      },
+      {
+        "name": "140x200",
+        "price": 65000,
+        "originalPrice": 65000
+      },
+      {
+        "name": "160x200",
+        "price": 78000,
+        "originalPrice": 78000
+      },
+      {
+        "name": "180x200",
+        "price": 88000,
+        "originalPrice": 88000
+      }
     ],
     "rating": 4.91,
-    "reviews": 33
+    "reviews": 33,
+    "slug": "summer-plus"
   },
   {
     "id": 18,
@@ -550,14 +900,39 @@
       "Гарантия: 10 лет, срок службы: до 25 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 47000, "originalPrice": 47000 },
-      { "name": "90x190", "price": 52000, "originalPrice": 52000 },
-      { "name": "120x200", "price": 61000, "originalPrice": 61000 },
-      { "name": "140x200", "price": 70000, "originalPrice": 70000 },
-      { "name": "160x200", "price": 79000, "originalPrice": 79000 },
-      { "name": "180x200", "price": 88000, "originalPrice": 88000 }
+      {
+        "name": "80x190",
+        "price": 47000,
+        "originalPrice": 47000
+      },
+      {
+        "name": "90x190",
+        "price": 52000,
+        "originalPrice": 52000
+      },
+      {
+        "name": "120x200",
+        "price": 61000,
+        "originalPrice": 61000
+      },
+      {
+        "name": "140x200",
+        "price": 70000,
+        "originalPrice": 70000
+      },
+      {
+        "name": "160x200",
+        "price": 79000,
+        "originalPrice": 79000
+      },
+      {
+        "name": "180x200",
+        "price": 88000,
+        "originalPrice": 88000
+      }
     ],
     "rating": 4.96,
-    "reviews": 27
+    "reviews": 27,
+    "slug": "elit-22"
   }
-] 
+]
