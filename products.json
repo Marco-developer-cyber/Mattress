@@ -1,5 +1,5 @@
 [
-  { 
+  {
     "id": 1,
     "name": "Детский матрас Baby Happy",
     "category": "children",
@@ -409,7 +409,7 @@
     "name": "Memory Soft",
     "category": "independent",
     "price": 59000,
-    "originalPrice": null,
+    "originalPrice": 66000,
     "images": [
       "img/матрасы/матрасы с независимыми пружинами/Матрас MEMORY SOFT/Эл мем.jpg",
       "img/матрасы/матрасы с независимыми пружинами/Матрас MEMORY SOFT/э1.jpg"
@@ -428,9 +428,9 @@
       "Срок службы: 10–12 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 59000 },
-      { "name": "160x200", "price": 101000 },
-      { "name": "180x200", "price": 115000 }
+      { "name": "80x190", "price": 59000 , "originalPrice": 66000 },
+      { "name": "160x200", "price": 101000 , "originalPrice": 115000 },
+      { "name": "180x200", "price": 115000 , "originalPrice": 130000 }
     ],
     "rating": 4.87,
     "reviews": 178
@@ -474,7 +474,7 @@
     "name": "Premium Soft",
     "category": "independent",
     "price": 190000,
-    "originalPrice": 190000,
+    "originalPrice": 199000,
     "images": [
       "img/матрасы/матрасы с независимыми пружинами/Матрас PREMIUM SOFT/мультиммеори.jpg",
       "img/матрасы/матрасы с независимыми пружинами/Матрас PREMIUM SOFT/э1.jpg"
@@ -493,8 +493,8 @@
       "Гарантия: 7 лет, срок службы: до 15 лет"
     ],
     "sizes": [
-      { "name": "160x200", "price": 190000, "originalPrice": 190000 },
-      { "name": "180x200", "price": 220000, "originalPrice": 220000 }
+      { "name": "160x200", "price": 190000, "originalPrice": 199000 },
+      { "name": "180x200", "price": 220000, "originalPrice": 225000 }
     ],
     "rating": 4.94,
     "reviews": 47
@@ -503,8 +503,8 @@
     "id": 17,
     "name": "Summer Plus",
     "category": "independent",
-    "price": 78000,
-    "originalPrice": 78000,
+    "price": 43500,
+    "originalPrice": 45000,
     "images": [
       "img/матрасы/матрасы с независимыми пружинами/Матрас SUMMER PLUS/эл17.jpg",
       "img/матрасы/матрасы с независимыми пружинами/Матрас SUMMER PLUS/э1.jpg"
@@ -522,12 +522,12 @@
       "Гарантия: 3 года, срок службы: до 10 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 43500, "originalPrice": 43500 },
-      { "name": "90x190", "price": 48000, "originalPrice": 48000 },
-      { "name": "120x200", "price": 57000, "originalPrice": 57000 },
-      { "name": "140x200", "price": 65000, "originalPrice": 65000 },
-      { "name": "160x200", "price": 78000, "originalPrice": 78000 },
-      { "name": "180x200", "price": 88000, "originalPrice": 88000 }
+      { "name": "80x190", "price": 43500, "originalPrice": 45000 },
+      { "name": "90x190", "price": 48000, "originalPrice": 50000 },
+      { "name": "120x200", "price": 57000, "originalPrice": 59000 },
+      { "name": "140x200", "price": 65000, "originalPrice": 69000 },
+      { "name": "160x200", "price": 78000, "originalPrice": 85000 },
+      { "name": "180x200", "price": 88000, "originalPrice": 93000 }
     ],
     "rating": 4.91,
     "reviews": 33
@@ -537,7 +537,7 @@
     "name": "Элит-22",
     "category": "independent",
     "price": 88000,
-    "originalPrice": 88000,
+    "originalPrice": 93000,
     "images": [
       "img/матрасы/матрасы с независимыми пружинами/Элит-22/Элит-22.jpg"
     ],
@@ -554,12 +554,12 @@
       "Гарантия: 10 лет, срок службы: до 25 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 47000, "originalPrice": 47000 },
-      { "name": "90x190", "price": 52000, "originalPrice": 52000 },
-      { "name": "120x200", "price": 61000, "originalPrice": 61000 },
-      { "name": "140x200", "price": 70000, "originalPrice": 70000 },
-      { "name": "160x200", "price": 79000, "originalPrice": 79000 },
-      { "name": "180x200", "price": 88000, "originalPrice": 88000 }
+      { "name": "80x190", "price": 47000, "originalPrice": 50000 },
+      { "name": "90x190", "price": 52000, "originalPrice": 56000 },
+      { "name": "120x200", "price": 61000, "originalPrice": 65000 },
+      { "name": "140x200", "price": 70000, "originalPrice": 74000 },
+      { "name": "160x200", "price": 79000, "originalPrice": 81000 },
+      { "name": "180x200", "price": 88000, "originalPrice": 93000 }
     ],
     "rating": 4.96,
     "reviews": 27
