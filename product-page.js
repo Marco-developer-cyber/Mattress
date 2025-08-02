@@ -37,7 +37,8 @@ async function loadProductsAndDisplay() {
 // Get product ID from URL
 function getProductIdFromUrl() {
     const path = window.location.pathname;
-    const match = path.match(/product\/.*?-(\d+)$/);
+    // Match pattern: /product/slug-id where slug can contain letters, numbers, and hyphens
+    const match = path.match(/^\/product\/[a-zA-Z0-9-]+-(\d+)$/);
     return match ? parseInt(match[1]) : null;
 }
 
