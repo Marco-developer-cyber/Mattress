@@ -1,0 +1,46 @@
+RewriteEngine On
+
+# Handle product URLs
+RewriteRule ^product/([a-zA-Z0-9-]+)-(\d+)$ product-template.html [L]
+
+# Handle other static files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect to index.html for other routes
+RewriteRule ^(.*)$ index.html [L]
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Set browser caching
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/ico "access plus 1 year"
+    ExpiresByType image/icon "access plus 1 year"
+    ExpiresByType text/plain "access plus 1 month"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType text/xml "access plus 1 month"
+    ExpiresByType application/xml "access plus 1 month"
+    ExpiresByType application/xml+rss "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType application/x-shockwave-flash "access plus 1 month"
+    ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+</IfModule> 
