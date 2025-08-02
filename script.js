@@ -175,7 +175,7 @@ function loadProducts() {
                 const showAllButton = document.createElement('div');
                 showAllButton.className = 'col-12 text-center mt-4';
                 showAllButton.innerHTML = `
-                    <button class="btn btn-outline-primary show-all-btn" onclick="showAllProducts('${categoryKey}')">
+                    <button class="btn btn-outline-primary show-all-btn" onclick="showAllProducts('${categoryKey}', event)">
                         Показать все (${category.products.length})
                     </button>
                 `;
@@ -183,17 +183,23 @@ function loadProducts() {
                 
                 // Store remaining products for later display
                 const remainingProducts = category.products.slice(3);
-                showAllButton.setAttribute('data-products', JSON.stringify(remainingProducts));
+                showAllButton.querySelector('button').setAttribute('data-products', JSON.stringify(remainingProducts));
             }
         }
     });
 }
 
 // Show all products in category
-function showAllProducts(categoryKey) {
-    const button = event.target;
+function showAllProducts(categoryKey, event) {
+    if (event) event.preventDefault();
+    
+    const button = event ? event.target : document.querySelector(`[onclick="showAllProducts('${categoryKey}')"]`);
+    if (!button) return;
+    
     const remainingProducts = JSON.parse(button.getAttribute('data-products'));
     const cardsContainer = document.getElementById(`category-${categoryKey}`);
+    
+    if (!cardsContainer) return;
     
     // Add remaining products
     remainingProducts.forEach((product, index) => {
@@ -202,7 +208,7 @@ function showAllProducts(categoryKey) {
     });
     
     // Hide the button
-    button.style.display = 'none';
+    button.parentElement.style.display = 'none';
 }
 
 // Create product card
@@ -218,10 +224,16 @@ function createProductCard(product, index) {
     // Get first image or placeholder
     const productImage = product.images && product.images.length > 0 ? product.images[0] : `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center`;
     
+    // Create unique URL for product
+    const productUrl = `${window.location.origin}${window.location.pathname}#product-${product.id}`;
+    
     col.innerHTML = `
-        <div class="product-card">
+        <div class="product-card" onclick="openProductFromUrl(${product.id})">
             <div class="product-image">
                 <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                <button class="product-test-btn" onclick="event.stopPropagation(); showProductModal(${product.id})">
+                    <i class="fas fa-play"></i> Тест
+                </button>
                 ${discountPercent > 0 ? `<div class="product-badge">-${discountPercent}%</div>` : ''}
                 ${product.badge ? `<div class="product-badge product-badge-secondary">${product.badge}</div>` : ''}
             </div>
@@ -237,6 +249,7 @@ function createProductCard(product, index) {
                     ${product.originalPrice ? `<span class="product-old-price">${product.originalPrice.toLocaleString()} ₸</span>` : ''}
                     <span class="product-new-price" data-product-id="${product.id}">${product.price.toLocaleString()} ₸</span>
                 </div>
+                <div class="product-price-note">*цена за размер ${product.sizes[0].name}</div>
                 <div class="product-features">
                     ${product.features.slice(0, 3).map(feature => `
                         <div class="product-feature">
@@ -246,15 +259,15 @@ function createProductCard(product, index) {
                     `).join('')}
                 </div>
                 <div class="product-actions">
-                    <button class="btn btn-primary btn-sm" onclick="showProductModal(${product.id})">
-                        <i class="fas fa-play"></i> Смотреть тест
+                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openOrderModal(${product.id})">
+                        <i class="fas fa-shopping-cart"></i> Хочу заказать
                     </button>
-                    <button class="btn btn-outline-primary btn-sm" onclick="showProductDetails(${product.id})">
+                    <button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); showProductDetails(${product.id})">
                         <i class="fas fa-search"></i> Подробнее
                     </button>
                 </div>
                 <div class="product-gift">
-                    <i class="fas fa-gift"></i> Водозащитный наматрасник в подарок
+                    Наматрасник в подарок 🎁
                 </div>
             </div>
         </div>
@@ -262,6 +275,36 @@ function createProductCard(product, index) {
     
     return col;
 }
+
+// Open product from URL
+function openProductFromUrl(productId) {
+    // Update URL without page reload
+    const newUrl = `${window.location.origin}${window.location.pathname}#product-${productId}`;
+    window.history.pushState({productId}, '', newUrl);
+    
+    // Show product details
+    showProductDetails(productId);
+}
+
+// Handle URL changes
+window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.productId) {
+        showProductDetails(event.state.productId);
+    }
+});
+
+// Check URL on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash;
+    if (hash.startsWith('#product-')) {
+        const productId = parseInt(hash.replace('#product-', ''));
+        if (productId) {
+            setTimeout(() => {
+                showProductDetails(productId);
+            }, 1000);
+        }
+    }
+});
 
 // Generate stars for rating
 function generateStars(rating) {
@@ -536,7 +579,7 @@ function updateOrderSummary() {
         </div>
         <div class="order-item" style="border: none; padding-top: 1rem; color: #28a745;">
             <span><i class="fas fa-gift"></i> <strong>Подарок:</strong></span>
-            <span>Водозащитный наматрасник</span>
+            <span>Наматрасник</span>
         </div>
     `;
 }
@@ -574,7 +617,6 @@ function submitOrder() {
     
     const name = document.getElementById('customerName').value.trim();
     const phone = document.getElementById('customerPhone').value.trim();
-    const address = document.getElementById('customerAddress').value.trim();
     const comment = document.getElementById('customerComment').value.trim();
     
     if (!name || !phone) {
@@ -595,11 +637,7 @@ function submitOrder() {
         message += `🔥 *Скидка:* ${discount.toLocaleString()} ₸\n`;
     }
     
-    message += `🎁 *Подарок:* Водозащитный наматрасник\n\n`;
-    
-    if (address) {
-        message += `📍 *Адрес доставки:* ${address}\n\n`;
-    }
+    message += `🎁 *Подарок:* Наматрасник\n\n`;
     
     if (comment) {
         message += `💬 *Комментарий:* ${comment}\n\n`;

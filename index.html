@@ -84,8 +84,10 @@
             <a class="navbar-brand" href="#">
                 <img src="img/logo-text-white.png" alt="Территория Сна" class="logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler burger-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -129,9 +131,8 @@
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6" data-aos="fade-right">
-                                        <h1 class="hero-title">Матрас <span class="yellow-span"> не ломает </span> яйцо
-                                        </h1>
-                                        <p class="hero-subtitle">Доказываем качество через реальные эксперименты</p>
+                                        <h1 class="hero-title">Эксперимент с яйцом пройден</h1>
+                                        <p class="hero-subtitle">На всех наших матрасах этот тест удался</p>
                                         <div class="hero-features">
                                             <div class="hero-feature">
                                                 <i class="fas fa-shield-alt"></i>
@@ -148,7 +149,7 @@
                                         </div>
                                         <div class="hero-buttons">
                                             <a href="#catalog" class="btn btn-primary btn-lg">Смотреть каталог</a>
-                                            <a href="#test" class="btn btn-outline-light btn-lg">Смотреть тест</a>
+                                            <a href="https://www.instagram.com/reel/DK9b1WGN30H/?igsh=MWtuNTRhbm1uZm5tZQ==" target="_blank" class="btn btn-outline-light btn-lg">Смотреть эксперимент</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-6" data-aos="fade-left">
@@ -166,9 +167,8 @@
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6" data-aos="fade-right">
-                                        <h1 class="hero-title">Стакан воды <span class="yellow-span">не шевелится</span>
-                                        </h1>
-                                        <p class="hero-subtitle">Идеальная стабильность для спокойного сна</p>
+                                        <h1 class="hero-title">Эксперимент со стаканом пройден</h1>
+                                        <p class="hero-subtitle">Рядом с вами могут прыгать — вы даже не почувствуете</p>
                                         <div class="hero-features">
                                             <div class="hero-feature">
                                                 <i class="fas fa-bed"></i>
@@ -185,7 +185,7 @@
                                         </div>
                                         <div class="hero-buttons">
                                             <a href="#catalog" class="btn btn-primary btn-lg">Смотреть каталог</a>
-                                            <a href="#test" class="btn btn-outline-light btn-lg">Смотреть тест</a>
+                                            <a href="https://www.instagram.com/reel/DLPVRO8tjZ8/?igsh=eGlzNDhsY3FiNm00" target="_blank" class="btn btn-outline-light btn-lg">Смотреть эксперимент</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-6" data-aos="fade-left">
@@ -203,9 +203,8 @@
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6" data-aos="fade-right">
-                                        <h1 class="hero-title">Апашка рекомендует</h1>
-                                        <p class="hero-subtitle">Акция <span class="yellow-span"> -70% + подарок </span>
-                                            при покупке</p>
+                                        <h1 class="hero-title">Апашка рекомендует — и даёт подарок!</h1>
+                                        <p class="hero-subtitle">💬 Скидки до −70% и водозащитный наматрасник и подушка с памятью в подарок 🎁</p>
                                         <div class="hero-features">
                                             <div class="hero-feature">
                                                 <i class="fas fa-gift"></i>
@@ -222,7 +221,7 @@
                                         </div>
                                         <div class="hero-buttons">
                                             <a href="#catalog" class="btn btn-primary btn-lg">Смотреть каталог</a>
-                                            <a href="#test" class="btn btn-outline-light btn-lg">Смотреть тест</a>
+                                            <a href="#catalog" class="btn btn-outline-light btn-lg">Получить подарок</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-6" data-aos="fade-left">
@@ -236,14 +235,6 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Предыдущий</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Следующий</span>
-                </button>
             </div>
         </div>
     </section>
@@ -645,18 +636,11 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="customerAddress" class="form-label">
-                                <i class="fas fa-map-marker-alt"></i> Адрес доставки
-                            </label>
-                            <textarea class="form-control" id="customerAddress" rows="2" 
-                                      placeholder="Укажите адрес для доставки (необязательно)"></textarea>
-                        </div>
-                        <div class="mb-3">
                             <label for="customerComment" class="form-label">
-                                <i class="fas fa-comment"></i> Комментарий к заказу
+                                <i class="fas fa-comment"></i> Комментарий (необязательно)
                             </label>
                             <textarea class="form-control" id="customerComment" rows="2" 
-                                      placeholder="Дополнительные пожелания (необязательно)"></textarea>
+                                      placeholder="Дополнительные пожелания"></textarea>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="whatsapp-btn">
