@@ -61,16 +61,16 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 2px;
 }
 
-.burger-menu:not(.collapsed) .burger-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+.burger-menu.collapsed .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
-.burger-menu:not(.collapsed) .burger-line:nth-child(2) {
+.burger-menu.collapsed .burger-line:nth-child(2) {
     opacity: 0;
 }
 
-.burger-menu:not(.collapsed) .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+.burger-menu.collapsed .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .yellow-span {
@@ -451,6 +451,45 @@ h1, h2, h3, h4, h5, h6 {
     animation: pulse 2s infinite;
 }
 
+.preloader-spinner {
+    margin: 2rem 0;
+}
+
+.preloader-spinner svg {
+    width: 3.25em;
+    transform-origin: center;
+    animation: rotate4 2s linear infinite;
+}
+
+.preloader-spinner circle {
+    fill: none;
+    stroke: hsl(214, 97%, 59%);
+    stroke-width: 2;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash4 {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dashoffset: -125px;
+    }
+}
 .preloader-text {
     color: var(--primary-color);
     font-weight: 600;
@@ -537,8 +576,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-test-btn {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    bottom: 10px;
+    right: 10px;
     background: rgba(0, 119, 204, 0.9);
     color: var(--white);
     border: none;

@@ -228,7 +228,7 @@ function createProductCard(product, index) {
     const productUrl = `${window.location.origin}${window.location.pathname}#product-${product.id}`;
     
     col.innerHTML = `
-        <div class="product-card" onclick="openProductFromUrl(${product.id})">
+        <div class="product-card" onclick="openProductFromUrl(${product.id})" data-product-url="${productUrl}">
             <div class="product-image">
                 <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
                 <button class="product-test-btn" onclick="event.stopPropagation(); showProductModal(${product.id})">
@@ -282,10 +282,54 @@ function openProductFromUrl(productId) {
     const newUrl = `${window.location.origin}${window.location.pathname}#product-${productId}`;
     window.history.pushState({productId}, '', newUrl);
     
+    // Update social sharing meta tags
+    updateMetaTags(productId);
+    
     // Show product details
     showProductDetails(productId);
 }
 
+// Update meta tags for social sharing
+function updateMetaTags(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    const productUrl = `${window.location.origin}${window.location.pathname}#product-${productId}`;
+    const productImage = product.images && product.images.length > 0 ? product.images[0] : '';
+    
+    // Update Open Graph tags
+    updateMetaTag('og:title', `${product.name} - Территория Сна`);
+    updateMetaTag('og:description', product.description);
+    updateMetaTag('og:url', productUrl);
+    if (productImage) {
+        updateMetaTag('og:image', productImage);
+    }
+    
+    // Update Twitter Card tags
+    updateMetaTag('twitter:title', `${product.name} - Территория Сна`);
+    updateMetaTag('twitter:description', product.description);
+    
+    // Update page title
+    document.title = `${product.name} - Территория Сна`;
+}
+
+// Helper function to update meta tags
+function updateMetaTag(property, content) {
+    let meta = document.querySelector(`meta[property="${property}"]`) || 
+               document.querySelector(`meta[name="${property}"]`);
+    
+    if (!meta) {
+        meta = document.createElement('meta');
+        if (property.startsWith('og:') || property.startsWith('twitter:')) {
+            meta.setAttribute('property', property);
+        } else {
+            meta.setAttribute('name', property);
+        }
+        document.head.appendChild(meta);
+    }
+    
+    meta.setAttribute('content', content);
+}
 // Handle URL changes
 window.addEventListener('popstate', function(event) {
     if (event.state && event.state.productId) {
@@ -491,9 +535,10 @@ function updateModalPrice(productId, sizeIndex) {
     const size = product.sizes[sizeIndex];
     if (!size) return;
     
-    // Update the price display in the modal
-    const priceElement = document.querySelector('.product-new-price');
-    const oldPriceElement = document.querySelector('.product-old-price');
+    // Update the price display in the modal - use more specific selectors
+    const modal = document.getElementById('productModal');
+    const priceElement = modal.querySelector('.product-new-price');
+    const oldPriceElement = modal.querySelector('.product-old-price');
     
     if (priceElement) {
         priceElement.textContent = `${size.price.toLocaleString()} ₸`;
