@@ -237,7 +237,8 @@
       { "name": "180x200", "price": 108000, "originalPrice": 112000, "discountPercent": 4 }
     ],
     "rating": 4.95,
-    "reviews": 176
+    "reviews": 176,
+    "badge": "Новинка"
   },
   {
     "id": 9,
@@ -271,7 +272,8 @@
       { "name": "180x200", "price": 57000, "originalPrice": 64000, "discountPercent": 11 }
     ],
     "rating": 4.8,
-    "reviews": 153
+    "reviews": 153,
+    "badge": "Хит продаж"
   },
   {
     "id": 10,
@@ -368,7 +370,8 @@
       { "name": "180x200", "price": 76000, "originalPrice": 80000, "discountPercent": 5 }
     ],
     "rating": 4.85,
-    "reviews": 144
+    "reviews": 144,
+    "badge": "Хит продаж"
   },
   {
     "id": 13,
@@ -402,7 +405,8 @@
       { "name": "180x200", "price": 87000, "originalPrice": 125000, "discountPercent": 30 }
     ],
     "rating": 4.92,
-    "reviews": 203
+    "reviews": 203,
+    "badge": "Хит продаж"
   },
   {
     "id": 14,
@@ -534,7 +538,7 @@
   },
   {
     "id": 18,
-    "name": "Элит-22",
+    "name": "Elite-22",
     "category": "independent",
     "price": 88000,
     "originalPrice": 93000,
@@ -562,6 +566,7 @@
       { "name": "180x200", "price": 88000, "originalPrice": 93000, "discountPercent": 5 }
     ],
     "rating": 4.96,
-    "reviews": 27
+    "reviews": 27,
+    "badge": "Хит продаж"
   }
 ]
