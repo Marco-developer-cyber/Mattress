@@ -5,7 +5,7 @@
     "category": "children",
     "price": 15000,
     "originalPrice": 18000,
-    "discountPercent": 17,
+    "discountPercent": 27,
     "images": ["img/матрасы/детские матрасы/Baby happy/51664_big.jpg"],
     "description": "Ортопедический детский матрас Kids Happy ППУ 10 предоставляет необходимую поддержку во время сна. В основе — монолит из пенополиуретана 10 см, легкий и упругий материал.",
     "features": [
@@ -16,9 +16,9 @@
       "Срок службы: 6–7 лет"
     ],
     "sizes": [
-      { "name": "60x120", "price": 15000, "originalPrice": 18000 },
-      { "name": "80x190", "price": 26000, "originalPrice": 30000 },
-      { "name": "140x200", "price": 42000, "originalPrice": 46000 }
+      { "name": "60x120", "price": 15000, "originalPrice": 18000, "discountPercent": 17 },
+      { "name": "80x190", "price": 26000, "originalPrice": 30000, "discountPercent": 13 },
+      { "name": "140x200", "price": 42000, "originalPrice": 46000, "discountPercent": 9 }
     ],
     "rating": 4.7,
     "reviews": 119,
@@ -42,9 +42,9 @@
       "Срок службы: 6–7 лет"
     ],
     "sizes": [
-      { "name": "60x120", "price": 24000, "originalPrice": 27000 },
-      { "name": "70x140", "price": 27000, "originalPrice": 30000 },
-      { "name": "140x200", "price": 55000, "originalPrice": 60000 }
+      { "name": "60x120", "price": 24000, "originalPrice": 27000, "discountPercent": 11 },
+      { "name": "70x140", "price": 27000, "originalPrice": 30000, "discountPercent": 10 },
+      { "name": "140x200", "price": 55000, "originalPrice": 60000, "discountPercent": 8 }
     ],
     "rating": 4.8,
     "reviews": 152
@@ -71,12 +71,12 @@
       "Высота: 17 см"
     ],
     "sizes": [
-      { "name": "80x190", "price": 23000, "originalPrice": 26000 },
-      { "name": "90x190", "price": 26000, "originalPrice": 29000 },
-      { "name": "120x200", "price": 29000, "originalPrice": 32000 },
-      { "name": "140x200", "price": 31000, "originalPrice": 34000 },
-      { "name": "160x200", "price": 33000, "originalPrice": 36000 },
-      { "name": "180x200", "price": 35000, "originalPrice": 38000 }
+      { "name": "80x190", "price": 23000, "originalPrice": 26000, "discountPercent": 12 },
+      { "name": "90x190", "price": 26000, "originalPrice": 29000, "discountPercent": 10 },
+      { "name": "120x200", "price": 29000, "originalPrice": 32000, "discountPercent": 9 },
+      { "name": "140x200", "price": 31000, "originalPrice": 34000, "discountPercent": 9 },
+      { "name": "160x200", "price": 33000, "originalPrice": 36000, "discountPercent": 8 },
+      { "name": "180x200", "price": 35000, "originalPrice": 38000, "discountPercent": 8 }
     ],
     "rating": 4.6,
     "reviews": 87
@@ -103,12 +103,12 @@
       "Высота: 22 см"
     ],
     "sizes": [
-      { "name": "80x190", "price": 29500, "originalPrice": 32500 },
-      { "name": "90x200", "price": 32000, "originalPrice": 35000 },
-      { "name": "120x200", "price": 37000, "originalPrice": 40000 },
-      { "name": "140x200", "price": 42000, "originalPrice": 45000 },
-      { "name": "160x200", "price": 47000, "originalPrice": 50000 },
-      { "name": "180x200", "price": 50000, "originalPrice": 53000 }
+      { "name": "80x190", "price": 29500, "originalPrice": 32500, "discountPercent": 9 },
+      { "name": "90x200", "price": 32000, "originalPrice": 35000, "discountPercent": 9 },
+      { "name": "120x200", "price": 37000, "originalPrice": 40000, "discountPercent": 8 },
+      { "name": "140x200", "price": 42000, "originalPrice": 45000, "discountPercent": 7 },
+      { "name": "160x200", "price": 47000, "originalPrice": 50000, "discountPercent": 6 },
+      { "name": "180x200", "price": 50000, "originalPrice": 53000, "discountPercent": 6 }
     ],
     "rating": 4.8,
     "reviews": 104
@@ -134,12 +134,12 @@
       "Высота: 24 см"
     ],
     "sizes": [
-      { "name": "80x190", "price": 33000, "originalPrice": 36000 },
-      { "name": "90x190", "price": 36000, "originalPrice": 39000 },
-      { "name": "120x200", "price": 42000, "originalPrice": 46000 },
-      { "name": "140x200", "price": 48000, "originalPrice": 52000 },
-      { "name": "160x200", "price": 54000, "originalPrice": 58000 },
-      { "name": "180x200", "price": 62000, "originalPrice": 66000 }
+      { "name": "80x190", "price": 33000, "originalPrice": 36000, "discountPercent": 8 },
+      { "name": "90x190", "price": 36000, "originalPrice": 39000, "discountPercent": 8 },
+      { "name": "120x200", "price": 42000, "originalPrice": 46000, "discountPercent": 9 },
+      { "name": "140x200", "price": 48000, "originalPrice": 52000, "discountPercent": 8 },
+      { "name": "160x200", "price": 54000, "originalPrice": 58000, "discountPercent": 7 },
+      { "name": "180x200", "price": 62000, "originalPrice": 66000, "discountPercent": 6 }
     ],
     "rating": 4.9,
     "reviews": 141
@@ -168,12 +168,12 @@
       "Гарантия: 5 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 55000, "originalPrice": 58000 },
-      { "name": "90x190", "price": 58000, "originalPrice": 61000 },
-      { "name": "120x200", "price": 64000, "originalPrice": 68000 },
-      { "name": "140x200", "price": 70000, "originalPrice": 74000 },
-      { "name": "160x200", "price": 76000, "originalPrice": 80000 },
-      { "name": "180x200", "price": 84000, "originalPrice": 88000 }
+      { "name": "80x190", "price": 55000, "originalPrice": 58000, "discountPercent": 5 },
+      { "name": "90x190", "price": 58000, "originalPrice": 61000, "discountPercent": 5 },
+      { "name": "120x200", "price": 64000, "originalPrice": 68000, "discountPercent": 6 },
+      { "name": "140x200", "price": 70000, "originalPrice": 74000, "discountPercent": 5 },
+      { "name": "160x200", "price": 76000, "originalPrice": 80000, "discountPercent": 5 },
+      { "name": "180x200", "price": 84000, "originalPrice": 88000, "discountPercent": 5 }
     ],
     "rating": 4.9,
     "reviews": 127
@@ -197,12 +197,12 @@
       "Гарантия: 1 год"
     ],
     "sizes": [
-      { "name": "80x190", "price": 21000, "originalPrice": 24000 },
-      { "name": "90x190", "price": 23000, "originalPrice": 26000 },
-      { "name": "120x200", "price": 28000, "originalPrice": 31000 },
-      { "name": "140x200", "price": 32000, "originalPrice": 35000 },
-      { "name": "160x200", "price": 36000, "originalPrice": 39000 },
-      { "name": "180x200", "price": 41000, "originalPrice": 44000 }
+      { "name": "80x190", "price": 21000, "originalPrice": 24000, "discountPercent": 13 },
+      { "name": "90x190", "price": 23000, "originalPrice": 26000, "discountPercent": 12 },
+      { "name": "120x200", "price": 28000, "originalPrice": 31000, "discountPercent": 10 },
+      { "name": "140x200", "price": 32000, "originalPrice": 35000, "discountPercent": 9 },
+      { "name": "160x200", "price": 36000, "originalPrice": 39000, "discountPercent": 8 },
+      { "name": "180x200", "price": 41000, "originalPrice": 44000, "discountPercent": 7 }
     ],
     "rating": 4.7,
     "reviews": 89,
@@ -229,12 +229,12 @@
       "Срок службы: до 20 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 75000, "originalPrice": 79000 },
-      { "name": "90x190", "price": 78000, "originalPrice": 82000 },
-      { "name": "120x200", "price": 85000, "originalPrice": 89000 },
-      { "name": "140x200", "price": 92000, "originalPrice": 96000 },
-      { "name": "160x200", "price": 99000, "originalPrice": 103000 },
-      { "name": "180x200", "price": 108000, "originalPrice": 112000 }
+      { "name": "80x190", "price": 75000, "originalPrice": 79000, "discountPercent": 5 },
+      { "name": "90x190", "price": 78000, "originalPrice": 82000, "discountPercent": 5 },
+      { "name": "120x200", "price": 85000, "originalPrice": 89000, "discountPercent": 4 },
+      { "name": "140x200", "price": 92000, "originalPrice": 96000, "discountPercent": 4 },
+      { "name": "160x200", "price": 99000, "originalPrice": 103000, "discountPercent": 4 },
+      { "name": "180x200", "price": 108000, "originalPrice": 112000, "discountPercent": 4 }
     ],
     "rating": 4.95,
     "reviews": 176
@@ -263,12 +263,12 @@
       "Срок службы: 8–9 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 31000, "originalPrice": 35000 },
-      { "name": "90x190", "price": 33500, "originalPrice": 37000 },
-      { "name": "120x200", "price": 41000, "originalPrice": 46000 },
-      { "name": "140x200", "price": 46000, "originalPrice": 46800 },
-      { "name": "160x200", "price": 52000, "originalPrice": 58000 },
-      { "name": "180x200", "price": 57000, "originalPrice": 64000 }
+      { "name": "80x190", "price": 31000, "originalPrice": 35000, "discountPercent": 11 },
+      { "name": "90x190", "price": 33500, "originalPrice": 37000, "discountPercent": 9 },
+      { "name": "120x200", "price": 41000, "originalPrice": 46000, "discountPercent": 11 },
+      { "name": "140x200", "price": 46000, "originalPrice": 46800, "discountPercent": 2 },
+      { "name": "160x200", "price": 52000, "originalPrice": 58000, "discountPercent": 10 },
+      { "name": "180x200", "price": 57000, "originalPrice": 64000, "discountPercent": 11 }
     ],
     "rating": 4.8,
     "reviews": 153
@@ -299,9 +299,9 @@
       "Срок службы: 15 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 59000, "originalPrice": 64000 },
-      { "name": "160x200", "price": 87000, "originalPrice": 92000 },
-      { "name": "180x200", "price": 96000, "originalPrice": 102000 }
+      { "name": "80x190", "price": 59000, "originalPrice": 64000, "discountPercent": 8 },
+      { "name": "160x200", "price": 87000, "originalPrice": 92000, "discountPercent": 5 },
+      { "name": "180x200", "price": 96000, "originalPrice": 102000, "discountPercent": 6 }
     ],
     "rating": 4.9,
     "reviews": 162
@@ -330,9 +330,9 @@
       "Срок службы: 20–25 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 69000, "originalPrice": 74000 },
-      { "name": "160x200", "price": 119000, "originalPrice": 124000 },
-      { "name": "180x200", "price": 132000, "originalPrice": 138000 }
+      { "name": "80x190", "price": 69000, "originalPrice": 74000, "discountPercent": 7 },
+      { "name": "160x200", "price": 119000, "originalPrice": 124000, "discountPercent": 4 },
+      { "name": "180x200", "price": 132000, "originalPrice": 138000, "discountPercent": 4 }
     ],
     "rating": 4.95,
     "reviews": 185
@@ -360,12 +360,12 @@
       "Срок службы: 10–12 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 49000, "originalPrice": 53000 },
-      { "name": "90x190", "price": 52000, "originalPrice": 56000 },
-      { "name": "120x200", "price": 58000, "originalPrice": 62000 },
-      { "name": "140x200", "price": 63000, "originalPrice": 67000 },
-      { "name": "160x200", "price": 69000, "originalPrice": 73000 },
-      { "name": "180x200", "price": 76000, "originalPrice": 80000 }
+      { "name": "80x190", "price": 49000, "originalPrice": 53000, "discountPercent": 8 },
+      { "name": "90x190", "price": 52000, "originalPrice": 56000, "discountPercent": 7 },
+      { "name": "120x200", "price": 58000, "originalPrice": 62000, "discountPercent": 6 },
+      { "name": "140x200", "price": 63000, "originalPrice": 67000, "discountPercent": 6 },
+      { "name": "160x200", "price": 69000, "originalPrice": 73000, "discountPercent": 5 },
+      { "name": "180x200", "price": 76000, "originalPrice": 80000, "discountPercent": 5 }
     ],
     "rating": 4.85,
     "reviews": 144
@@ -394,12 +394,12 @@
       "Срок службы: до 15 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 52000, "originalPrice": 65000 },
-      { "name": "90x190", "price": 55000, "originalPrice": 68000 },
-      { "name": "120x200", "price": 66000, "originalPrice": 89000 },
-      { "name": "140x200", "price": 72000, "originalPrice": 105000 },
-      { "name": "160x200", "price": 80000, "originalPrice": 118000 },
-      { "name": "180x200", "price": 87000, "originalPrice": 125000 }
+      { "name": "80x190", "price": 52000, "originalPrice": 65000, "discountPercent": 20 },
+      { "name": "90x190", "price": 55000, "originalPrice": 68000, "discountPercent": 19 },
+      { "name": "120x200", "price": 66000, "originalPrice": 89000, "discountPercent": 26 },
+      { "name": "140x200", "price": 72000, "originalPrice": 105000, "discountPercent": 31 },
+      { "name": "160x200", "price": 80000, "originalPrice": 118000, "discountPercent": 32 },
+      { "name": "180x200", "price": 87000, "originalPrice": 125000, "discountPercent": 30 }
     ],
     "rating": 4.92,
     "reviews": 203
@@ -428,9 +428,9 @@
       "Срок службы: 10–12 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 59000 , "originalPrice": 66000 },
-      { "name": "160x200", "price": 101000 , "originalPrice": 115000 },
-      { "name": "180x200", "price": 115000 , "originalPrice": 130000 }
+      { "name": "80x190", "price": 59000, "originalPrice": 66000, "discountPercent": 11 },
+      { "name": "160x200", "price": 101000, "originalPrice": 115000, "discountPercent": 12 },
+      { "name": "180x200", "price": 115000, "originalPrice": 130000, "discountPercent": 12 }
     ],
     "rating": 4.87,
     "reviews": 178
@@ -459,12 +459,12 @@
       "Срок службы: до 8 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 28000, "originalPrice": 35000 },
-      { "name": "90x190", "price": 31000, "originalPrice": 39000 },
-      { "name": "120x200", "price": 36800, "originalPrice": 46000 },
-      { "name": "140x200", "price": 42400, "originalPrice": 53000 },
-      { "name": "160x200", "price": 46000, "originalPrice": 58000 },
-      { "name": "180x200", "price": 52000, "originalPrice": 65000 }
+      { "name": "80x190", "price": 28000, "originalPrice": 35000, "discountPercent": 20 },
+      { "name": "90x190", "price": 31000, "originalPrice": 39000, "discountPercent": 21 },
+      { "name": "120x200", "price": 36800, "originalPrice": 46000, "discountPercent": 20 },
+      { "name": "140x200", "price": 42400, "originalPrice": 53000, "discountPercent": 20 },
+      { "name": "160x200", "price": 46000, "originalPrice": 58000, "discountPercent": 21 },
+      { "name": "180x200", "price": 52000, "originalPrice": 65000, "discountPercent": 20 }
     ],
     "rating": 4.72,
     "reviews": 96
@@ -493,8 +493,8 @@
       "Гарантия: 7 лет, срок службы: до 15 лет"
     ],
     "sizes": [
-      { "name": "160x200", "price": 190000, "originalPrice": 199000 },
-      { "name": "180x200", "price": 220000, "originalPrice": 225000 }
+      { "name": "160x200", "price": 190000, "originalPrice": 199000, "discountPercent": 5 },
+      { "name": "180x200", "price": 220000, "originalPrice": 225000, "discountPercent": 2 }
     ],
     "rating": 4.94,
     "reviews": 47
@@ -522,12 +522,12 @@
       "Гарантия: 3 года, срок службы: до 10 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 43500, "originalPrice": 45000 },
-      { "name": "90x190", "price": 48000, "originalPrice": 50000 },
-      { "name": "120x200", "price": 57000, "originalPrice": 59000 },
-      { "name": "140x200", "price": 65000, "originalPrice": 69000 },
-      { "name": "160x200", "price": 78000, "originalPrice": 85000 },
-      { "name": "180x200", "price": 88000, "originalPrice": 93000 }
+      { "name": "80x190", "price": 43500, "originalPrice": 45000, "discountPercent": 3 },
+      { "name": "90x190", "price": 48000, "originalPrice": 50000, "discountPercent": 4 },
+      { "name": "120x200", "price": 57000, "originalPrice": 59000, "discountPercent": 3 },
+      { "name": "140x200", "price": 65000, "originalPrice": 69000, "discountPercent": 6 },
+      { "name": "160x200", "price": 78000, "originalPrice": 85000, "discountPercent": 8 },
+      { "name": "180x200", "price": 88000, "originalPrice": 93000, "discountPercent": 5 }
     ],
     "rating": 4.91,
     "reviews": 33
@@ -554,12 +554,12 @@
       "Гарантия: 10 лет, срок службы: до 25 лет"
     ],
     "sizes": [
-      { "name": "80x190", "price": 47000, "originalPrice": 50000 },
-      { "name": "90x190", "price": 52000, "originalPrice": 56000 },
-      { "name": "120x200", "price": 61000, "originalPrice": 65000 },
-      { "name": "140x200", "price": 70000, "originalPrice": 74000 },
-      { "name": "160x200", "price": 79000, "originalPrice": 81000 },
-      { "name": "180x200", "price": 88000, "originalPrice": 93000 }
+      { "name": "80x190", "price": 47000, "originalPrice": 50000, "discountPercent": 6 },
+      { "name": "90x190", "price": 52000, "originalPrice": 56000, "discountPercent": 7 },
+      { "name": "120x200", "price": 61000, "originalPrice": 65000, "discountPercent": 6 },
+      { "name": "140x200", "price": 70000, "originalPrice": 74000, "discountPercent": 5 },
+      { "name": "160x200", "price": 79000, "originalPrice": 81000, "discountPercent": 2 },
+      { "name": "180x200", "price": 88000, "originalPrice": 93000, "discountPercent": 5 }
     ],
     "rating": 4.96,
     "reviews": 27

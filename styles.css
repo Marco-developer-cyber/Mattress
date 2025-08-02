@@ -127,138 +127,134 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Section */
 .hero-section {
-    min-height: 100svh;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #005A9E 100%);
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
-}
-
+/* Стили для каждого слайда */
 .carousel-item {
-    height: 100svh;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-/* Carousel Improvements */
-.carousel-indicators {
-    bottom: 2rem;
-}
-
-.carousel-indicators [data-bs-target] {
-    width: 60px;
-    height: 4px;
-    border-radius: 2px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: none;
-    margin: 0 5px;
-    transition: all 0.3s ease;
-}
-
-.carousel-indicators .active {
-    background-color: var(--accent-color);
-    transform: scale(1.2);
-}
-
-/* Hero Content Improvements */
-.hero-features {
-    display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-.hero-feature {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-}
-
-.hero-feature:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.hero-feature i {
-    color: var(--accent-color);
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.hero-feature span {
-    font-weight: 500;
-    font-size: 0.9rem;
+.carousel-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* тёмный фильтр */
+  z-index: 1;
 }
 
 .hero-content {
-    height: 100svh;
-    display: flex;
-    align-items: center;
-    color: var(--white);
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: var(--white);
 }
 
+/* Carousel indicators */
+.carousel-indicators {
+  bottom: 2rem;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: rgba(249, 247, 247, 0.5);
+  border: none;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+  background-color: var(--accent-color);
+  transform: scale(1.2);
+}
+
+/* Заголовки и текст */
 .hero-title {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    animation: slideInLeft 1s ease-out;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-    animation: slideInLeft 1s ease-out 0.2s both;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
 }
 
+/* Кнопки */
 .hero-buttons {
-    animation: slideInLeft 1s ease-out 0.4s both;
+  margin-top: 1.5rem;
 }
 
 .hero-buttons .btn {
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    padding: 0.75rem 2rem;
-    font-weight: 600;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
 }
 
 .hero-buttons .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.hero-image {
-    text-align: center;
-    animation: slideInRight 1s ease-out 0.3s both;
+/* Характеристики */
+.hero-features {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
-.hero-image img {
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
+.hero-feature {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
 }
 
-.hero-image img:hover {
-    transform: scale(1.05);
+.hero-feature:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.hero-feature i {
+  color: var(--accent-color);
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.hero-feature span {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Фоновые изображения для каждого слайда */
+.bg-slide-1 {
+  background-image: url('img/bg/bg-1.png');
+}
+
+.bg-slide-2 {
+  background-image: url('img/bg/bg-2.png');
+}
+
+.bg-slide-3 {
+  background-image: url('img/bg/bg-3.png');
 }
 
 /* Order Modal Styles */
