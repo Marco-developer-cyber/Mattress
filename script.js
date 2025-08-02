@@ -408,23 +408,30 @@ function showProductModal(productId) {
     const modal = new bootstrap.Modal(document.getElementById('productModal'));
     const modalTitle = document.getElementById('modalTitle');
     const modalBody = document.getElementById('modalBody');
-    
-    // Get first image or placeholder
-    const productImage = product.images && product.images.length > 0 ? product.images[0] : `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center`;
-    
-    modalTitle.textContent = `${product.name} - Тест`;
+
+    // Получаем основное изображение или используем заглушку
+    const productImage = product.images && product.images.length > 0 
+        ? product.images[0] 
+        : 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center';
+
+    modalTitle.textContent = `${product.name} - Подробная информация`;
     modalBody.innerHTML = `
         <div class="row">
             <div class="col-md-6">
-                <img src="${productImage}" alt="${product.name}" class="img-fluid rounded mb-3" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                <img src="${productImage}" alt="${product.name}" 
+                     class="img-fluid rounded mb-3" 
+                     onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                
                 <h5>${product.name}</h5>
                 <p>${product.description}</p>
+                
                 <div class="product-rating mb-3">
                     <div class="stars">
                         ${generateStars(product.rating)}
                     </div>
                     <span class="reviews-count">${product.rating} (${product.reviews} отзывов)</span>
                 </div>
+                
                 <div class="product-features">
                     ${product.features.map(feature => `
                         <div class="product-feature">
@@ -434,36 +441,65 @@ function showProductModal(productId) {
                     `).join('')}
                 </div>
             </div>
+            
             <div class="col-md-6">
-                <div class="ratio ratio-16x9 mb-3">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Product Test" frameborder="0" allowfullscreen></iframe>
+                <!-- Наш новый блок с подсказкой и Instagram -->
+                <div class="instagram-promo-container">
+                    <div class="promo-card">
+                        <div class="promo-image-part">
+                            <img src="${productImage}" alt="Обзор матраса" class="img-fluid h-100">
+                        </div>
+                        <div class="promo-text-part">
+                            <div class="promo-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h6>Видеообзор</h6>
+                            <p>Посмотрите наш матрас в действии! Убедитесь в его качестве и комфорте.</p>
+                        </div>
+                    </div>
+                    
+                    ${product.instagramVideo ? `
+                        <a href="${product.instagramVideo}" target="_blank" class="btn btn-instagram-promo">
+                            <i class="fab fa-instagram"></i> Смотреть видео в Instagram
+                        </a>
+                    ` : `
+                        <button class="btn btn-secondary" disabled>
+                            <i class="fas fa-info-circle"></i> Видео временно недоступно
+                        </button>
+                    `}
                 </div>
-                <div class="mb-3">
+                
+                <div class="product-options mt-4">
                     <h6>Выберите размер:</h6>
-                    <select class="form-select" onchange="updatePrice(${product.id}, this.value)">
+                    <select class="form-select mb-3" onchange="updateModalPrice(${product.id}, this.value)">
                         ${product.sizes.map((size, index) => `
                             <option value="${index}" ${index === 0 ? 'selected' : ''}>
                                 ${size.name} - ${size.price.toLocaleString()} ₸
                             </option>
                         `).join('')}
                     </select>
-                </div>
-                <div class="product-price mb-3">
-                    ${product.originalPrice ? `<span class="product-old-price">${product.originalPrice.toLocaleString()} ₸</span>` : ''}
-                    <span class="product-new-price">${product.price.toLocaleString()} ₸</span>
-                </div>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary" onclick="openOrderModal(${product.id})">
-                        <i class="fas fa-shopping-cart"></i> Заказать
-                    </button>
-                    <button class="btn btn-outline-primary" onclick="showProductDetails(${product.id})">
-                        <i class="fas fa-info-circle"></i> Подробная информация
-                    </button>
+                    
+                    <div class="product-price mb-3">
+                        ${product.originalPrice ? `
+                            <span class="product-old-price">${product.originalPrice.toLocaleString()} ₸</span>
+                        ` : ''}
+                        <span class="product-new-price">${product.price.toLocaleString()} ₸</span>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" onclick="openOrderModal(${product.id})">
+                            <i class="fas fa-shopping-cart"></i> Заказать
+                        </button>
+                    </div>
+                    
+                    <div class="product-gift mt-2">
+                        <i class="fas fa-gift"></i> Наматрасник в подарок
+                    </div>
                 </div>
             </div>
         </div>
     `;
-    
+
     modal.show();
 }
 
@@ -484,14 +520,35 @@ function showProductDetails(productId) {
     const modalTitle = document.getElementById('modalTitle');
     const modalBody = document.getElementById('modalBody');
     
-    // Get first image or placeholder
-    const productImage = product.images && product.images.length > 0 ? product.images[0] : `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center`;
+    // Получаем первое изображение или заглушку
+    const productImage = product.images && product.images.length > 0 ? product.images[0] : 'https://via.placeholder.com/600x400?text=No+Image';
     
     modalTitle.textContent = `${product.name} - Подробная информация`;
     modalBody.innerHTML = `
         <div class="row">
             <div class="col-md-6">
-                <img src="${productImage}" alt="${product.name}" class="img-fluid rounded mb-3" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                <!-- Основное изображение -->
+                <div class="main-image-container mb-3">
+                    <img src="${productImage}" 
+                         alt="${product.name}" 
+                         class="img-fluid rounded main-product-image" 
+                         id="mainProductImage"
+                         onerror="this.src='https://via.placeholder.com/600x400?text=Image+Error'">
+                </div>
+                
+                <!-- Галерея миниатюр -->
+                <div class="thumbnails-row d-flex flex-wrap gap-2 mb-4">
+                    ${product.images.map((img, index) => `
+                        <div class="thumbnail ${index === 0 ? 'active-thumb' : ''}" 
+                             onclick="changeMainImage('${img}', this)">
+                            <img src="${img}" 
+                                 alt="Thumbnail ${index + 1}" 
+                                 class="img-thumbnail"
+                                 onerror="this.src='https://via.placeholder.com/100x100?text=Thumb'">
+                        </div>
+                    `).join('')}
+                </div>
+                
                 <div class="product-rating mb-3">
                     <div class="stars">
                         ${generateStars(product.rating)}
@@ -499,6 +556,7 @@ function showProductDetails(productId) {
                     <span class="reviews-count">${product.rating} (${product.reviews} отзывов)</span>
                 </div>
             </div>
+            
             <div class="col-md-6">
                 <h5>Описание</h5>
                 <p class="mb-3">${product.description}</p>
@@ -537,6 +595,30 @@ function showProductDetails(productId) {
     `;
     
     modal.show();
+}
+
+// Функция для смены основного изображения
+function changeMainImage(newSrc, clickedThumb) {
+    const mainImg = document.getElementById('mainProductImage');
+    if (!mainImg) return;
+    
+    // Плавное исчезновение
+    mainImg.style.opacity = '0';
+    
+    setTimeout(() => {
+        // Установка нового изображения
+        mainImg.src = newSrc;
+        
+        // Плавное появление
+        mainImg.style.opacity = '1';
+        
+        // Обновление активной миниатюры
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.classList.remove('active-thumb');
+        });
+        clickedThumb.classList.add('active-thumb');
+        
+    }, 300);
 }
 
 // Update price based on size selection
@@ -974,3 +1056,23 @@ function createProductSlug(name) {
         .replace(/-+/g, '-')
         .trim('-');
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const burger = document.querySelector('.burger-menu');
+    const navbar = document.getElementById('navbarNav');
+    
+    // Initialize with collapsed class if navbar is hidden
+    if (navbar.classList.contains('show')) {
+        burger.classList.remove('collapsed');
+    } else {
+        burger.classList.add('collapsed');
+    }
+    
+    // Sync with Bootstrap collapse events
+    navbar.addEventListener('shown.bs.collapse', function() {
+        burger.classList.remove('collapsed');
+    });
+    
+    navbar.addEventListener('hidden.bs.collapse', function() {
+        burger.classList.add('collapsed');
+    });
+});
