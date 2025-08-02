@@ -218,8 +218,9 @@ function createProductCard(product, index) {
     col.setAttribute('data-aos', 'fade-up');
     col.setAttribute('data-aos-delay', (index + 1) * 100);
     
-    // Calculate discount percentage
-    const discountPercent = product.originalPrice ? Math.round((1 - product.price/product.originalPrice) * 100) : 0;
+    // Get discount percentage from product or calculate if not provided
+    const discountPercent = product.discountPercent !== undefined ? product.discountPercent : 
+        (product.originalPrice ? Math.round((1 - product.price/product.originalPrice) * 100) : 0);
     
     // Get first image or placeholder
     const productImage = product.images && product.images.length > 0 ? product.images[0] : `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center`;

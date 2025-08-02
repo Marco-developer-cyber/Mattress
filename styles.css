@@ -1,4 +1,4 @@
- /* Global Styles */
+/* Global Styles */
 :root {
     --primary-color: #0077CC;
     --accent-color: #FFD700;
@@ -61,15 +61,15 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 2px;
 }
 
-.burger-menu.collapsed .burger-line:nth-child(1) {
+.burger-menu:not(.collapsed) .burger-line:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
 }
 
-.burger-menu.collapsed .burger-line:nth-child(2) {
+.burger-menu:not(.collapsed) .burger-line:nth-child(2) {
     opacity: 0;
 }
 
-.burger-menu.collapsed .burger-line:nth-child(3) {
+.burger-menu:not(.collapsed) .burger-line:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 

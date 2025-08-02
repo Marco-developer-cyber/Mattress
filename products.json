@@ -5,6 +5,7 @@
     "category": "children",
     "price": 15000,
     "originalPrice": 18000,
+    "discountPercent": 17,
     "images": ["img/матрасы/детские матрасы/Baby happy/51664_big.jpg"],
     "description": "Ортопедический детский матрас Kids Happy ППУ 10 предоставляет необходимую поддержку во время сна. В основе — монолит из пенополиуретана 10 см, легкий и упругий материал.",
     "features": [
@@ -29,6 +30,7 @@
     "category": "children",
     "price": 24000,
     "originalPrice": 27000,
+    "discountPercent": 11,
     "images": ["img/матрасы/детские матрасы/Kids/16225_0.jpeg"],
     "description": "Матрас с разной жесткостью сторон. ППУ и кокос обеспечивают упругость и поддержку. Экологичный, гипоаллергенный и воздухопроницаемый материал для комфорта и здоровья ребёнка.",
     "features": [
@@ -53,6 +55,7 @@
     "category": "dependent",
     "price": 23000,
     "originalPrice": 26000,
+    "discountPercent": 12,
     "images": [
       "img/матрасы/матрасы с зависимыми пружинами/Матрас BONNEL ECONOM/кл эк.jpg"
     ],
@@ -84,6 +87,7 @@
     "category": "dependent",
     "price": 29500,
     "originalPrice": 32500,
+    "discountPercent": 9,
     "images": [
       "img/матрасы/матрасы с зависимыми пружинами/Матрас BONNEL-1/кл ус.jpg"
     ],
@@ -560,4 +564,4 @@
     "rating": 4.96,
     "reviews": 27
   }
-] 
+]
