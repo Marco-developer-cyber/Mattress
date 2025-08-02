@@ -80,8 +80,11 @@ let currentOrderSize = null;
 // Load products from JSON file
 async function loadProductsFromJSON() {
     try {
+        console.log('Loading products from JSON...');
         const response = await fetch('products.json');
         products = await response.json();
+        console.log('Products loaded successfully:', products.length, 'products');
+        console.log('First product:', products[0]);
         loadProducts();
     } catch (error) {
         console.error('Error loading products:', error);
@@ -109,6 +112,7 @@ async function loadProductsFromJSON() {
                 reviews: 153
             }
         ];
+        console.log('Using fallback products');
         loadProducts();
     }
 }
@@ -125,6 +129,7 @@ const sizeOptions = [
 
 // Load products with categories
 function loadProducts() {
+    console.log('Loading products into categories...');
     const container = document.getElementById('products-container');
     container.innerHTML = ''; // Clear container
     
@@ -140,13 +145,19 @@ function loadProducts() {
     products.forEach(product => {
         if (categories[product.category]) {
             categories[product.category].products.push(product);
+        } else {
+            console.warn('Product has unknown category:', product.category, product.name);
         }
     });
+    
+    console.log('Categories:', categories);
     
     // Create category sections
     Object.keys(categories).forEach(categoryKey => {
         const category = categories[categoryKey];
         if (category.products.length > 0) {
+            console.log(`Creating category: ${category.name} with ${category.products.length} products`);
+            
             // Create category header
             const categoryHeader = document.createElement('div');
             categoryHeader.className = 'col-12 mb-4';
@@ -166,6 +177,7 @@ function loadProducts() {
             // Show only first 3 products initially
             const productsToShow = category.products.slice(0, 3);
             productsToShow.forEach((product, index) => {
+                console.log(`Creating card for product: ${product.name} (ID: ${product.id})`);
                 const productCard = createProductCard(product, index);
                 cardsContainer.appendChild(productCard);
             });
@@ -233,6 +245,18 @@ function getProductUrl(product) {
 
 // Create product card
 function createProductCard(product, index) {
+    // Debug: Check if product has required fields
+    if (!product || !product.name) {
+        console.error('Invalid product data:', product);
+        return document.createElement('div'); // Return empty div for invalid products
+    }
+    
+    // Validate product data
+    if (!product.id || !product.price) {
+        console.error('Product missing required fields:', product);
+        return document.createElement('div');
+    }
+    
     const col = document.createElement('div');
     col.className = 'col-lg-4 col-md-6 mb-4';
     col.setAttribute('data-aos', 'fade-up');
@@ -241,37 +265,62 @@ function createProductCard(product, index) {
     // Calculate discount percentage
     const discountPercent = product.originalPrice ? Math.round((1 - product.price/product.originalPrice) * 100) : 0;
     
-    // Get first image or placeholder
-    const productImage = product.images && product.images.length > 0 ? product.images[0] : `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center`;
+    // Get first image or placeholder with better error handling
+    let productImage = `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center`;
+    if (product.images && product.images.length > 0 && product.images[0]) {
+        productImage = product.images[0];
+    }
     
     // Get product URL
     const productUrl = getProductUrl(product);
+    
+    // Ensure product has required fields with fallbacks
+    const productName = product.name || 'Название не указано';
+    const productRating = product.rating || 0;
+    const productReviews = product.reviews || 0;
+    const productPrice = product.price || 0;
+    const productOriginalPrice = product.originalPrice || null;
+    const productFeatures = product.features || [];
+    
+    // Debug: Log product data
+    console.log('Creating card for:', {
+        id: product.id,
+        name: productName,
+        price: productPrice,
+        features: productFeatures.length,
+        rating: productRating,
+        reviews: productReviews,
+        image: productImage
+    });
     
     col.innerHTML = `
         <div class="product-card">
             <div class="product-image">
                 <a href="${productUrl}" class="product-image-link">
-                    <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                    <img src="${productImage}" alt="${productName}" 
+                         onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'"
+                         onload="console.log('Image loaded successfully:', '${productName}')"
+                         onerror="console.log('Image failed to load:', '${productName}')">
                 </a>
                 ${discountPercent > 0 ? `<div class="product-badge">-${discountPercent}%</div>` : ''}
-                ${product.badge ? `<div="product-badge product-badge-secondary">${product.badge}</div>` : ''}
+                ${product.badge ? `<div class="product-badge product-badge-secondary">${product.badge}</div>` : ''}
             </div>
             <div class="product-content">
                 <h4 class="product-title">
-                    <a href="${productUrl}" class="product-title-link">${product.name}</a>
+                    <a href="${productUrl}" class="product-title-link">${productName}</a>
                 </h4>
                 <div class="product-rating">
                     <div class="stars">
-                        ${generateStars(product.rating)}
+                        ${generateStars(productRating)}
                     </div>
-                    <span class="reviews-count">(${product.reviews} отзывов)</span>
+                    <span class="reviews-count">(${productReviews} отзывов)</span>
                 </div>
                 <div class="product-price">
-                    ${product.originalPrice ? `<span class="product-old-price">${product.originalPrice.toLocaleString()} ₸</span>` : ''}
-                    <span class="product-new-price" data-product-id="${product.id}">${product.price.toLocaleString()} ₸</span>
+                    ${productOriginalPrice ? `<span class="product-old-price">${productOriginalPrice.toLocaleString()} ₸</span>` : ''}
+                    <span class="product-new-price" data-product-id="${product.id}">${productPrice.toLocaleString()} ₸</span>
                 </div>
                 <div class="product-features">
-                    ${product.features.slice(0, 3).map(feature => `
+                    ${productFeatures.slice(0, 3).map(feature => `
                         <div class="product-feature">
                             <i class="fas fa-check"></i>
                             <span>${feature}</span>
