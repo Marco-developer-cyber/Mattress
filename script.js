@@ -225,8 +225,9 @@ function createProductCard(product, index) {
     // Get first image or placeholder
     const productImage = product.images && product.images.length > 0 ? product.images[0] : `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center`;
     
-    // Create unique URL for product
-    const productUrl = `${window.location.origin}${window.location.pathname}#product-${product.id}`;
+    // Create unique URL for product with SEO-friendly slug
+    const productSlug = createProductSlug(product.name);
+    const productUrl = `${window.location.origin}${window.location.pathname}#product-${product.id}-${productSlug}`;
     
     col.innerHTML = `
         <div class="product-card" onclick="openProductFromUrl(${product.id})" data-product-url="${productUrl}">
@@ -279,8 +280,12 @@ function createProductCard(product, index) {
 
 // Open product from URL
 function openProductFromUrl(productId) {
-    // Update URL without page reload
-    const newUrl = `${window.location.origin}${window.location.pathname}#product-${productId}`;
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    // Create SEO-friendly URL
+    const productSlug = createProductSlug(product.name);
+    const newUrl = `${window.location.origin}${window.location.pathname}#product-${productId}-${productSlug}`;
     window.history.pushState({productId}, '', newUrl);
     
     // Update social sharing meta tags
@@ -295,7 +300,8 @@ function updateMetaTags(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
     
-    const productUrl = `${window.location.origin}${window.location.pathname}#product-${productId}`;
+    const productSlug = createProductSlug(product.name);
+    const productUrl = `${window.location.origin}${window.location.pathname}#product-${productId}-${productSlug}`;
     const productImage = product.images && product.images.length > 0 ? product.images[0] : '';
     
     // Update Open Graph tags
@@ -335,6 +341,18 @@ function updateMetaTag(property, content) {
 window.addEventListener('popstate', function(event) {
     if (event.state && event.state.productId) {
         showProductDetails(event.state.productId);
+    } else {
+        // Handle direct URL access with new format
+        const hash = window.location.hash;
+        if (hash.startsWith('#product-')) {
+            const productMatch = hash.match(/#product-(\d+)-/);
+            if (productMatch) {
+                const productId = parseInt(productMatch[1]);
+                if (productId) {
+                    showProductDetails(productId);
+                }
+            }
+        }
     }
 });
 
@@ -342,11 +360,15 @@ window.addEventListener('popstate', function(event) {
 document.addEventListener('DOMContentLoaded', function() {
     const hash = window.location.hash;
     if (hash.startsWith('#product-')) {
-        const productId = parseInt(hash.replace('#product-', ''));
-        if (productId) {
-            setTimeout(() => {
-                showProductDetails(productId);
-            }, 1000);
+        // Extract product ID from new format: #product-id-name
+        const productMatch = hash.match(/#product-(\d+)-/);
+        if (productMatch) {
+            const productId = parseInt(productMatch[1]);
+            if (productId) {
+                setTimeout(() => {
+                    showProductDetails(productId);
+                }, 1000);
+            }
         }
     }
 });
@@ -377,6 +399,11 @@ function generateStars(rating) {
 function showProductModal(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
+    
+    // Update URL with product slug for test modal
+    const productSlug = createProductSlug(product.name);
+    const newUrl = `${window.location.origin}${window.location.pathname}#product-${productId}-${productSlug}-test`;
+    window.history.pushState({productId, type: 'test'}, '', newUrl);
     
     const modal = new bootstrap.Modal(document.getElementById('productModal'));
     const modalTitle = document.getElementById('modalTitle');
@@ -444,6 +471,14 @@ function showProductModal(productId) {
 function showProductDetails(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
+    
+    // Update URL with product slug
+    const productSlug = createProductSlug(product.name);
+    const newUrl = `${window.location.origin}${window.location.pathname}#product-${productId}-${productSlug}`;
+    window.history.pushState({productId}, '', newUrl);
+    
+    // Update meta tags
+    updateMetaTags(productId);
     
     const modal = new bootstrap.Modal(document.getElementById('productModal'));
     const modalTitle = document.getElementById('modalTitle');
@@ -918,4 +953,24 @@ function optimizePerformance() {
         if (link.crossorigin) preloadLink.crossOrigin = link.crossorigin;
         document.head.appendChild(preloadLink);
     });
+}
+
+// Helper function to create SEO-friendly URL from product name
+function createProductSlug(name) {
+    return name
+        .toLowerCase()
+        .replace(/[а-яё]/g, char => {
+            const map = {
+                'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e',
+                'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
+                'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+                'ф': 'f', 'х': 'h', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch',
+                'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'
+            };
+            return map[char] || char;
+        })
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim('-');
 }
