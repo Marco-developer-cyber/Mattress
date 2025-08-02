@@ -62,14 +62,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .burger-menu:not(.collapsed) .burger-line:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(0deg) translate(0px, 0px);
 }
 
 .burger-menu:not(.collapsed) .burger-line:nth-child(2) {
-    opacity: 0;
+    opacity: 1;
 }
 
 .burger-menu:not(.collapsed) .burger-line:nth-child(3) {
+    transform: rotate(0deg) translate(0px, 0px);
+}
+
+/* Активное состояние бургер-меню (когда меню открыто) */
+.burger-menu.collapsed .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.burger-menu.collapsed .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.collapsed .burger-line:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
