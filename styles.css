@@ -41,6 +41,14 @@ h6 {
     transition: var(--transition);
     padding: 0.75rem 0;
     min-height: 70px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+.navbar .container {
+    max-width: 100%;
+    padding: 0 15px;
 }
 
 /* Burger Menu Styles */
@@ -102,6 +110,8 @@ h6 {
 .navbar-brand {
     height: 60px;
     width: 200px;
+    max-width: 60vw;
+    flex-shrink: 0;
 }
 
 .navbar-nav .nav-link {
@@ -133,15 +143,20 @@ h6 {
 .hero-section {
     position: relative;
     overflow: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
 
 /* Стили для каждого слайда */
 .carousel-item {
     height: 100vh;
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    width: 100%;
+    max-width: 100vw;
 }
 
 .carousel-item::before {
@@ -163,6 +178,9 @@ h6 {
     display: flex;
     align-items: center;
     color: var(--white);
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
 }
 
 /* Carousel indicators */
@@ -590,10 +608,29 @@ h6 {
     height: 100%;
     object-fit: cover;
     transition: var(--transition);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .product-card:hover .product-image img {
     transform: scale(1.1);
+}
+
+/* Оптимизация для мобильных устройств */
+@media (max-width: 768px) {
+    .product-card:hover .product-image img {
+        transform: none; /* Отключаем hover эффекты на мобильных */
+    }
+    
+    .product-card:hover {
+        transform: none;
+    }
+    
+    .advantage-card:hover,
+    .delivery-card:hover,
+    .review-card:hover {
+        transform: none;
+    }
 }
 
 .product-test-btn {
@@ -1115,12 +1152,45 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Фиксируем проблемы с шириной */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .navbar {
+        padding: 0.5rem 0;
+        min-height: 60px;
+    }
+    
+    .navbar-brand {
+        height: 50px;
+        width: 150px;
+        max-width: 50vw;
+    }
+    
+    .navbar-collapse {
+        width: 100%;
+        max-width: 100%;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
+        line-height: 1.2;
     }
 
     .hero-content {
         padding-top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .section-title {
@@ -1131,19 +1201,30 @@ html {
         display: block;
         width: 100%;
         margin-bottom: 1rem;
+        margin-right: 0;
     }
 
     .hero-features {
         justify-content: center;
+        gap: 0.75rem;
     }
 
     .hero-feature {
         font-size: 0.8rem;
         padding: 0.5rem 1rem;
+        flex: 1;
+        min-width: 0;
+        text-align: center;
     }
 
     .navbar-contact {
         margin-top: 1rem;
+        width: 100%;
+    }
+    
+    .navbar-contact .btn {
+        width: 100%;
+        text-align: center;
     }
 
     .whatsapp-button {
@@ -1156,9 +1237,37 @@ html {
         height: 50px;
         font-size: 1.2rem;
     }
+    
+    /* Оптимизация каталога для мобильных */
+    .catalog-section {
+        padding: 3rem 0;
+    }
+    
+    .product-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .product-image {
+        height: 200px;
+    }
+    
+    /* Убираем сложные анимации на мобильных */
+    .advantage-icon,
+    .delivery-icon {
+        animation: none;
+    }
 }
 
 @media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .navbar-brand {
+        width: 120px;
+        height: 40px;
+    }
+    
     .hero-title {
         font-size: 2rem;
         line-height: 1.2;
@@ -1169,10 +1278,23 @@ html {
         justify-content: flex-start;
         align-items: flex-start;
         padding-bottom: 2rem;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .hero-subtitle {
         font-size: 1rem;
+    }
+    
+    .hero-features {
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .hero-feature {
+        width: 100%;
+        justify-content: center;
     }
 
     .advantage-card,
@@ -1183,11 +1305,47 @@ html {
 
     .product-actions {
         flex-direction: column;
+        gap: 0.5rem;
     }
 
     .product-image {
         height: 180px;
     }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .category-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Дополнительные оптимизации производительности */
+.product-card,
+.advantage-card,
+.delivery-card,
+.review-card {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Оптимизация изображений */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Убираем переполнение */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
 
 /* Loading Animation */
