@@ -55,7 +55,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Google Fonts -->
     <link
@@ -68,15 +68,11 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="img/logo-text-white.png" as="image">
-    <link rel="preload" href="products.json" as="fetch" crossorigin="anonymous">
 </head>
 
 <body>
     <!-- Preloader -->
-    <div class="preloader" id="preloader">
+    <div class="preloader d-flex align-items-center justify-content-center" id="preloader">
         <div class="preloader-content">
             <img src="img/logo-text-blue.png" alt="Территория Сна" class="preloader-logo">
             <div class="preloader-spinner">
@@ -92,7 +88,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="img/logo-text-white.png" alt="Территория Сна" class="logo" loading="eager">
+                <img src="img/logo-text-white.png" alt="Территория Сна" class="logo">
             </a>
             <button class="navbar-toggler burger-menu" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav">
@@ -295,7 +291,7 @@
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="about-image">
                         <img src="img/bg/about-bg.JPG" alt="Производство ортопедических матрасов"
-                            class="img-fluid rounded" loading="lazy">
+                            class="img-fluid rounded lazy-load">
                     </div>
                 </div>
             </div>
@@ -385,7 +381,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <img src="https://st3.depositphotos.com/2309453/18211/i/450/depositphotos_182114914-stock-photo-attractive-middle-aged-man-earnest.jpg"
-                                alt="Клиент" class="review-avatar" loading="lazy">
+                                alt="Клиент" class="review-avatar">
                             <div class="review-info">
                                 <h5>Куаныш</h5>
                                 <div class="stars">
@@ -406,7 +402,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <img src="https://img.freepik.com/free-photo/happy-middle-aged-woman-relaxing-outdoors_23-2148979101.jpg?semt=ais_hybrid&w=740&q=80"
-                                alt="Клиент" class="review-avatar" loading="lazy">
+                                alt="Клиент" class="review-avatar">
                             <div class="review-info">
                                 <h5>Айжан</h5>
                                 <div class="stars">
@@ -427,7 +423,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <img src="https://bipbap.ru/wp-content/uploads/2021/10/1454438559_huge-1-730x582.jpg"
-                                alt="Клиент" class="review-avatar" loading="lazy">
+                                alt="Клиент" class="review-avatar">
                             <div class="review-info">
                                 <h5>Марат</h5>
                                 <div class="stars">
@@ -524,7 +520,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="footer-brand">
-                        <img src="img/logo-text-white.png" alt="Территория Сна" class="footer-logo" loading="lazy">
+                        <img src="img/logo-text-white.png" alt="Территория Сна" class="footer-logo">
                         <p>Казахстанский производитель ортопедических матрасов</p>
                     </div>
                 </div>
@@ -638,15 +634,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- AOS Animation Library -->
-    <script>
-        // Load AOS only on desktop
-        if (window.innerWidth > 768) {
-            const script = document.createElement('script');
-            script.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
-            script.defer = true;
-            document.head.appendChild(script);
-        }
-    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 
     <!-- Custom JS -->
     <script src="script.js"></script>

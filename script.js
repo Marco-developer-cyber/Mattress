@@ -1,16 +1,13 @@
 // Initialize AOS (Animate On Scroll)
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS only on desktop for better mobile performance
-    if (window.innerWidth > 768 && typeof AOS !== 'undefined') {
-        setTimeout(() => {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true,
-                offset: 50,
-                disable: 'mobile'
-            });
-        }, 100);
+    // Initialize AOS after page load for better performance
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
     }
 });
 
@@ -18,17 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function() {
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        // Быстрее убираем preloader
-        requestAnimationFrame(() => {
+        setTimeout(() => {
             preloader.classList.add('hidden');
             setTimeout(() => {
                 preloader.remove();
-            }, 300);
-        });
+            }, 500);
+        }, 1000);
     }
 });
 
-// Оптимизированная ленивая загрузка изображений
+// Lazy loading for images
 function initLazyLoading() {
     const lazyImages = document.querySelectorAll('.lazy-load');
     
@@ -41,9 +37,6 @@ function initLazyLoading() {
                     observer.unobserve(img);
                 }
             });
-        }, {
-            rootMargin: '50px 0px',
-            threshold: 0.01
         });
         
         lazyImages.forEach(img => imageObserver.observe(img));
@@ -53,10 +46,8 @@ function initLazyLoading() {
     }
 }
 
-// Оптимизированный эффект скролла для navbar
-let ticking = false;
-
-function updateNavbar() {
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
     const navbar = document.getElementById('navbar');
     if (window.scrollY > 100) {
         navbar.style.background = 'rgba(0, 119, 204, 0.98)';
@@ -65,15 +56,7 @@ function updateNavbar() {
         navbar.style.background = 'rgba(0, 119, 204, 0.95)';
         navbar.style.boxShadow = 'none';
     }
-    ticking = false;
-}
-
-window.addEventListener('scroll', function() {
-    if (!ticking) {
-        requestAnimationFrame(updateNavbar);
-        ticking = true;
-    }
-}, { passive: true });
+});
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -99,10 +82,7 @@ async function loadProductsFromJSON() {
     try {
         const response = await fetch('products.json');
         products = await response.json();
-        // Используем requestAnimationFrame для плавной загрузки
-        requestAnimationFrame(() => {
-            loadProducts();
-        });
+        loadProducts();
     } catch (error) {
         console.error('Error loading products:', error);
         // Fallback to default products if JSON fails to load
@@ -129,9 +109,7 @@ async function loadProductsFromJSON() {
                 reviews: 153
             }
         ];
-        requestAnimationFrame(() => {
-            loadProducts();
-        });
+        loadProducts();
     }
 }
 
@@ -237,12 +215,8 @@ function showAllProducts(categoryKey, event) {
 function createProductCard(product, index) {
     const col = document.createElement('div');
     col.className = 'col-lg-4 col-md-6 mb-4';
-    
-    // Добавляем AOS только на десктопе
-    if (window.innerWidth > 768) {
-        col.setAttribute('data-aos', 'fade-up');
-        col.setAttribute('data-aos-delay', Math.min((index + 1) * 100, 600));
-    }
+    col.setAttribute('data-aos', 'fade-up');
+    col.setAttribute('data-aos-delay', (index + 1) * 100);
     
     // Get discount percentage from product or calculate if not provided
     const discountPercent = product.discountPercent !== undefined ? product.discountPercent : 
@@ -258,7 +232,7 @@ function createProductCard(product, index) {
     col.innerHTML = `
         <div class="product-card" onclick="openProductFromUrl(${product.id})" data-product-url="${productUrl}">
             <div class="product-image">
-                <img src="${productImage}" alt="${product.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
                 <button class="product-test-btn" onclick="event.stopPropagation(); showProductModal(${product.id})">
                     <i class="fas fa-play"></i> Тест
                 </button>
@@ -882,30 +856,18 @@ function showSuccessNotification() {
 // Carousel auto-play
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize carousel
-    setTimeout(() => {
-        const carousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
-            interval: 5000,
-            wrap: true,
-            pause: 'hover'
-        });
-    }, 100);
+    const carousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
+        interval: 5000,
+        wrap: true
+    });
     
     // Load products from JSON
     loadProductsFromJSON();
     
     // Initialize lazy loading
-    setTimeout(() => {
-        initLazyLoading();
-    }, 200);
+    initLazyLoading();
     
-    // Add scroll animations only on desktop
-    if (window.innerWidth > 768) {
-        initScrollAnimations();
-    }
-});
-
-// Separate function for scroll animations
-function initScrollAnimations() {
+    // Add scroll animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -927,10 +889,7 @@ function initScrollAnimations() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
-}
-
-// Move other initialization outside DOMContentLoaded for better performance
-function initCounterAnimations() {
+    
     // Counter animation
     function animateCounters() {
         const counters = document.querySelectorAll('.counter');
@@ -967,9 +926,7 @@ function initCounterAnimations() {
         });
         counterObserver.observe(counterSection);
     }
-}
-
-function initSectionAnimations() {
+    
     // Smooth reveal animation for sections
     const revealSections = document.querySelectorAll('section');
     revealSections.forEach(section => {
@@ -983,24 +940,18 @@ function initSectionAnimations() {
         
         sectionObserver.observe(section);
     });
-}
-
-function initButtonEffects() {
+    
     // Add hover effects to buttons
     document.querySelectorAll('.btn').forEach(button => {
         button.addEventListener('mouseenter', function() {
-            if (window.innerWidth > 768) {
-                this.style.transform = 'translateY(-2px)';
-            }
+            this.style.transform = 'translateY(-2px)';
         });
         
         button.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
         });
     });
-}
-
-function initTypingEffect() {
+    
     // Add typing effect to hero title
     function typeWriter(element, text, speed = 100) {
         let i = 0;
@@ -1018,29 +969,14 @@ function initTypingEffect() {
     
     // Initialize typing effect on first carousel item
     const firstTitle = document.querySelector('.hero-title');
-    if (firstTitle && window.innerWidth > 768) {
+    if (firstTitle) {
         const originalText = firstTitle.textContent;
         typeWriter(firstTitle, originalText, 50);
     }
-}
-
-// Initialize performance optimizations
-document.addEventListener('DOMContentLoaded', function() {
-    // Defer non-critical initializations
-    setTimeout(() => {
-        if (window.innerWidth > 768) {
-            initCounterAnimations();
-            initSectionAnimations();
-            initTypingEffect();
-        }
-        initButtonEffects();
-    }, 500);
 });
 
 // Add floating animation to elements
 function addFloatingAnimation() {
-    if (window.innerWidth <= 768) return; // Skip on mobile
-    
     const floatingElements = document.querySelectorAll('.advantage-icon, .delivery-icon');
     floatingElements.forEach((element, index) => {
         element.style.animation = `floating 3s ease-in-out infinite ${index * 0.2}s`;
@@ -1087,7 +1023,8 @@ function optimizePerformance() {
     
     // Preload critical resources
     const preloadLinks = [
-        { href: 'img/logo-text-white.png', as: 'image' }
+        { href: 'img/logo-text-white.png', as: 'image' },
+        { href: 'products.json', as: 'fetch', crossorigin: 'anonymous' }
     ];
     
     preloadLinks.forEach(link => {
@@ -1098,18 +1035,7 @@ function optimizePerformance() {
         if (link.crossorigin) preloadLink.crossOrigin = link.crossorigin;
         document.head.appendChild(preloadLink);
     });
-    
-    // Optimize images loading
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        if (!img.hasAttribute('loading')) {
-            img.setAttribute('loading', 'lazy');
-        }
-    });
 }
-
-// Initialize performance optimizations
-document.addEventListener('DOMContentLoaded', optimizePerformance);
 
 // Helper function to create SEO-friendly URL from product name
 function createProductSlug(name) {
@@ -1130,13 +1056,9 @@ function createProductSlug(name) {
         .replace(/-+/g, '-')
         .trim('-');
 }
-
-// Optimize burger menu for mobile
 document.addEventListener('DOMContentLoaded', function() {
     const burger = document.querySelector('.burger-menu');
     const navbar = document.getElementById('navbarNav');
-    
-    if (!burger || !navbar) return;
     
     // Initialize with collapsed class if navbar is hidden
     if (navbar.classList.contains('show')) {
@@ -1153,28 +1075,4 @@ document.addEventListener('DOMContentLoaded', function() {
     navbar.addEventListener('hidden.bs.collapse', function() {
         burger.classList.add('collapsed');
     });
-    
-    // Close menu when clicking on links (mobile)
-    if (window.innerWidth <= 768) {
-        const navLinks = navbar.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const bsCollapse = new bootstrap.Collapse(navbar, {
-                    hide: true
-                });
-            });
-        });
-    }
 });
-
-// Debounce resize events
-let resizeTimeout;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(function() {
-        // Reinitialize AOS on resize if needed
-        if (window.innerWidth > 768 && typeof AOS !== 'undefined') {
-            AOS.refresh();
-        }
-    }, 250);
-}, { passive: true });
