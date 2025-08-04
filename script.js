@@ -158,7 +158,7 @@ function loadProducts() {
             // Create category header
             const categoryHeader = document.createElement('div');
             categoryHeader.className = 'col-12 mb-4';
-            categoryHeader.setAttribute('data-aos', 'fade-up');
+            categoryHeader.classList.add('visible');
             categoryHeader.innerHTML = `
                 <h3 class="category-title">${category.name}</h3>
                 <hr class="category-divider">

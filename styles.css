@@ -338,19 +338,6 @@ h6 {
     font-size: 0.9rem;
 }
 
-/* Фоновые изображения для каждого слайда */
-.bg-slide-1 {
-    background-image: url('img/bg/bg-1.png');
-}
-
-.bg-slide-2 {
-    background-image: url('img/bg/bg-2.png');
-}
-
-.bg-slide-3 {
-    background-image: url('img/bg/bg-3.png');
-}
-
 /* Order Modal Styles */
 .order-modal .modal-content {
     border-radius: var(--border-radius);
@@ -1280,14 +1267,27 @@ h6 {
 .whatsapp-button a:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    animation: none;
 }
 
-@media (max-width: 991px) {
-    .apashka-item {
-        position: relative;
-        top: 50px;
-        z-index: 1000;
+/* Bounce animation for WhatsApp button */
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0,0,0);
     }
+    40%, 43% {
+        transform: translate3d(0,-15px,0);
+    }
+    70% {
+        transform: translate3d(0,-7px,0);
+    }
+    90% {
+        transform: translate3d(0,-2px,0);
+    }
+}
+
+.whatsapp-button a {
+    animation: bounce 2s infinite;
 }
 
 /* Animations */
@@ -1345,6 +1345,22 @@ h6 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Мобильная адаптация карусели */
+    .carousel-item::before {
+        width: 100%;
+    }
+    
+    .carousel-item::after {
+        width: 100%;
+        opacity: 0.3;
+        z-index: 1;
+    }
+    
+    .carousel-item .overlay {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    
     .consultation-content {
         padding: 1.5rem;
     }
