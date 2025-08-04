@@ -912,10 +912,8 @@ h6 {
 }
 
 .product-gift {
-    background: linear-gradient(135deg, var(--accent-color), #E6C200);
     color: var(--text-dark);
     padding: 0.5rem 0.75rem;
-    border-radius: var(--border-radius);
     text-align: center;
     font-weight: 600;
     font-size: 0.85rem;
