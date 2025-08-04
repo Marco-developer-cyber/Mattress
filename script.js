@@ -1,15 +1,44 @@
 // Initialize AOS (Animate On Scroll)
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS after page load for better performance
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
-        });
-    }
+    // Initialize smooth animations
+    initSmoothAnimations();
 });
+
+// Smooth animations system
+function initSmoothAnimations() {
+    const animatedElements = document.querySelectorAll('.advantage-card, .product-card, .review-card, .delivery-card, .consultation-card, .about-image, .section-title, .section-subtitle');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    animatedElements.forEach((el, index) => {
+        // Add appropriate animation class based on element type
+        if (el.classList.contains('advantage-card') || el.classList.contains('delivery-card')) {
+            el.classList.add('fade-in');
+        } else if (el.classList.contains('product-card') || el.classList.contains('review-card')) {
+            el.classList.add('scale-in');
+        } else if (el.classList.contains('about-image')) {
+            el.classList.add('slide-in-right');
+        } else if (el.classList.contains('consultation-card')) {
+            el.classList.add('slide-in-left');
+        } else {
+            el.classList.add('fade-in');
+        }
+        
+        observer.observe(el);
+    });
+}
 
 // Preloader
 window.addEventListener('load', function() {
@@ -215,8 +244,7 @@ function showAllProducts(categoryKey, event) {
 function createProductCard(product, index) {
     const col = document.createElement('div');
     col.className = 'col-lg-4 col-md-6 mb-4';
-    col.setAttribute('data-aos', 'fade-up');
-    col.setAttribute('data-aos-delay', (index + 1) * 100);
+    col.classList.add('fade-in');
     
     // Get discount percentage from product or calculate if not provided
     const discountPercent = product.discountPercent !== undefined ? product.discountPercent : 
@@ -232,7 +260,7 @@ function createProductCard(product, index) {
     col.innerHTML = `
         <div class="product-card" onclick="openProductFromUrl(${product.id})" data-product-url="${productUrl}">
             <div class="product-image">
-                <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                <img src="${productImage}" alt="${product.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
                 <button class="product-test-btn" onclick="event.stopPropagation(); showProductModal(${product.id})">
                     <i class="fas fa-play"></i> Тест
                 </button>
@@ -531,7 +559,8 @@ function showProductDetails(productId) {
                 <div class="main-image-container mb-3">
                     <img src="${productImage}" 
                          alt="${product.name}" 
-                         class="img-fluid rounded main-product-image" 
+                         class="img-fluid rounded main-product-image"
+                         loading="lazy"
                          id="mainProductImage"
                          onerror="this.src='https://via.placeholder.com/600x400?text=Image+Error'">
                 </div>
@@ -544,6 +573,7 @@ function showProductDetails(productId) {
                             <img src="${img}" 
                                  alt="Thumbnail ${index + 1}" 
                                  class="img-thumbnail"
+                                 loading="lazy"
                                  onerror="this.src='https://via.placeholder.com/100x100?text=Thumb'">
                         </div>
                     `).join('')}
@@ -857,7 +887,7 @@ function showSuccessNotification() {
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize carousel
     const carousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
-        interval: 5000,
+        interval: 6000,
         wrap: true
     });
     
@@ -866,29 +896,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize lazy loading
     initLazyLoading();
-    
-    // Add scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for scroll animations
-    document.querySelectorAll('.advantage-card, .product-card, .review-card, .delivery-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
     
     // Counter animation
     function animateCounters() {
@@ -940,39 +947,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         sectionObserver.observe(section);
     });
-    
-    // Add hover effects to buttons
-    document.querySelectorAll('.btn').forEach(button => {
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px)';
-        });
-        
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-    
-    // Add typing effect to hero title
-    function typeWriter(element, text, speed = 100) {
-        let i = 0;
-        element.innerHTML = '';
-        
-        function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            }
-        }
-        type();
-    }
-    
-    // Initialize typing effect on first carousel item
-    const firstTitle = document.querySelector('.hero-title');
-    if (firstTitle) {
-        const originalText = firstTitle.textContent;
-        typeWriter(firstTitle, originalText, 50);
-    }
 });
 
 // Add floating animation to elements
@@ -990,26 +964,129 @@ style.textContent = `
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-10px); }
     }
-    
-    .revealed {
-        animation: fadeInUp 0.8s ease-out;
-    }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
 `;
 document.head.appendChild(style);
 
 // Initialize floating animations
 document.addEventListener('DOMContentLoaded', addFloatingAnimation);
+
+// Consultation form handling
+document.addEventListener('DOMContentLoaded', function() {
+    const consultationForm = document.getElementById('consultationForm');
+    if (consultationForm) {
+        consultationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitConsultationForm();
+        });
+    }
+    
+    // Phone number formatting for consultation form
+    const consultationPhoneInput = document.getElementById('consultationPhone');
+    if (consultationPhoneInput) {
+        consultationPhoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.startsWith('8')) {
+                value = '7' + value.slice(1);
+            }
+            if (value.startsWith('7')) {
+                value = value.slice(0, 11);
+                const formatted = value.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/, '+$1 ($2) $3-$4-$5');
+                e.target.value = formatted;
+            }
+        });
+    }
+});
+
+// Submit consultation form to Telegram
+async function submitConsultationForm() {
+    const name = document.getElementById('consultationName').value.trim();
+    const phone = document.getElementById('consultationPhone').value.trim();
+    
+    if (!name || !phone) {
+        alert('Пожалуйста, заполните все обязательные поля');
+        return;
+    }
+    
+    // Create message for Telegram
+    const message = `🔔 *ЗАЯВКА НА КОНСУЛЬТАЦИЮ*\n\n👤 *Имя:* ${name}\n📱 *Телефон:* ${phone}\n\n⏰ *Время:* ${new Date().toLocaleString('ru-RU')}\n\n💬 *Источник:* Сайт territoria-sna.kz`;
+    
+    const botToken = '7618751385:AAGLKry1_Rnd7rwFY5QkqjDxIfFu1WqB654';
+    const chatIds = ['@Olzhiki', '@TerritoriaSna1', '@boranbay07'];
+    
+    // Show loading state
+    const submitBtn = document.querySelector('.btn-consultation');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...';
+    submitBtn.disabled = true;
+    
+    try {
+        // Send to all three Telegram accounts
+        const promises = chatIds.map(chatId => 
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            })
+        );
+        
+        await Promise.all(promises);
+        
+        // Reset form and show success
+        consultationForm.reset();
+        showConsultationSuccess();
+        
+    } catch (error) {
+        console.error('Error sending to Telegram:', error);
+        alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+    } finally {
+        // Restore button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }
+}
+
+// Show consultation success notification
+function showConsultationSuccess() {
+    const notification = document.createElement('div');
+    notification.className = 'alert alert-success position-fixed';
+    notification.style.cssText = `
+        top: 100px;
+        right: 20px;
+        z-index: 9999;
+        min-width: 350px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border-radius: 10px;
+    `;
+    notification.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="fas fa-check-circle me-3" style="font-size: 1.5rem; color: #28a745;"></i>
+            <div>
+                <strong>Заявка отправлена!</strong><br>
+                <small>Наш специалист свяжется с вами в течение 5 минут</small>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Add entrance animation
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+        notification.style.opacity = '1';
+    }, 100);
+    
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+}
 
 // Performance optimizations
 function optimizePerformance() {
