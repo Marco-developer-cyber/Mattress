@@ -134,15 +134,6 @@
             <div class="carousel-inner">
             
             <!-- Carousel Controls - только для ПК и планшетов -->
-            <button class="carousel-control-prev d-none d-md-block" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next d-none d-md-block" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-
                 <!-- Слайд 1 -->
                 <div class="carousel-item active bg-slide-1">
                     <div class="container hero-content">
@@ -219,59 +210,77 @@
                 </div>
 
             </div>
+            
+            <!-- Carousel Controls - только для ПК и планшетов -->
+            <button class="carousel-control-prev d-none d-md-block" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next d-none d-md-block" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </section>
 
 
     <!-- Advantages Section -->
-    <section id="advantages" class="advantages-section py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Наши преимущества</h2>
-                    <p class="section-subtitle">Почему выбирают именно нас</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
+   <section id="advantages" class="advantages-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <h2 class="section-title text-center mb-4">Почему выбирают нас</h2>
+            <div class="col-lg-6">
+                
+                <div class="advantage-list">
+                    <div class="advantage-item d-flex mb-4">
+                        <div class="advantage-icon me-4">
                             <i class="fas fa-industry"></i>
                         </div>
-                        <h4>Завод изготовитель</h4>
-                        <p>Изготовим любой размер, любой модели</p>
+                        <div>
+                            <h4>Завод изготовитель</h4>
+                            <p class="mb-0">Изготовим любой размер, любой модели</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
+                    
+                    <div class="advantage-item d-flex mb-4">
+                        <div class="advantage-icon me-4">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <h4>Срок службы</h4>
-                        <p>До 20 лет надежной службы</p>
+                        <div>
+                            <h4>Срок службы</h4>
+                            <p class="mb-0">До 20 лет надежной службы</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
+                    
+                    <div class="advantage-item d-flex mb-4">
+                        <div class="advantage-icon me-4">
                             <i class="fas fa-truck"></i>
                         </div>
-                        <h4>Бесплатная доставка</h4>
-                        <p>День в день по Таразу</p>
+                        <div>
+                            <h4>Бесплатная доставка</h4>
+                            <p class="mb-0">День в день по Таразу</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
+                    
+                    <div class="advantage-item d-flex">
+                        <div class="advantage-icon me-4">
                             <i class="fas fa-tags"></i>
                         </div>
-                        <h4>Цены от производителя</h4>
-                        <p>Без наценок посредников</p>
+                        <div>
+                            <h4>Цены от производителя</h4>
+                            <p class="mb-0">Без наценок посредников</p>
+                        </div>
                     </div>
                 </div>
             </div>
+             <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a9e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                     alt="Производство металлопластиковых окон" 
+                     class="img-fluid rounded shadow">
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- About Section -->
     <section id="about" class="about-section py-5">
@@ -301,7 +310,7 @@
                 <div class="col-lg-6">
                     <div class="about-image">
                         <img src="img/bg/about-bg.JPG" alt="Производство ортопедических матрасов"
-                            class="img-fluid rounded" loading="lazy">
+                            class="img-fluid rounded">
                     </div>
                 </div>
             </div>
@@ -399,7 +408,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <img src="https://st3.depositphotos.com/2309453/18211/i/450/depositphotos_182114914-stock-photo-attractive-middle-aged-man-earnest.jpg"
-                                alt="Клиент" class="review-avatar" loading="lazy">
+                                alt="Клиент" class="review-avatar">
                             <div class="review-info">
                                 <h5>Куаныш</h5>
                                 <div class="stars">
@@ -420,7 +429,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <img src="https://img.freepik.com/free-photo/happy-middle-aged-woman-relaxing-outdoors_23-2148979101.jpg?semt=ais_hybrid&w=740&q=80"
-                                alt="Клиент" class="review-avatar" loading="lazy">
+                                alt="Клиент" class="review-avatar">
                             <div class="review-info">
                                 <h5>Айжан</h5>
                                 <div class="stars">
@@ -441,7 +450,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <img src="https://bipbap.ru/wp-content/uploads/2021/10/1454438559_huge-1-730x582.jpg"
-                                alt="Клиент" class="review-avatar" loading="lazy">
+                                alt="Клиент" class="review-avatar">
                             <div class="review-info">
                                 <h5>Марат</h5>
                                 <div class="stars">
@@ -538,7 +547,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="footer-brand">
-                        <img src="img/logo-text-white.png" alt="Территория Сна" class="footer-logo" loading="lazy">
+                        <img src="img/logo-text-white.png" alt="Территория Сна" class="footer-logo">
                         <p>Казахстанский производитель ортопедических матрасов</p>
                     </div>
                 </div>

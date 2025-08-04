@@ -53,27 +53,6 @@ window.addEventListener('load', function() {
     }
 });
 
-// Lazy loading for images
-function initLazyLoading() {
-    const lazyImages = document.querySelectorAll('.lazy-load');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-        
-        lazyImages.forEach(img => imageObserver.observe(img));
-    } else {
-        // Fallback for older browsers
-        lazyImages.forEach(img => img.classList.add('loaded'));
-    }
-}
 
 // Navbar scroll effect
 window.addEventListener('scroll', function() {
@@ -244,7 +223,7 @@ function showAllProducts(categoryKey, event) {
 function createProductCard(product, index) {
     const col = document.createElement('div');
     col.className = 'col-lg-4 col-md-6 mb-4';
-    col.classList.add('fade-in');
+    col.classList.add('fade-in', 'visible'); // Сразу делаем видимым
     
     // Get discount percentage from product or calculate if not provided
     const discountPercent = product.discountPercent !== undefined ? product.discountPercent : 
@@ -260,7 +239,7 @@ function createProductCard(product, index) {
     col.innerHTML = `
         <div class="product-card" onclick="openProductFromUrl(${product.id})" data-product-url="${productUrl}">
             <div class="product-image">
-                <img src="${productImage}" alt="${product.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
                 <button class="product-test-btn" onclick="event.stopPropagation(); showProductModal(${product.id})">
                     <i class="fas fa-play"></i> Тест
                 </button>
@@ -529,6 +508,11 @@ function showProductModal(productId) {
     `;
 
     modal.show();
+    
+    // Обработчик закрытия модала
+    modal._element.addEventListener('hidden.bs.modal', function() {
+        resetUrl();
+    }, { once: true });
 }
 
 // Show product details
@@ -560,7 +544,6 @@ function showProductDetails(productId) {
                     <img src="${productImage}" 
                          alt="${product.name}" 
                          class="img-fluid rounded main-product-image"
-                         loading="lazy"
                          id="mainProductImage"
                          onerror="this.src='https://via.placeholder.com/600x400?text=Image+Error'">
                 </div>
@@ -573,7 +556,6 @@ function showProductDetails(productId) {
                             <img src="${img}" 
                                  alt="Thumbnail ${index + 1}" 
                                  class="img-thumbnail"
-                                 loading="lazy"
                                  onerror="this.src='https://via.placeholder.com/100x100?text=Thumb'">
                         </div>
                     `).join('')}
@@ -625,6 +607,11 @@ function showProductDetails(productId) {
     `;
     
     modal.show();
+    
+    // Обработчик закрытия модала
+    modal._element.addEventListener('hidden.bs.modal', function() {
+        resetUrl();
+    }, { once: true });
 }
 
 // Функция для смены основного изображения
@@ -737,6 +724,11 @@ function openOrderModal(productId) {
     if (productModal) {
         productModal.hide();
     }
+    
+    // Обработчик закрытия модала заказа
+    orderModal._element.addEventListener('hidden.bs.modal', function() {
+        resetUrl();
+    }, { once: true });
 }
 
 // Update order summary
@@ -893,9 +885,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load products from JSON
     loadProductsFromJSON();
-    
-    // Initialize lazy loading
-    initLazyLoading();
     
     // Counter animation
     function animateCounters() {
@@ -1134,6 +1123,20 @@ function createProductSlug(name) {
         .trim('-');
 }
 document.addEventListener('DOMContentLoaded', function() {
+// Функция для сброса URL к базовому состоянию
+function resetUrl() {
+    const baseUrl = `${window.location.origin}${window.location.pathname}`;
+    window.history.pushState({}, '', baseUrl);
+    
+    // Сброс мета-тегов к базовым значениям
+    document.title = 'Территория Сна - Ортопедические матрасы от производителя в Таразе | Купить матрас с доставкой';
+    updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Таразе');
+    updateMetaTag('og:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет ✅ Доказываем качество!');
+    updateMetaTag('og:url', baseUrl);
+    updateMetaTag('twitter:title', 'Территория Сна - Ортопедические матрасы от производителя');
+    updateMetaTag('twitter:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет');
+}
+
     const burger = document.querySelector('.burger-menu');
     const navbar = document.getElementById('navbarNav');
     
