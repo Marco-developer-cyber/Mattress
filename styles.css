@@ -1127,11 +1127,7 @@ h6 {
     height: 55vh !important;    
     object-fit: cover;
   }
-  #screenshotModal { 
-    /* margin-left: auto !important; */
-    margin: 0 35% !important;
-    width: 30%;
-  }
+
     #screenshotModal .modal-content {
     background: #fff !important;
     box-shadow: none !important;
