@@ -1156,3 +1156,111 @@ function resetUrl() {
         burger.classList.add('collapsed');
     });
 });
+
+  (function () {
+    const allImages = [
+      'img/отзывы/отзывы-1.JPG',
+      'img/отзывы/отзывы-2.JPG',
+      'img/отзывы/отзывы-3.JPG',
+      'img/отзывы/отзывы-4.JPG',
+      'img/отзывы/отзывы-5.JPG',
+      'img/отзывы/отзывы-6.JPG',
+      'img/отзывы/отзывы-7.JPG',
+      'img/отзывы/отзывы-8.JPG',
+      'img/отзывы/отзывы-9.JPG',
+      'img/отзывы/отзывы-10.JPG',
+      'img/отзывы/отзывы-11.JPG',
+      'img/отзывы/отзывы-12.JPG',
+      'img/отзывы/отзывы-13.JPG',
+      'img/отзывы/отзывы-14.JPG'
+    ];
+
+    let startIndex = 0; // начальный сдвиг
+    const visibleCountDesktop = 5;
+    const track = document.getElementById('screenshotTrack');
+
+    function getVisible() {
+      const res = [];
+      for (let i = 0; i < visibleCountDesktop; i++) {
+        const idx = (startIndex + i) % allImages.length;
+        res.push(allImages[idx]);
+      }
+      return res;
+    }
+
+    function makeCard(src, absoluteIndex) {
+      const div = document.createElement('div');
+      div.className = 'screenshot-card';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Скриншот отзыва';
+      img.setAttribute('data-index', absoluteIndex);
+      div.appendChild(img);
+      // клик открывает модал
+      div.addEventListener('click', () => {
+        openModalAt(absoluteIndex);
+      });
+      return div;
+    }
+
+    function renderTrack() {
+      track.innerHTML = '';
+      const visible = getVisible();
+      for (let i = 0; i < visible.length; i++) {
+        const absIdx = (startIndex + i) % allImages.length;
+        track.appendChild(makeCard(visible[i], absIdx));
+      }
+    }
+
+    function shiftRight() {
+      startIndex = (startIndex + 1) % allImages.length;
+      renderTrack();
+    }
+
+    function shiftLeft() {
+      startIndex = (startIndex - 1 + allImages.length) % allImages.length;
+      renderTrack();
+    }
+
+    document.getElementById('nextArrow').addEventListener('click', () => {
+      shiftRight();
+    });
+    document.getElementById('prevArrow').addEventListener('click', () => {
+      shiftLeft();
+    });
+
+    // автопрокрутка
+    setInterval(() => {
+      shiftRight();
+    }, 5000);
+
+    // модал и большая карусель
+    const bigCarousel = document.getElementById('bigCarousel');
+    function buildBigCarousel() {
+      const inner = bigCarousel.querySelector('.carousel-inner');
+      inner.innerHTML = '';
+      allImages.forEach((src, idx) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item' + (idx === 0 ? ' active' : '');
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Скриншот крупно';
+        img.className = 'd-block w-100';
+        img.style.objectFit = 'contain';
+        img.style.maxHeight = '80vh';
+        item.appendChild(img);
+        inner.appendChild(item);
+      });
+    }
+
+    function openModalAt(index) {
+      buildBigCarousel();
+      const carouselInstance = bootstrap.Carousel.getOrCreateInstance(bigCarousel);
+      carouselInstance.to(index);
+      const modal = new bootstrap.Modal(document.getElementById('screenshotModal'));
+      modal.show();
+    }
+
+    // init
+    renderTrack();
+  })();

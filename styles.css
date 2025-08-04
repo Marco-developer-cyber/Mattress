@@ -769,6 +769,46 @@ h6 {
 .about-image img:hover {
     transform: scale(1.02);
 }
+/* .cert-item {
+    width: 70%; margin: 40px auto;
+    z-index: 10;
+} */
+   .certificate-card img {
+    object-fit: contain;
+    max-height: 120px;
+    padding: 8px;
+    width: 100%;
+    background: #fff;
+    cursor: pointer;
+    /* Убраны фильтры — изображение как есть */
+  }
+  .cert-item {
+    width: 100%;
+  }
+    /* Модал — чистый фон */
+  #certModal .modal-content {
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  /* Убрать любые фильтры или blend-mode */
+  #certModal img {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  /* Удалить потенциальные ::before/::after в слайдах */
+  #certModal .carousel-item::before,
+  #certModal .carousel-item::after {
+    content: none !important;
+  }
+.cert-item img {
+    width: 50%;
+    z-index: 100000;
+}
+.btn-close {
+    z-index: 1000;
+}
 
 /* Catalog Section */
 .catalog-section {
@@ -1070,53 +1110,61 @@ h6 {
 }
 
 /* Reviews Section */
-.reviews-section {
-    background: var(--light-gray);
-    padding: 5rem 0;
-}
+  .screenshot-card {
+    flex: 0 0 auto;
+    width: calc(100% / 2 - 0.75rem);
+    max-width: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    position: relative;
+    cursor: pointer;
+  }
 
-.review-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    height: 100%;
-}
-
-.review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.review-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-.review-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 1rem;
+  .screenshot-card img {
+    display: block;
+    width: 100%;
+    height: 55vh !important;    
     object-fit: cover;
-}
+  }
+  #screenshotModal { 
+    /* margin-left: auto !important; */
+    margin: 0 35% !important;
+    width: 30%;
+  }
+    #screenshotModal .modal-content {
+    background: #fff !important;
+    box-shadow: none !important;
+    width: 100%;
+  }
 
-.review-info h5 {
-    margin-bottom: 0.5rem;
-    color: var(--text-dark);
-}
+  /* Убрать любые фильтры или blend-mode */
+  #screenshotModal img {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
 
-.stars {
-    color: var(--accent-color);
-}
+  /* Удалить потенциальные ::before/::after в слайдах */
+  #screenshotModal .carousel-item::before,
+  #screenshotModal .carousel-item::after {
+    content: none !important;
+  }
 
-.review-text {
-    color: var(--text-light);
-    font-style: italic;
-    line-height: 1.6;
-}
+  @media (min-width: 768px) {
+    .screenshot-card {
+      width: calc(100% / 3 - 1rem);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .screenshot-card {
+      width: calc(100% / 5 - 1rem);
+    }
+  }
+
+  .transition-wrapper {
+    transition: transform 0.4s ease;
+  }
 
 /* Delivery Section */
 .delivery-section {
