@@ -11,6 +11,11 @@
     --transition: all 0.3s ease;
 }
 
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -22,6 +27,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 h1,
@@ -1110,15 +1116,16 @@ h6 {
     }
 }
 
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2.5rem;
+        width: 70%;
+        font-size: 3rem;
+        position: absolute;
+        top: 10%;
+        left: -12%;
     }
 
     .hero-content {
@@ -1129,10 +1136,33 @@ html {
         font-size: 2rem;
     }
 
+    .hero-features:nth-child(3) {
+        display: flex;
+        justify-content: start !important;
+        position: absolute;
+        left: -12%;
+    }
+
+    .hero-subtitle {
+        position: absolute;
+        top: 47% !important;
+        left: -12%;
+        font-size: 1.2rem;
+    }
+
+    .hero-buttons {
+        position: absolute;
+        top: 78%;
+        left: -12%;
+        width: 100%;
+        display: flex;
+    }
+
     .hero-buttons .btn {
         display: block;
-        width: 100%;
+        width: 40%;
         margin-bottom: 1rem;
+        font-size: 0.9rem;
     }
 
     .hero-features {
@@ -1162,7 +1192,11 @@ html {
 
 @media (max-width: 576px) {
     .hero-title {
-        font-size: 2rem;
+        position: relative !important;
+        bottom: 5% !important;
+        left: 5%;
+        font-size: 3rem;
+        transform: translateY(-20%);
         line-height: 1.2;
     }
 
@@ -1173,8 +1207,24 @@ html {
         padding-bottom: 2rem;
     }
 
+    .hero-features {
+        position: absolute;
+        top: 55%;
+        left: 5% !important;
+    }
+
     .hero-subtitle {
-        font-size: 1rem;
+        position: absolute;
+        top: 45% ;
+        left: 5%;
+        width: 82%;
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+        position: absolute;
+        top: 75% !important;
+        left: 5%;
     }
 
     .advantage-card,
@@ -1191,7 +1241,11 @@ html {
         height: 180px;
     }
 }
-
+/* @media (max-width: 500px) {
+.hero-buttons {
+    display: block;
+}
+} */
 /* Loading Animation */
 .loading {
     display: inline-block;

@@ -461,8 +461,74 @@
     "reviews": 176,
     "badge": "Новинка"
   },
-  {
+   {
     "id": 9,
+    "name": "Orto Max Sale",
+    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
+
+    "category": "independent",
+    "price": 28000,
+    "originalPrice": 35000,
+    "images": [
+      "img/матрасы/матрасы с независимыми пружинами/матрас ORTHO MAX SALE/е1.jpg",
+      "img/матрасы/матрасы с независимыми пружинами/матрас ORTHO MAX SALE/э1.jpg"
+    ],
+    "description": "Ортопедический матрас с независимыми пружинами TFK и пеноосновой OrtoFoam. Подходит для сна до 110 кг. Дышащий, гипоаллергенный, средней мягкости. Оптимален по цене, комфорту и высоте — 18 см.",
+    "features": [
+      "Независимый пружинный блок Pocket Spring, 480 пружин/сп. место",
+      "Стороны: ППУ 1,5 см + термовойлок с обеих сторон",
+      "Периметр: эластичный еврокаркас из ППУ",
+      "Высота: 18 см",
+      "Жесткость: умеренно-мягкий",
+      "Чехол: жаккард, стёганный с синтепоном",
+      "Нагрузка: до 110 кг",
+      "Без клея, гипоаллергенные материалы",
+      "Гарантия: 24 месяца",
+      "Срок службы: до 8 лет"
+    ],
+    "sizes": [
+      {
+        "name": "80x190",
+        "price": 28000,
+        "originalPrice": 35000,
+        "discountPercent": 20
+      },
+      {
+        "name": "90x190",
+        "price": 31000,
+        "originalPrice": 39000,
+        "discountPercent": 21
+      },
+      {
+        "name": "120x200",
+        "price": 36800,
+        "originalPrice": 46000,
+        "discountPercent": 20
+      },
+      {
+        "name": "140x200",
+        "price": 42400,
+        "originalPrice": 53000,
+        "discountPercent": 20
+      },
+      {
+        "name": "160x200",
+        "price": 46000,
+        "originalPrice": 58000,
+        "discountPercent": 21
+      },
+      {
+        "name": "180x200",
+        "price": 52000,
+        "originalPrice": 65000,
+        "discountPercent": 20
+      }
+    ],
+    "rating": 4.72,
+    "reviews": 96
+  },
+  {
+    "id": 10,
     "name": "ORTO MAX SALE-1",
     "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
 
@@ -528,105 +594,8 @@
     "reviews": 153,
     "badge": "Хит продаж"
   },
-  {
-    "id": 10,
-    "name": "BALANCE-P",
-    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
-
-    "category": "independent",
-    "price": 59000,
-    "originalPrice": 64000,
-    "images": [
-      "img/матрасы/матрасы с независимыми пружинами/Матрас BALANCE-P жесткий/5e2a81270de47f66abaa18af9d84aefb.png",
-      "img/матрасы/матрасы с независимыми пружинами/Матрас BALANCE-P жесткий/е18.jpg",
-      "img/матрасы/матрасы с независимыми пружинами/Матрас BALANCE-P жесткий/э1.jpg",
-      "img/матрасы/матрасы с независимыми пружинами/Матрас BALANCE-P жесткий/rosa_s1000.jpeg"
-    ],
-    "description": "Премиум матрас с независимыми пружинами и двумя сторонами разной жёсткости. Подходит для тяжёлых людей и пар. Латекс и кокос обеспечивают комфорт, анатомическую поддержку и микромассажный эффект во время сна.",
-    "features": [
-      "Независимый пружинный блок Pocket Spring, 480–500 пружин/сп. место",
-      "Сторона 1: Кокос 2 см + термовойлок",
-      "Сторона 2: Кокос 1 см + латекс 2 см + термовойлок",
-      "Усиленный еврокаркас из ППУ",
-      "Высота: 21–22 см",
-      "Жесткость: средняя/жёсткая",
-      "Чехол: трикотаж стёганный с синтепоном",
-      "Нагрузка: до 150 кг",
-      "Гарантия: 5 лет",
-      "Срок службы: 15 лет"
-    ],
-    "sizes": [
-      {
-        "name": "80x190",
-        "price": 59000,
-        "originalPrice": 64000,
-        "discountPercent": 8
-      },
-      {
-        "name": "160x200",
-        "price": 87000,
-        "originalPrice": 92000,
-        "discountPercent": 5
-      },
-      {
-        "name": "180x200",
-        "price": 96000,
-        "originalPrice": 102000,
-        "discountPercent": 6
-      }
-    ],
-    "rating": 4.9,
-    "reviews": 162
-  },
-  {
+   {
     "id": 11,
-    "name": "COMFORT-LUXE",
-    "instagramVideo": "https://www.instagram.com/reel/CzLmzwrNli7/?igsh=dDNzNXE4c2RsMmN6",
-    "category": "independent",
-    "price": 69000,
-    "originalPrice": 74000,
-    "images": [
-      "img/матрасы/матрасы с независимыми пружинами/Матрас COMFORT LUXE/е18.jpg",
-      "img/матрасы/матрасы с независимыми пружинами/Матрас COMFORT LUXE/э1.jpg"
-    ],
-    "description": "Премиальный матрас с пружинным блоком Multipocket и разной жёсткостью сторон. Натуральный латекс и кокос обеспечивают анатомическую поддержку, вентиляцию и комфорт при нагрузке до 160 кг. Подходит для ежедневного сна.",
-    "features": [
-      "Независимый пружинный блок Multipocket, 1000 пружин/сп. место",
-      "Сторона 1: Кокос 1 см + латекс 2 см + термовойлок",
-      "Сторона 2: Кокос 2 см + термовойлок",
-      "Усиленный еврокаркас из ППУ",
-      "Высота: 21–22 см",
-      "Жесткость: средняя/жёсткая",
-      "Чехол: трикотаж стёганный на синтепоне",
-      "Нагрузка: до 160 кг",
-      "Гарантия: 5 лет",
-      "Срок службы: 20–25 лет"
-    ],
-    "sizes": [
-      {
-        "name": "80x190",
-        "price": 69000,
-        "originalPrice": 74000,
-        "discountPercent": 7
-      },
-      {
-        "name": "160x200",
-        "price": 119000,
-        "originalPrice": 124000,
-        "discountPercent": 4
-      },
-      {
-        "name": "180x200",
-        "price": 132000,
-        "originalPrice": 138000,
-        "discountPercent": 4
-      }
-    ],
-    "rating": 4.95,
-    "reviews": 185
-  },
-  {
-    "id": 12,
     "name": "DREAM ZONE",
     "instagramVideo": "https://www.instagram.com/reel/CjXrWMuAm7r/?igsh=MWU1ZWl3NXVjanhvYQ==",
     "category": "independent",
@@ -689,6 +658,70 @@
     "rating": 4.85,
     "reviews": 144,
     "badge": "Хит продаж"
+  },
+   {
+    "id": 12,
+    "name": "Summer Plus",
+    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
+    "category": "independent",
+    "price": 43500,
+    "originalPrice": 45000,
+    "images": [
+      "img/матрасы/матрасы с независимыми пружинами/Матрас SUMMER PLUS/эл17.jpg",
+      "img/матрасы/матрасы с независимыми пружинами/Матрас SUMMER PLUS/э1.jpg"
+    ],
+    "description": "Ортопедический матрас с Pocket Spring, натуральным латексом и кокосом. Разная жёсткость сторон, высота 23 см. Подходит до 120 кг. Чехол из хлопкового жаккарда. Обеспечивает здоровый и комфортный сон.",
+    "features": [
+      "Независимый пружинный блок Pocket Spring, 510 пружин/сп. место",
+      "Сторона 1: Латекс 2 см + термовойлок",
+      "Сторона 2: Кокос 1 см + ППУ 1 см + термовойлок",
+      "Высота: 23 см",
+      "Жесткость: средняя/выше средней (разные стороны)",
+      "Периметр: эластичный еврокаркас из ППУ",
+      "Чехол: хлопковый жаккард на синтепоне",
+      "Нагрузка: до 120 кг",
+      "Гарантия: 3 года, срок службы: до 10 лет"
+    ],
+    "sizes": [
+      {
+        "name": "80x190",
+        "price": 43500,
+        "originalPrice": 45000,
+        "discountPercent": 3
+      },
+      {
+        "name": "90x190",
+        "price": 48000,
+        "originalPrice": 50000,
+        "discountPercent": 4
+      },
+      {
+        "name": "120x200",
+        "price": 57000,
+        "originalPrice": 59000,
+        "discountPercent": 3
+      },
+      {
+        "name": "140x200",
+        "price": 65000,
+        "originalPrice": 69000,
+        "discountPercent": 6
+      },
+      {
+        "name": "160x200",
+        "price": 78000,
+        "originalPrice": 85000,
+        "discountPercent": 8
+      },
+      {
+        "name": "180x200",
+        "price": 88000,
+        "originalPrice": 93000,
+        "discountPercent": 5
+      }
+    ],
+    "rating": 4.91,
+    "reviews": 33
   },
   {
     "id": 13,
@@ -756,228 +789,8 @@
     "reviews": 203,
     "badge": "Хит продаж"
   },
-  {
+    {
     "id": 14,
-    "name": "Memory Soft",
-    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
-
-    "category": "independent",
-    "price": 59000,
-    "originalPrice": 66000,
-    "images": [
-      "img/матрасы/матрасы с независимыми пружинами/Матрас MEMORY SOFT/Эл мем.jpg",
-      "img/матрасы/матрасы с независимыми пружинами/Матрас MEMORY SOFT/э1.jpg"
-    ],
-    "description": "Мягкий анатомический матрас с эффектом памяти. Независимые пружины, мемори-пена и трикотаж Cashmere создают комфорт, поддерживают позвоночник и обеспечивают расслабление. Подходит для любителей мягкости и деликатной поддержки.",
-    "features": [
-      "Независимый пружинный блок Pocket Spring, 480–510 пружин/сп. место",
-      "Сторона 1: Мемори 4 см + термовойлок",
-      "Сторона 2: ППУ 3 см + термовойлок",
-      "Периметр: эластичный еврокаркас из ППУ",
-      "Высота: 22 см",
-      "Жесткость: мягкий",
-      "Чехол: трикотаж Cashmere Extra Comfort, стёганный с синтепоном",
-      "Нагрузка: до 120 кг",
-      "Гарантия: 5 лет",
-      "Срок службы: 10–12 лет"
-    ],
-    "sizes": [
-      {
-        "name": "80x190",
-        "price": 59000,
-        "originalPrice": 66000,
-        "discountPercent": 11
-      },
-      {
-        "name": "160x200",
-        "price": 101000,
-        "originalPrice": 115000,
-        "discountPercent": 12
-      },
-      {
-        "name": "180x200",
-        "price": 115000,
-        "originalPrice": 130000,
-        "discountPercent": 12
-      }
-    ],
-    "rating": 4.87,
-    "reviews": 178
-  },
-  {
-    "id": 15,
-    "name": "Orto Max Sale",
-    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
-
-    "category": "independent",
-    "price": 28000,
-    "originalPrice": 35000,
-    "images": [
-      "img/матрасы/матрасы с независимыми пружинами/матрас ORTHO MAX SALE/е1.jpg",
-      "img/матрасы/матрасы с независимыми пружинами/матрас ORTHO MAX SALE/э1.jpg"
-    ],
-    "description": "Ортопедический матрас с независимыми пружинами TFK и пеноосновой OrtoFoam. Подходит для сна до 110 кг. Дышащий, гипоаллергенный, средней мягкости. Оптимален по цене, комфорту и высоте — 18 см.",
-    "features": [
-      "Независимый пружинный блок Pocket Spring, 480 пружин/сп. место",
-      "Стороны: ППУ 1,5 см + термовойлок с обеих сторон",
-      "Периметр: эластичный еврокаркас из ППУ",
-      "Высота: 18 см",
-      "Жесткость: умеренно-мягкий",
-      "Чехол: жаккард, стёганный с синтепоном",
-      "Нагрузка: до 110 кг",
-      "Без клея, гипоаллергенные материалы",
-      "Гарантия: 24 месяца",
-      "Срок службы: до 8 лет"
-    ],
-    "sizes": [
-      {
-        "name": "80x190",
-        "price": 28000,
-        "originalPrice": 35000,
-        "discountPercent": 20
-      },
-      {
-        "name": "90x190",
-        "price": 31000,
-        "originalPrice": 39000,
-        "discountPercent": 21
-      },
-      {
-        "name": "120x200",
-        "price": 36800,
-        "originalPrice": 46000,
-        "discountPercent": 20
-      },
-      {
-        "name": "140x200",
-        "price": 42400,
-        "originalPrice": 53000,
-        "discountPercent": 20
-      },
-      {
-        "name": "160x200",
-        "price": 46000,
-        "originalPrice": 58000,
-        "discountPercent": 21
-      },
-      {
-        "name": "180x200",
-        "price": 52000,
-        "originalPrice": 65000,
-        "discountPercent": 20
-      }
-    ],
-    "rating": 4.72,
-    "reviews": 96
-  },
-  {
-    "id": 16,
-    "name": "Premium Soft",
-    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
-
-    "category": "independent",
-    "price": 190000,
-    "originalPrice": 199000,
-    "images": [
-      "img/матрасы/матрасы с независимыми пружинами/Матрас PREMIUM SOFT/мультиммеори.jpg",
-      "img/матрасы/матрасы с независимыми пружинами/Матрас PREMIUM SOFT/э1.jpg"
-    ],
-    "description": "Премиальный матрас с MultiPocket 1000 пружин, латексом, кокосом и Memory Foam. Поддерживает до 150 кг. Высокий комфорт, ортопедический эффект, износостойкий велюр, 7 лет гарантии. Идеален для ежедневного сна.",
-    "features": [
-      "Независимый пружинный блок MultiPocket, 1000 пружин/сп. место",
-      "Сторона 1: Memory Foam 4 см, латекс 4 см, кокос 2 см, термовойлок",
-      "Сторона 2: ППУ 2 см",
-      "Высота: 25-26 см",
-      "Жесткость: средняя",
-      "Периметр: усиленный еврокаркас из ППУ",
-      "Чехол: трикотаж стёганный с синтепоном",
-      "Борта из велюра, с ручками",
-      "Нагрузка: до 150 кг",
-      "Гарантия: 7 лет, срок службы: до 15 лет"
-    ],
-    "sizes": [
-      {
-        "name": "160x200",
-        "price": 190000,
-        "originalPrice": 199000,
-        "discountPercent": 5
-      },
-      {
-        "name": "180x200",
-        "price": 220000,
-        "originalPrice": 225000,
-        "discountPercent": 2
-      }
-    ],
-    "rating": 4.94,
-    "reviews": 47
-  },
-  {
-    "id": 17,
-    "name": "Summer Plus",
-    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
-    "category": "independent",
-    "price": 43500,
-    "originalPrice": 45000,
-    "images": [
-      "img/матрасы/матрасы с независимыми пружинами/Матрас SUMMER PLUS/эл17.jpg",
-      "img/матрасы/матрасы с независимыми пружинами/Матрас SUMMER PLUS/э1.jpg"
-    ],
-    "description": "Ортопедический матрас с Pocket Spring, натуральным латексом и кокосом. Разная жёсткость сторон, высота 23 см. Подходит до 120 кг. Чехол из хлопкового жаккарда. Обеспечивает здоровый и комфортный сон.",
-    "features": [
-      "Независимый пружинный блок Pocket Spring, 510 пружин/сп. место",
-      "Сторона 1: Латекс 2 см + термовойлок",
-      "Сторона 2: Кокос 1 см + ППУ 1 см + термовойлок",
-      "Высота: 23 см",
-      "Жесткость: средняя/выше средней (разные стороны)",
-      "Периметр: эластичный еврокаркас из ППУ",
-      "Чехол: хлопковый жаккард на синтепоне",
-      "Нагрузка: до 120 кг",
-      "Гарантия: 3 года, срок службы: до 10 лет"
-    ],
-    "sizes": [
-      {
-        "name": "80x190",
-        "price": 43500,
-        "originalPrice": 45000,
-        "discountPercent": 3
-      },
-      {
-        "name": "90x190",
-        "price": 48000,
-        "originalPrice": 50000,
-        "discountPercent": 4
-      },
-      {
-        "name": "120x200",
-        "price": 57000,
-        "originalPrice": 59000,
-        "discountPercent": 3
-      },
-      {
-        "name": "140x200",
-        "price": 65000,
-        "originalPrice": 69000,
-        "discountPercent": 6
-      },
-      {
-        "name": "160x200",
-        "price": 78000,
-        "originalPrice": 85000,
-        "discountPercent": 8
-      },
-      {
-        "name": "180x200",
-        "price": 88000,
-        "originalPrice": 93000,
-        "discountPercent": 5
-      }
-    ],
-    "rating": 4.91,
-    "reviews": 33
-  },
-  {
-    "id": 18,
     "name": "Elite-22",
     "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
     "category": "independent",
@@ -1039,5 +852,192 @@
     "rating": 4.96,
     "reviews": 27,
     "badge": "Хит продаж"
+  },
+   {
+    "id": 15,
+    "name": "BALANCE-P",
+    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
+
+    "category": "independent",
+    "price": 59000,
+    "originalPrice": 64000,
+    "images": [
+      "img/матрасы/матрасы с независимыми пружинами/Матрас BALANCE-P жесткий/5e2a81270de47f66abaa18af9d84aefb.png",
+      "img/матрасы/матрасы с независимыми пружинами/Матрас BALANCE-P жесткий/е18.jpg",
+      "img/матрасы/матрасы с независимыми пружинами/Матрас BALANCE-P жесткий/э1.jpg",
+      "img/матрасы/матрасы с независимыми пружинами/Матрас BALANCE-P жесткий/rosa_s1000.jpeg"
+    ],
+    "description": "Премиум матрас с независимыми пружинами и двумя сторонами разной жёсткости. Подходит для тяжёлых людей и пар. Латекс и кокос обеспечивают комфорт, анатомическую поддержку и микромассажный эффект во время сна.",
+    "features": [
+      "Независимый пружинный блок Pocket Spring, 480–500 пружин/сп. место",
+      "Сторона 1: Кокос 2 см + термовойлок",
+      "Сторона 2: Кокос 1 см + латекс 2 см + термовойлок",
+      "Усиленный еврокаркас из ППУ",
+      "Высота: 21–22 см",
+      "Жесткость: средняя/жёсткая",
+      "Чехол: трикотаж стёганный с синтепоном",
+      "Нагрузка: до 150 кг",
+      "Гарантия: 5 лет",
+      "Срок службы: 15 лет"
+    ],
+    "sizes": [
+      {
+        "name": "80x190",
+        "price": 59000,
+        "originalPrice": 64000,
+        "discountPercent": 8
+      },
+      {
+        "name": "160x200",
+        "price": 87000,
+        "originalPrice": 92000,
+        "discountPercent": 5
+      },
+      {
+        "name": "180x200",
+        "price": 96000,
+        "originalPrice": 102000,
+        "discountPercent": 6
+      }
+    ],
+    "rating": 4.9,
+    "reviews": 162
+  },
+    {
+    "id": 16,
+    "name": "COMFORT-LUXE",
+    "instagramVideo": "https://www.instagram.com/reel/CzLmzwrNli7/?igsh=dDNzNXE4c2RsMmN6",
+    "category": "independent",
+    "price": 69000,
+    "originalPrice": 74000,
+    "images": [
+      "img/матрасы/матрасы с независимыми пружинами/Матрас COMFORT LUXE/е18.jpg",
+      "img/матрасы/матрасы с независимыми пружинами/Матрас COMFORT LUXE/э1.jpg"
+    ],
+    "description": "Премиальный матрас с пружинным блоком Multipocket и разной жёсткостью сторон. Натуральный латекс и кокос обеспечивают анатомическую поддержку, вентиляцию и комфорт при нагрузке до 160 кг. Подходит для ежедневного сна.",
+    "features": [
+      "Независимый пружинный блок Multipocket, 1000 пружин/сп. место",
+      "Сторона 1: Кокос 1 см + латекс 2 см + термовойлок",
+      "Сторона 2: Кокос 2 см + термовойлок",
+      "Усиленный еврокаркас из ППУ",
+      "Высота: 21–22 см",
+      "Жесткость: средняя/жёсткая",
+      "Чехол: трикотаж стёганный на синтепоне",
+      "Нагрузка: до 160 кг",
+      "Гарантия: 5 лет",
+      "Срок службы: 20–25 лет"
+    ],
+    "sizes": [
+      {
+        "name": "80x190",
+        "price": 69000,
+        "originalPrice": 74000,
+        "discountPercent": 7
+      },
+      {
+        "name": "160x200",
+        "price": 119000,
+        "originalPrice": 124000,
+        "discountPercent": 4
+      },
+      {
+        "name": "180x200",
+        "price": 132000,
+        "originalPrice": 138000,
+        "discountPercent": 4
+      }
+    ],
+    "rating": 4.95,
+    "reviews": 185
+  },
+ 
+  {
+    "id": 17,
+    "name": "Memory Soft",
+    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
+
+    "category": "independent",
+    "price": 59000,
+    "originalPrice": 66000,
+    "images": [
+      "img/матрасы/матрасы с независимыми пружинами/Матрас MEMORY SOFT/Эл мем.jpg",
+      "img/матрасы/матрасы с независимыми пружинами/Матрас MEMORY SOFT/э1.jpg"
+    ],
+    "description": "Мягкий анатомический матрас с эффектом памяти. Независимые пружины, мемори-пена и трикотаж Cashmere создают комфорт, поддерживают позвоночник и обеспечивают расслабление. Подходит для любителей мягкости и деликатной поддержки.",
+    "features": [
+      "Независимый пружинный блок Pocket Spring, 480–510 пружин/сп. место",
+      "Сторона 1: Мемори 4 см + термовойлок",
+      "Сторона 2: ППУ 3 см + термовойлок",
+      "Периметр: эластичный еврокаркас из ППУ",
+      "Высота: 22 см",
+      "Жесткость: мягкий",
+      "Чехол: трикотаж Cashmere Extra Comfort, стёганный с синтепоном",
+      "Нагрузка: до 120 кг",
+      "Гарантия: 5 лет",
+      "Срок службы: 10–12 лет"
+    ],
+    "sizes": [
+      {
+        "name": "80x190",
+        "price": 59000,
+        "originalPrice": 66000,
+        "discountPercent": 11
+      },
+      {
+        "name": "160x200",
+        "price": 101000,
+        "originalPrice": 115000,
+        "discountPercent": 12
+      },
+      {
+        "name": "180x200",
+        "price": 115000,
+        "originalPrice": 130000,
+        "discountPercent": 12
+      }
+    ],
+    "rating": 4.87,
+    "reviews": 178
+  },
+  {
+    "id": 18,
+    "name": "Premium Soft",
+    "instagramVideo": "https://www.instagram.com/reel/DLNbnMhtOYs/?igsh=MWk5aHMwcGZka3BoaA==",
+    "category": "independent",
+    "price": 190000,
+    "originalPrice": 199000,
+    "images": [
+      "img/матрасы/матрасы с независимыми пружинами/Матрас PREMIUM SOFT/мультиммеори.jpg",
+      "img/матрасы/матрасы с независимыми пружинами/Матрас PREMIUM SOFT/э1.jpg"
+    ],
+    "description": "Премиальный матрас с MultiPocket 1000 пружин, латексом, кокосом и Memory Foam. Поддерживает до 150 кг. Высокий комфорт, ортопедический эффект, износостойкий велюр, 7 лет гарантии. Идеален для ежедневного сна.",
+    "features": [
+      "Независимый пружинный блок MultiPocket, 1000 пружин/сп. место",
+      "Сторона 1: Memory Foam 4 см, латекс 4 см, кокос 2 см, термовойлок",
+      "Сторона 2: ППУ 2 см",
+      "Высота: 25-26 см",
+      "Жесткость: средняя",
+      "Периметр: усиленный еврокаркас из ППУ",
+      "Чехол: трикотаж стёганный с синтепоном",
+      "Борта из велюра, с ручками",
+      "Нагрузка: до 150 кг",
+      "Гарантия: 7 лет, срок службы: до 15 лет"
+    ],
+    "sizes": [
+      {
+        "name": "160x200",
+        "price": 190000,
+        "originalPrice": 199000,
+        "discountPercent": 5
+      },
+      {
+        "name": "180x200",
+        "price": 220000,
+        "originalPrice": 225000,
+        "discountPercent": 2
+      }
+    ],
+    "rating": 4.94,
+    "reviews": 47
   }
 ]
