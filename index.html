@@ -98,7 +98,9 @@
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center" id="preloader">
         <div class="preloader-content">
-            <img src="img/logo-text-blue.png" alt="Территория Сна" class="preloader-logo">
+            <a href="">
+                <img src="img/logo-text-blue.png" alt="Территория Сна" class="preloader-logo">
+            </a>
             <div class="preloader-spinner">
                 <svg viewBox="25 25 50 50">
                     <circle r="20" cy="50" cx="50"></circle>
@@ -146,11 +148,73 @@
             </div>
         </div>
     </nav>
+    <!-- Карусель для мобильных -->
+    <div id="mainCarousel" class="carousel slide carousel-fade d-sm-none mt-5" data-bs-ride="carousel"
+        data-bs-touch="true">
+        <!-- Индикаторы -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Слайд 1"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <!-- Баннер 1 -->
+            <div class="carousel-item">
+                <div class="banner-img-wrapper">
+                    <img src="img/bg/mobile-bg-1.PNG" class="d-block w-100 banner-img" alt="Баннер 2">
+                </div>
+                <div class="carousel-caption text-start">
+                    <h1 class="banner-title">Эксперимент с яйцом пройден</h1>
+                    <p class="banner-text-md">На всех наших матрасах этот тест удался</p>
+                    <div class="banner-buttons w-75 mx-auto">
+                        <a href="#consultation" class="btn btn-outline-light bg-danger w-75">Забрать подароки и скидки
+                            <i class="fas fa-gift"></i></a>
+                        <a href="https://www.instagram.com/reel/DK9b1WGN30H/"
+                            class="btn btn-primary rounded-5 mt-2 w-auto"><i class="fas fa-play"></i> Тест-яйца</a>
+                    </div>
+                </div>
+            </div>
 
 
+            <!-- Баннер 2 -->
+            <div class="carousel-item">
+                <div class="banner-img-wrapper">
+                    <img src="img/bg/mobile-bg-2.png" class="d-block w-100 banner-img" alt="Баннер 3">
+                </div>
+                <div class="carousel-caption text-start">
+                    <h2 class="banner-title">Эксперимент со стаканом пройден</h2>
+                    <p class="banner-text-md">Рядом с вами могут прыгать — вы даже не почувствуете</p>
+                    <div class="banner-buttons w-75 mx-auto">
+                        <a href="#catalog" class="btn btn-outline-light w-75">Смотреть каталог</a>
+                        <a href="https://www.instagram.com/reel/DLPVRO8tjZ8/"
+                            class="btn btn-primary rounded-5 w-auto mt-2">Видеообзор <i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Баннер 3 -->
+            <div class="carousel-item active">
+                <div class="banner-img-wrapper">
+                    <img src="img/bg/mobile-bg-3.png" class="banner-img" alt="Баннер 1">
+                </div>
+                <div class="carousel-caption text-start">
+                    <h2 class="banner-title bn-1">Апашка рекомендует - и даёт подарок</h2>
+                    <p class="banner-text-md">Скидка до - 70% <br> и подарок при покупке</p>
+                    <p class="banner-text-sm">Водозащитный наматрасник и подушка с памятью</p>
+                    <div class="banner-buttons w-75 mx-auto">
+                        <a href="#consultation" class="btn btn-primary w-100">Получить подарок <i
+                                class="fas fa-gift"></i></a>
+                        <a href="#catalog" class="btn  text-light w-100">Смотреть каталог</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section with Carousel -->
-    <section id="hero" class="hero-section">
+    <section id="hero" class="hero-section d-none d-sm-block">
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
 
             <!-- Индикаторы -->
@@ -170,7 +234,7 @@
                             <div class="col-lg-10 hero-items ">
                                 <h1 class="hero-title">Эксперимент с яйцом пройден</h1>
                                 <p class="hero-subtitle">На всех наших матрасах этот тест удался</p>
-                                <div class="hero-features d-none d-md-flex">
+                                <div class="hero-features d-none d-sm-flex">
                                     <div class="hero-feature"><i class="fas fa-shield-alt"></i><span>Гарантия 10
                                             лет</span></div>
                                     <div class="hero-feature"><i class="fas fa-truck"></i><span>Бесплатная
@@ -195,7 +259,7 @@
                             <div class="col-lg-10 hero-items">
                                 <h1 class="hero-title">Эксперимент со стаканом пройден</h1>
                                 <p class="hero-subtitle">Рядом с вами могут прыгать — вы даже не почувствуете</p>
-                                <div class="hero-features d-none d-md-flex">
+                                <div class="hero-features d-none d-sm-flex">
                                     <div class="hero-feature"><i class="fas fa-bed"></i><span>Независимые пружины</span>
                                     </div>
                                     <div class="hero-feature"><i class="fas fa-leaf"></i><span>Экологичные
@@ -221,7 +285,7 @@
                                 <h1 class="hero-title">Апашка рекомендует — и даёт подарок!</h1>
                                 <p class="hero-subtitle">💬 Скидки до −70% и водозащитный наматрасник и подушка с
                                     памятью в подарок 🎁</p>
-                                <div class="hero-features d-none d-md-flex">
+                                <div class="hero-features d-none d-sm-flex">
                                     <div class="hero-feature"><i class="fas fa-gift"></i><span>Подарок в
                                             комплекте</span></div>
                                     <div class="hero-feature"><i class="fas fa-percentage"></i><span>Скидка до
