@@ -32,6 +32,32 @@
     <meta name="twitter:description"
         content="✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет">
 
+    <!-- Yandex.Metrika counter -->
+
+    <script type="text/javascript">
+
+        (function (m, e, t, r, i, k, a) {
+
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+
+            m[i].l = 1 * new Date();
+
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=103619981', 'ym');
+
+        ym(103619981, 'init', { ssr: true, webvisor: true, trackHash: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+
+    </script>
+
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/103619981" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+
+    <!-- /Yandex.Metrika counter -->
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -121,6 +147,8 @@
         </div>
     </nav>
 
+
+
     <!-- Hero Section with Carousel -->
     <section id="hero" class="hero-section">
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -142,7 +170,7 @@
                             <div class="col-lg-10 hero-items ">
                                 <h1 class="hero-title">Эксперимент с яйцом пройден</h1>
                                 <p class="hero-subtitle">На всех наших матрасах этот тест удался</p>
-                                <div class="hero-features">
+                                <div class="hero-features d-none d-md-flex">
                                     <div class="hero-feature"><i class="fas fa-shield-alt"></i><span>Гарантия 10
                                             лет</span></div>
                                     <div class="hero-feature"><i class="fas fa-truck"></i><span>Бесплатная
@@ -167,7 +195,7 @@
                             <div class="col-lg-10 hero-items">
                                 <h1 class="hero-title">Эксперимент со стаканом пройден</h1>
                                 <p class="hero-subtitle">Рядом с вами могут прыгать — вы даже не почувствуете</p>
-                                <div class="hero-features">
+                                <div class="hero-features d-none d-md-flex">
                                     <div class="hero-feature"><i class="fas fa-bed"></i><span>Независимые пружины</span>
                                     </div>
                                     <div class="hero-feature"><i class="fas fa-leaf"></i><span>Экологичные
@@ -193,7 +221,7 @@
                                 <h1 class="hero-title">Апашка рекомендует — и даёт подарок!</h1>
                                 <p class="hero-subtitle">💬 Скидки до −70% и водозащитный наматрасник и подушка с
                                     памятью в подарок 🎁</p>
-                                <div class="hero-features">
+                                <div class="hero-features d-none d-md-flex">
                                     <div class="hero-feature"><i class="fas fa-gift"></i><span>Подарок в
                                             комплекте</span></div>
                                     <div class="hero-feature"><i class="fas fa-percentage"></i><span>Скидка до
@@ -285,123 +313,131 @@
     </section>
 
     <!-- About Section -->
-<section id="about" class="about-section py-5">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6">
-        <h2 class="section-title">О нас</h2>
-        <p class="about-text">
-          «Территория Сна» — казахстанский производитель ортопедических матрасов.
-          Мы не просто говорим — мы доказываем через реальные эксперименты.
-        </p>
-        <div class="about-features mb-4">
-          <div class="feature-item d-flex align-items-start mb-2">
-            <i class="fas fa-check-circle me-2"></i>
-            <span>Только наши матрасы выдерживают яйцо/вода-тест</span>
-          </div>
-          <div class="feature-item d-flex align-items-start mb-2">
-            <i class="fas fa-check-circle me-2"></i>
-            <span>10+ лет на рынке</span>
-          </div>
-          <div class="feature-item d-flex align-items-start mb-2">
-            <i class="fas fa-check-circle me-2"></i>
-            <span>Гарантия до 10 лет</span>
-          </div>
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title">О нас</h2>
+                    <p class="about-text">
+                        «Территория Сна» — казахстанский производитель ортопедических матрасов.
+                        Мы не просто говорим — мы доказываем через реальные эксперименты.
+                    </p>
+                    <div class="about-features mb-4">
+                        <div class="feature-item d-flex align-items-start mb-2">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <span>Только наши матрасы выдерживают яйцо/вода-тест</span>
+                        </div>
+                        <div class="feature-item d-flex align-items-start mb-2">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <span>10+ лет на рынке</span>
+                        </div>
+                        <div class="feature-item d-flex align-items-start mb-2">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <span>Гарантия до 10 лет</span>
+                        </div>
+                    </div>
+
+                    <!-- Сертификаты -->
+                    <div class="certificates-section">
+                        <h5 class="mb-3">Наши сертификаты</h5>
+                        <div class="row g-3">
+                            <!-- Пять миниатюр -->
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <div class="card certificate-card h-100 border-light shadow-sm">
+                                    <img src="img/сертификаты/сертификат.JPG" loading="lazy"
+                                        class="card-img-top img-fluid clickable-cert" alt="Сертификат 1"
+                                        data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="0">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <div class="card certificate-card h-100 border-light shadow-sm">
+                                    <img src="img/сертификаты/сертификат-2.JPG" loading="lazy"
+                                        class="card-img-top img-fluid clickable-cert" alt="Сертификат 2"
+                                        data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="1">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <div class="card certificate-card h-100 border-light shadow-sm">
+                                    <img src="img/сертификаты/сертификат-3.JPG" loading="lazy"
+                                        class="card-img-top img-fluid clickable-cert" alt="Сертификат 3"
+                                        data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="2">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <div class="card certificate-card h-100 border-light shadow-sm">
+                                    <img src="img/сертификаты/сертификат-4.JPG" loading="lazy"
+                                        class="card-img-top img-fluid clickable-cert" alt="Сертификат 4"
+                                        data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="3">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <div class="card certificate-card h-100 border-light shadow-sm">
+                                    <img src="img/сертификаты/сертификат-5.JPG" loading="lazy"
+                                        class="card-img-top img-fluid clickable-cert" alt="Сертификат 5"
+                                        data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Сертификаты -->
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="img/bg/about-bg.JPG" alt="Производство ортопедических матрасов"
+                            class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Сертификаты -->
-        <div class="certificates-section">
-          <h5 class="mb-3">Наши сертификаты</h5>
-          <div class="row g-3">
-            <!-- Пять миниатюр -->
-            <div class="col-6 col-md-4 col-lg-2">
-              <div class="card certificate-card h-100 border-light shadow-sm">
-                <img src="img/сертификаты/сертификат.JPG" loading="lazy"
-                     class="card-img-top img-fluid clickable-cert" alt="Сертификат 1"
-                     data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="0">
-              </div>
+        <!-- Модал с каруселью -->
+        <div class="modal fade" id="certModal" tabindex="-1" aria-labelledby="certModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body p-0 position-relative">
+                        <!-- Кнопка закрытия: стандартно работает -->
+                        <button type="button" class="btn-close position-absolute top-0 end-0 m-3"
+                            data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                        <div id="certCarousel" class="carousel slide" data-bs-ride="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item cert-item active">
+                                    <img src="img/сертификаты/сертификат.JPG" class="d-block w-100"
+                                        alt="Сертификат 1 крупно" style="object-fit: contain; max-height:80vh;">
+                                </div>
+                                <div class="carousel-item cert-item">
+                                    <img src="img/сертификаты/сертификат-2.JPG" class="d-block w-100"
+                                        alt="Сертификат 2 крупно" style="object-fit: contain; max-height:80vh;">
+                                </div>
+                                <div class="carousel-item cert-item">
+                                    <img src="img/сертификаты/сертификат-3.JPG" class="d-block w-100"
+                                        alt="Сертификат 3 крупно" style="object-fit: contain; max-height:80vh;">
+                                </div>
+                                <div class="carousel-item cert-item">
+                                    <img src="img/сертификаты/сертификат-4.JPG" class="d-block w-100"
+                                        alt="Сертификат 4 крупно" style="object-fit: contain; max-height:80vh;">
+                                </div>
+                                <div class="carousel-item cert-item">
+                                    <img src="img/сертификаты/сертификат-5.JPG" class="d-block w-100"
+                                        alt="Сертификат 5 крупно" style="object-fit: contain; max-height:80vh;">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#certCarousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Назад</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#certCarousel"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Вперед</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
-              <div class="card certificate-card h-100 border-light shadow-sm">
-                <img src="img/сертификаты/сертификат-2.JPG" loading="lazy"
-                     class="card-img-top img-fluid clickable-cert" alt="Сертификат 2"
-                     data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="1">
-              </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-              <div class="card certificate-card h-100 border-light shadow-sm">
-                <img src="img/сертификаты/сертификат-3.JPG" loading="lazy"
-                     class="card-img-top img-fluid clickable-cert" alt="Сертификат 3"
-                     data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="2">
-              </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-              <div class="card certificate-card h-100 border-light shadow-sm">
-                <img src="img/сертификаты/сертификат-4.JPG" loading="lazy"
-                     class="card-img-top img-fluid clickable-cert" alt="Сертификат 4"
-                     data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="3">
-              </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-              <div class="card certificate-card h-100 border-light shadow-sm">
-                <img src="img/сертификаты/сертификат-5.JPG" loading="lazy"
-                     class="card-img-top img-fluid clickable-cert" alt="Сертификат 5"
-                     data-bs-toggle="modal" data-bs-target="#certModal" data-slide-to="4">
-              </div>
-            </div>
-          </div>
         </div>
-        <!-- /Сертификаты -->
-
-      </div>
-      <div class="col-lg-6">
-        <div class="about-image">
-          <img src="img/bg/about-bg.JPG" alt="Производство ортопедических матрасов"
-               class="img-fluid rounded">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Модал с каруселью -->
-  <div class="modal fade" id="certModal" tabindex="-1" aria-labelledby="certModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body p-0 position-relative">
-          <!-- Кнопка закрытия: стандартно работает -->
-          <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-          <div id="certCarousel" class="carousel slide" data-bs-ride="false">
-            <div class="carousel-inner">
-              <div class="carousel-item cert-item active">
-                <img src="img/сертификаты/сертификат.JPG" class="d-block w-100" alt="Сертификат 1 крупно" style="object-fit: contain; max-height:80vh;">
-              </div>
-              <div class="carousel-item cert-item">
-                <img src="img/сертификаты/сертификат-2.JPG" class="d-block w-100" alt="Сертификат 2 крупно" style="object-fit: contain; max-height:80vh;">
-              </div>
-              <div class="carousel-item cert-item">
-                <img src="img/сертификаты/сертификат-3.JPG" class="d-block w-100" alt="Сертификат 3 крупно" style="object-fit: contain; max-height:80vh;">
-              </div>
-              <div class="carousel-item cert-item">
-                <img src="img/сертификаты/сертификат-4.JPG" class="d-block w-100" alt="Сертификат 4 крупно" style="object-fit: contain; max-height:80vh;">
-              </div>
-              <div class="carousel-item cert-item">
-                <img src="img/сертификаты/сертификат-5.JPG" class="d-block w-100" alt="Сертификат 5 крупно" style="object-fit: contain; max-height:80vh;">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#certCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Назад</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#certCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Вперед</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
 
@@ -483,56 +519,61 @@
     </section>
 
     <!-- Reviews Section -->
- <section id="reviews" class="reviews-section py-5">
-  <div class="container">
-    <div class="row mb-3 align-items-center">
-      <div class="col-12 text-center">
-        <h2 class="section-title">Отзывы наших покупателей</h2>
-        <p class="section-subtitle">Скриншоты отзывов из телефона</p>
-      </div>
-    </div>
+    <section id="reviews" class="reviews-section py-5">
+        <div class="container">
+            <div class="row mb-3 align-items-center">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Отзывы наших покупателей</h2>
+                    <p class="section-subtitle">Скриншоты отзывов из телефона</p>
+                </div>
+            </div>
 
-    <div class="overflow-hidden position-relative d-flex justify-content-center">
-      <div id="screenshotTrack" class="d-flex gap-3 transition-wrapper">
-        <!-- карточки вставятся JS-ом -->
-      </div>
-    </div>
+            <div class="overflow-hidden position-relative d-flex justify-content-center">
+                <div id="screenshotTrack" class="d-flex gap-3 transition-wrapper">
+                    <!-- карточки вставятся JS-ом -->
+                </div>
+            </div>
 
-    <!-- Стрелки внизу -->
-    <div class="d-flex justify-content-center gap-1 mt-4">
-      <button id="prevArrow" class="btn btn-primary btn-lg rounded-circle" aria-label="Назад" style="width:40px; height:40px; font-size:1rem;">
-        ‹
-      </button>
-      <button id="nextArrow" class="btn btn-primary btn-lg rounded-circle" aria-label="Вперед" style="width:40px; height:40px; font-size:1rem;">
-        ›
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- Модал просмотра -->
-<div class="modal fade" id="screenshotModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content">
-      <div class="modal-body p-0 position-relative">
-        <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-        <div id="bigCarousel" class="carousel slide" data-bs-ride="false">
-          <div class="carousel-inner">
-            <!-- слайды подставятся скриптом -->
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#bigCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Назад</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#bigCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Вперед</span>
-          </button>
+            <!-- Стрелки внизу -->
+            <div class="d-flex justify-content-center gap-1 mt-4">
+                <button id="prevArrow" class="btn btn-primary btn-lg rounded-circle" aria-label="Назад"
+                    style="width:40px; height:40px; font-size:1rem;">
+                    ‹
+                </button>
+                <button id="nextArrow" class="btn btn-primary btn-lg rounded-circle" aria-label="Вперед"
+                    style="width:40px; height:40px; font-size:1rem;">
+                    ›
+                </button>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Модал просмотра -->
+    <div class="modal fade" id="screenshotModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"
+                        aria-label="Закрыть"></button>
+                    <div id="bigCarousel" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-inner">
+                            <!-- слайды подставятся скриптом -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#bigCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Назад</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#bigCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Вперед</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
     <!-- Delivery Section -->
     <section id="delivery" class="delivery-section py-5">
@@ -726,24 +767,24 @@
     <!-- Custom JS -->
     <script src="script.js"></script>
     <!-- Скрипт: при клике открывает нужный слайд -->
- <script>
-  document.querySelectorAll('.clickable-cert').forEach(img => {
-    img.addEventListener('click', function () {
-      const idx = parseInt(this.getAttribute('data-slide-to'), 10);
-      const carouselEl = document.getElementById('certCarousel');
-      const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
-      bsCarousel.to(idx);
-    });
-  });
+    <script>
+        document.querySelectorAll('.clickable-cert').forEach(img => {
+            img.addEventListener('click', function () {
+                const idx = parseInt(this.getAttribute('data-slide-to'), 10);
+                const carouselEl = document.getElementById('certCarousel');
+                const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
+                bsCarousel.to(idx);
+            });
+        });
 
-  // Сброс к первому слайду при закрытии
-  const certModal = document.getElementById('certModal');
-  certModal.addEventListener('hidden.bs.modal', () => {
-    const carouselEl = document.getElementById('certCarousel');
-    const bsCarousel = bootstrap.Carousel.getInstance(carouselEl);
-    if (bsCarousel) bsCarousel.to(0);
-  });
-</script>
+        // Сброс к первому слайду при закрытии
+        const certModal = document.getElementById('certModal');
+        certModal.addEventListener('hidden.bs.modal', () => {
+            const carouselEl = document.getElementById('certCarousel');
+            const bsCarousel = bootstrap.Carousel.getInstance(carouselEl);
+            if (bsCarousel) bsCarousel.to(0);
+        });
+    </script>
 </body>
 
 </html>
