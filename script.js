@@ -511,17 +511,7 @@ function showProductModal(productId) {
     
     // Обработчик закрытия модала
     modal._element.addEventListener('hidden.bs.modal', function() {
-        // Reset URL to base state when modal is closed
-        const baseUrl = `${window.location.origin}${window.location.pathname}`;
-        window.history.pushState({}, '', baseUrl);
-        
-        // Reset meta tags to base values
-        document.title = 'Территория Сна - Ортопедические матрасы от производителя в Алмате | Купить матрас с доставкой';
-        updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Алмате');
-        updateMetaTag('og:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет ✅ Доказываем качество!');
-        updateMetaTag('og:url', baseUrl);
-        updateMetaTag('twitter:title', 'Территория Сна - Ортопедические матрасы от производителя');
-        updateMetaTag('twitter:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет');
+        resetUrl();
     }, { once: true });
 }
 
@@ -620,17 +610,7 @@ function showProductDetails(productId) {
     
     // Обработчик закрытия модала
     modal._element.addEventListener('hidden.bs.modal', function() {
-        // Reset URL to base state when modal is closed
-        const baseUrl = `${window.location.origin}${window.location.pathname}`;
-        window.history.pushState({}, '', baseUrl);
-        
-        // Reset meta tags to base values
-        document.title = 'Территория Сна - Ортопедические матрасы от производителя в Алмате | Купить матрас с доставкой';
-        updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Алмате');
-        updateMetaTag('og:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет ✅ Доказываем качество!');
-        updateMetaTag('og:url', baseUrl);
-        updateMetaTag('twitter:title', 'Территория Сна - Ортопедические матрасы от производителя');
-        updateMetaTag('twitter:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет');
+        resetUrl();
     }, { once: true });
 }
 
@@ -747,17 +727,7 @@ function openOrderModal(productId) {
     
     // Обработчик закрытия модала заказа
     orderModal._element.addEventListener('hidden.bs.modal', function() {
-        // Reset URL to base state when modal is closed
-        const baseUrl = `${window.location.origin}${window.location.pathname}`;
-        window.history.pushState({}, '', baseUrl);
-        
-        // Reset meta tags to base values
-        document.title = 'Территория Сна - Ортопедические матрасы от производителя в Алмате | Купить матрас с доставкой';
-        updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Алмате');
-        updateMetaTag('og:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет ✅ Доказываем качество!');
-        updateMetaTag('og:url', baseUrl);
-        updateMetaTag('twitter:title', 'Территория Сна - Ортопедические матрасы от производителя');
-        updateMetaTag('twitter:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет');
+        resetUrl();
     }, { once: true });
 }
 
@@ -1029,5 +999,268 @@ async function submitConsultationForm() {
     // Create message for Telegram
     const message = `🔔 *ЗАЯВКА НА КОНСУЛЬТАЦИЮ*\n\n👤 *Имя:* ${name}\n📱 *Телефон:* ${phone}\n\n⏰ *Время:* ${new Date().toLocaleString('ru-RU')}\n\n💬 *Источник:* Сайт territoria-sna.kz`;
     
-    const botToken = '8199088088:AAGLKry1_Rnd7rwFY5QkqjDxIfFu1WqB654';
-    const chatIds = ['@Olzhiki', '@T
+    const botToken = '7618751385:AAGLKry1_Rnd7rwFY5QkqjDxIfFu1WqB654';
+    const chatIds = ['@Olzhiki', '@TerritoriaSna1', '@boranbay07'];
+    
+    // Show loading state
+    const submitBtn = document.querySelector('.btn-consultation');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...';
+    submitBtn.disabled = true;
+    
+    try {
+        // Send to all three Telegram accounts
+        const promises = chatIds.map(chatId => 
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            })
+        );
+        
+        await Promise.all(promises);
+        
+        // Reset form and show success
+        consultationForm.reset();
+        showConsultationSuccess();
+        
+    } catch (error) {
+        console.error('Error sending to Telegram:', error);
+        alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+    } finally {
+        // Restore button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }
+}
+
+// Show consultation success notification
+function showConsultationSuccess() {
+    const notification = document.createElement('div');
+    notification.className = 'alert alert-success position-fixed';
+    notification.style.cssText = `
+        top: 100px;
+        right: 20px;
+        z-index: 9999;
+        min-width: 350px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border-radius: 10px;
+    `;
+    notification.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="fas fa-check-circle me-3" style="font-size: 1.5rem; color: #28a745;"></i>
+            <div>
+                <strong>Заявка отправлена!</strong><br>
+                <small>Наш специалист свяжется с вами в течение 5 минут</small>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Add entrance animation
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+        notification.style.opacity = '1';
+    }, 100);
+    
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+}
+
+// Performance optimizations
+function optimizePerformance() {
+    // Defer non-critical CSS
+    const deferredStyles = document.querySelectorAll('link[media="print"]');
+    deferredStyles.forEach(link => {
+        link.addEventListener('load', function() {
+            this.media = 'all';
+        });
+    });
+    
+    // Preload critical resources
+    const preloadLinks = [
+        { href: 'img/logo-text-white.png', as: 'image' },
+        { href: 'products.json', as: 'fetch', crossorigin: 'anonymous' }
+    ];
+    
+    preloadLinks.forEach(link => {
+        const preloadLink = document.createElement('link');
+        preloadLink.rel = 'preload';
+        preloadLink.href = link.href;
+        preloadLink.as = link.as;
+        if (link.crossorigin) preloadLink.crossOrigin = link.crossorigin;
+        document.head.appendChild(preloadLink);
+    });
+}
+
+// Helper function to create SEO-friendly URL from product name
+function createProductSlug(name) {
+    return name
+        .toLowerCase()
+        .replace(/[а-яё]/g, char => {
+            const map = {
+                'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e',
+                'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
+                'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+                'ф': 'f', 'х': 'h', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch',
+                'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'
+            };
+            return map[char] || char;
+        })
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim('-');
+}
+document.addEventListener('DOMContentLoaded', function() {
+// Функция для сброса URL к базовому состоянию
+function resetUrl() {
+    const baseUrl = `${window.location.origin}${window.location.pathname}`;
+    window.history.pushState({}, '', baseUrl);
+    
+    // Сброс мета-тегов к базовым значениям
+    document.title = 'Территория Сна - Ортопедические матрасы от производителя в Таразе | Купить матрас с доставкой';
+    updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Таразе');
+    updateMetaTag('og:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет ✅ Доказываем качество!');
+    updateMetaTag('og:url', baseUrl);
+    updateMetaTag('twitter:title', 'Территория Сна - Ортопедические матрасы от производителя');
+    updateMetaTag('twitter:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет');
+}
+
+    const burger = document.querySelector('.burger-menu');
+    const navbar = document.getElementById('navbarNav');
+    
+    // Initialize with collapsed class if navbar is hidden
+    if (navbar.classList.contains('show')) {
+        burger.classList.remove('collapsed');
+    } else {
+        burger.classList.add('collapsed');
+    }
+    
+    // Sync with Bootstrap collapse events
+    navbar.addEventListener('shown.bs.collapse', function() {
+        burger.classList.remove('collapsed');
+    });
+    
+    navbar.addEventListener('hidden.bs.collapse', function() {
+        burger.classList.add('collapsed');
+    });
+});
+
+  (function () {
+    const allImages = [
+      'img/отзывы/отзывы-1.JPG',
+      'img/отзывы/отзывы-2.JPG',
+      'img/отзывы/отзывы-3.JPG',
+      'img/отзывы/отзывы-4.JPG',
+      'img/отзывы/отзывы-5.JPG',
+      'img/отзывы/отзывы-6.JPG',
+      'img/отзывы/отзывы-7.JPG',
+      'img/отзывы/отзывы-8.JPG',
+      'img/отзывы/отзывы-9.JPG',
+      'img/отзывы/отзывы-10.JPG',
+      'img/отзывы/отзывы-11.JPG',
+      'img/отзывы/отзывы-12.JPG',
+      'img/отзывы/отзывы-13.JPG',
+      'img/отзывы/отзывы-14.JPG'
+    ];
+
+    let startIndex = 0; // начальный сдвиг
+    const visibleCountDesktop = 5;
+    const track = document.getElementById('screenshotTrack');
+
+    function getVisible() {
+      const res = [];
+      for (let i = 0; i < visibleCountDesktop; i++) {
+        const idx = (startIndex + i) % allImages.length;
+        res.push(allImages[idx]);
+      }
+      return res;
+    }
+
+    function makeCard(src, absoluteIndex) {
+      const div = document.createElement('div');
+      div.className = 'screenshot-card';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Скриншот отзыва';
+      img.setAttribute('data-index', absoluteIndex);
+      div.appendChild(img);
+      // клик открывает модал
+      div.addEventListener('click', () => {
+        openModalAt(absoluteIndex);
+      });
+      return div;
+    }
+
+    function renderTrack() {
+      track.innerHTML = '';
+      const visible = getVisible();
+      for (let i = 0; i < visible.length; i++) {
+        const absIdx = (startIndex + i) % allImages.length;
+        track.appendChild(makeCard(visible[i], absIdx));
+      }
+    }
+
+    function shiftRight() {
+      startIndex = (startIndex + 1) % allImages.length;
+      renderTrack();
+    }
+
+    function shiftLeft() {
+      startIndex = (startIndex - 1 + allImages.length) % allImages.length;
+      renderTrack();
+    }
+
+    document.getElementById('nextArrow').addEventListener('click', () => {
+      shiftRight();
+    });
+    document.getElementById('prevArrow').addEventListener('click', () => {
+      shiftLeft();
+    });
+
+    // автопрокрутка
+    setInterval(() => {
+      shiftRight();
+    }, 5000);
+
+    // модал и большая карусель
+    const bigCarousel = document.getElementById('bigCarousel');
+    function buildBigCarousel() {
+      const inner = bigCarousel.querySelector('.carousel-inner');
+      inner.innerHTML = '';
+      allImages.forEach((src, idx) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item' + (idx === 0 ? ' active' : '');
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Скриншот крупно';
+        img.className = 'd-block w-100';
+        img.style.objectFit = 'contain';
+        img.style.maxHeight = '80vh';
+        item.appendChild(img);
+        inner.appendChild(item);
+      });
+    }
+
+    function openModalAt(index) {
+      buildBigCarousel();
+      const carouselInstance = bootstrap.Carousel.getOrCreateInstance(bigCarousel);
+      carouselInstance.to(index);
+      const modal = new bootstrap.Modal(document.getElementById('screenshotModal'));
+      modal.show();
+    }
+
+    // init
+    renderTrack();
+  })();
