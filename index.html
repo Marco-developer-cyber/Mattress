@@ -17,6 +17,9 @@
     <meta name="geo.region" content="KZ-ZHA">
     <meta name="geo.placename" content="Алмата">
     <link rel="canonical" href="https://territoria-sna.kz/">
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -796,22 +799,22 @@
                                     <i class="fas fa-user"></i> Ваше имя *
                                 </label>
                                 <input type="text" class="form-control" id="customerName" required
-                                    placeholder="Введите ваше имя">
+                                    placeholder="Введите ваше имя" maxlength="50">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="customerPhone" class="form-label">
                                     <i class="fas fa-phone"></i> Номер телефона *
                                 </label>
                                 <input type="tel" class="form-control" id="customerPhone" required
-                                    placeholder="+7 (___) ___-__-__">
-                            </div>
+                                    placeholder="+7 (___) ___-__-__" maxlength="18">
+                                placeholder="Введите ваше имя" maxlength="50">
                         </div>
                         <div class="mb-3">
                             <label for="customerComment" class="form-label">
                                 <i class="fas fa-comment"></i> Комментарий (необязательно)
                             </label>
                             <textarea class="form-control" id="customerComment" rows="2"
-                                placeholder="Дополнительные пожелания"></textarea>
+                                placeholder="Дополнительные пожелания" maxlength="200"></textarea>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="whatsapp-btn">
