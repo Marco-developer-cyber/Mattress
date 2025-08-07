@@ -239,7 +239,7 @@ function createProductCard(product, index) {
     col.innerHTML = `
         <div class="product-card" onclick="openProductFromUrl(${product.id})" data-product-url="${productUrl}">
             <div class="product-image">
-                <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                <img src="${productImage}" loading="lazy" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
                 <button class="product-test-btn" onclick="event.stopPropagation(); showProductModal(${product.id})">
                     <i class="fas fa-play"></i> Тест
                 </button>
@@ -425,7 +425,7 @@ function showProductModal(productId) {
     modalBody.innerHTML = `
         <div class="row">
             <div class="col-md-6">
-                <img src="${productImage}" alt="${product.name}" 
+                <img src="${productImage}" loading="lazy" alt="${product.name}" 
                      class="img-fluid rounded mb-3" 
                      onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
                 
@@ -454,7 +454,7 @@ function showProductModal(productId) {
                 <div class="instagram-promo-container">
                     <div class="promo-card">
                         <div class="promo-image-part">
-                            <img src="${productImage}" alt="Обзор матраса" class="img-fluid h-100">
+                            <img src="${productImage}" loading="lazy" alt="Обзор матраса" class="img-fluid h-100">
                         </div>
                         <div class="promo-text-part">
                             <div class="promo-icon">
@@ -544,6 +544,7 @@ function showProductDetails(productId) {
                     <img src="${productImage}" 
                          alt="${product.name}" 
                          class="img-fluid rounded main-product-image"
+                         loading="lazy"
                          id="mainProductImage"
                          onerror="this.src='https://via.placeholder.com/600x400?text=Image+Error'">
                 </div>
@@ -556,6 +557,7 @@ function showProductDetails(productId) {
                             <img src="${img}" 
                                  alt="Thumbnail ${index + 1}" 
                                  class="img-thumbnail"
+                                 loading="lazy"
                                  onerror="this.src='https://via.placeholder.com/100x100?text=Thumb'">
                         </div>
                     `).join('')}
@@ -796,8 +798,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Submit order to WhatsApp
-function submitOrder() {
+// Submit order via PHP
+async function submitOrder() {
     if (!currentOrderProduct || !currentOrderSize) return;
     
     const name = document.getElementById('customerName').value.trim();
@@ -809,42 +811,63 @@ function submitOrder() {
         return;
     }
     
-    // Create WhatsApp message
-    let message = `🛏️ *НОВЫЙ ЗАКАЗ*\n\n`;
-    message += `👤 *Клиент:* ${name}\n`;
-    message += `📱 *Телефон:* ${phone}\n\n`;
-    message += `🛏️ *Товар:* ${currentOrderProduct.name}\n`;
-    message += `📏 *Размер:* ${currentOrderSize.name}\n`;
-    message += `💰 *Цена:* ${currentOrderSize.price.toLocaleString()} ₸\n`;
+    // Show loading state
+    const submitBtn = document.querySelector('.whatsapp-btn');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем заказ...';
+    submitBtn.disabled = true;
     
-    if (currentOrderSize.originalPrice) {
-        const discount = currentOrderSize.originalPrice - currentOrderSize.price;
-        message += `🔥 *Скидка:* ${discount.toLocaleString()} ₸\n`;
+    try {
+        const response = await fetch('send_order.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone,
+                product_name: currentOrderProduct.name,
+                size: currentOrderSize.name,
+                price: currentOrderSize.price.toLocaleString() + ' ₸',
+                original_price: currentOrderSize.originalPrice ? currentOrderSize.originalPrice.toLocaleString() + ' ₸' : '',
+                comment: comment
+            })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Close modal and show success message
+            const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
+            if (orderModal) {
+                orderModal.hide();
+            }
+            
+            // Reset form
+            document.getElementById('orderForm').reset();
+            
+            // Show success notification
+            showSuccessNotification();
+            
+            // Also open WhatsApp as backup
+            const whatsappMessage = `🛏️ Заказ: ${currentOrderProduct.name}, размер ${currentOrderSize.name}, цена ${currentOrderSize.price.toLocaleString()} ₸`;
+            const whatsappUrl = `https://wa.me/77758747861?text=${encodeURIComponent(whatsappMessage)}`;
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1000);
+            
+        } else {
+            alert(result.message || 'Произошла ошибка при отправке заказа');
+        }
+        
+    } catch (error) {
+        console.error('Error sending order:', error);
+        alert('Произошла ошибка при отправке заказа. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+    } finally {
+        // Restore button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
     }
-    
-    message += `🎁 *Подарок:* Наматрасник\n\n`;
-    
-    if (comment) {
-        message += `💬 *Комментарий:* ${comment}\n\n`;
-    }
-    
-    message += `⏰ *Время заказа:* ${new Date().toLocaleString('ru-RU')}`;
-    
-    // Open WhatsApp
-    const whatsappUrl = `https://wa.me/77758747861?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-    
-    // Close modal and show success message
-    const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
-    if (orderModal) {
-        orderModal.hide();
-    }
-    
-    // Reset form
-    document.getElementById('orderForm').reset();
-    
-    // Show success notification
-    showSuccessNotification();
 }
 
 // Show success notification
@@ -986,7 +1009,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Submit consultation form to Telegram
+// Submit consultation form via PHP
 async function submitConsultationForm() {
     const name = document.getElementById('consultationName').value.trim();
     const phone = document.getElementById('consultationPhone').value.trim();
@@ -996,12 +1019,6 @@ async function submitConsultationForm() {
         return;
     }
     
-    // Create message for Telegram
-    const message = `🔔 *ЗАЯВКА НА КОНСУЛЬТАЦИЮ*\n\n👤 *Имя:* ${name}\n📱 *Телефон:* ${phone}\n\n⏰ *Время:* ${new Date().toLocaleString('ru-RU')}\n\n💬 *Источник:* Сайт territoria-sna.kz`;
-    
-    const botToken = '7618751385:AAGLKry1_Rnd7rwFY5QkqjDxIfFu1WqB654';
-    const chatIds = ['@Olzhiki', '@TerritoriaSna1', '@boranbay07'];
-    
     // Show loading state
     const submitBtn = document.querySelector('.btn-consultation');
     const originalText = submitBtn.innerHTML;
@@ -1009,29 +1026,29 @@ async function submitConsultationForm() {
     submitBtn.disabled = true;
     
     try {
-        // Send to all three Telegram accounts
-        const promises = chatIds.map(chatId => 
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                    parse_mode: 'Markdown'
-                })
+        const response = await fetch('send_consultation.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone
             })
-        );
+        });
         
-        await Promise.all(promises);
+        const result = await response.json();
         
-        // Reset form and show success
-        consultationForm.reset();
-        showConsultationSuccess();
+        if (result.success) {
+            // Reset form and show success
+            consultationForm.reset();
+            showConsultationSuccess();
+        } else {
+            alert(result.message || 'Произошла ошибка при отправке заявки');
+        }
         
     } catch (error) {
-        console.error('Error sending to Telegram:', error);
+        console.error('Error sending consultation:', error);
         alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
     } finally {
         // Restore button
@@ -1129,8 +1146,8 @@ function resetUrl() {
     window.history.pushState({}, '', baseUrl);
     
     // Сброс мета-тегов к базовым значениям
-    document.title = 'Территория Сна - Ортопедические матрасы от производителя в Таразе | Купить матрас с доставкой';
-    updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Таразе');
+    document.title = 'Территория Сна - Ортопедические матрасы от производителя в Алмате | Купить матрас с доставкой';
+    updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Алмате');
     updateMetaTag('og:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет ✅ Доказываем качество!');
     updateMetaTag('og:url', baseUrl);
     updateMetaTag('twitter:title', 'Территория Сна - Ортопедические матрасы от производителя');
