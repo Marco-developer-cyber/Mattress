@@ -20,6 +20,7 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+     max-width: 100% !important;
 }
 
 body {
@@ -27,7 +28,6 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     overflow-x: hidden;
-    max-width: 100vw;
 }
 
 h1,
@@ -47,7 +47,7 @@ h6 {
     transition: var(--transition);
     padding: 0.75rem 0;
     min-height: 70px;
-    max-width: 100vw;
+    max-width: 100vw !important;
     overflow-x: hidden;
 }
 
@@ -155,7 +155,7 @@ h6 {
     max-width: 100vw;
     max-height: 100vh !important;
     object-fit: cover;
-    filter:brightness(95%) !important;
+    filter: brightness(95%) !important;
 }
 
 
@@ -182,12 +182,13 @@ h6 {
     width: 70%;
     margin-bottom: 15px;
 }
+
 .banner-title {
     /* width:40% !important; */
-    font-size: 2.8rem !important;
+    font-size: 2.75rem !important;
     font-weight: 700;
     margin-bottom: 20px;
-    color:rgb(255, 230, 9);
+    color: rgb(255, 230, 9);
     z-index: 100;
     width: 50% !important;
 }
@@ -296,7 +297,7 @@ h6 {
     font-size: 3.2rem !important;
     font-weight: 700;
     margin-bottom: 1rem;
-    color:rgb(255, 230, 9);
+    color: rgb(255, 230, 9);
 }
 
 .hero-subtitle {
@@ -413,15 +414,15 @@ h6 {
 
 /* Фоновые изображения для каждого слайда */
 .bg-slide-1 {
-    background-image: url('img/bg/bg-1.png');
+    background-image: url('img/bg/bg-1.webp');
 }
 
 .bg-slide-2 {
-    background-image: url('img/bg/bg-2.png');
+    background-image: url('img/bg/bg-2.webp');
 }
 
 .bg-slide-3 {
-    background-image: url('img/bg/bg-3.png');
+    background-image: url('img/bg/bg-3.webp');
 }
 
 /* Order Modal Styles */
@@ -711,11 +712,6 @@ h6 {
     width: 100%;
 }
 
-.btn-consultation:hover {
-    background: linear-gradient(135deg, #005A9E, var(--primary-color));
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 119, 204, 0.3);
-}
 
 .btn-consultation i {
     margin-right: 0.5rem;
@@ -744,56 +740,7 @@ h6 {
     opacity: 1;
 }
 
-/* Preloader */
-.preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease;
-}
 
-.preloader.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.preloader-content {
-    text-align: center;
-}
-
-.preloader-logo {
-    width: 120px;
-    height: auto;
-    margin-bottom: 1rem;
-    animation: pulse 2s infinite;
-}
-
-.preloader-spinner {
-    margin: 2rem 0;
-}
-
-.preloader-spinner svg {
-    width: 3.25em;
-    transform-origin: center;
-    animation: rotate4 2s linear infinite;
-}
-
-.preloader-spinner circle {
-    fill: none;
-    stroke: hsl(214, 97%, 59%);
-    stroke-width: 2;
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-    stroke-linecap: round;
-    animation: dash4 1.5s ease-in-out infinite;
-}
 
 @keyframes rotate4 {
     100% {
@@ -907,9 +854,14 @@ h6 {
 }
 
 /* Catalog Section */
+#products-container {
+    display: flex;
+    justify-content: center !important;
+}
 .catalog-section {
     background: var(--light-gray);
     padding: 5rem 0;
+    width: 100% !important;
 }
 
 .product-card {
@@ -1586,110 +1538,110 @@ h6 {
         height: 50px;
         font-size: 1.2rem;
     }
-    
+
     /* Улучшенная адаптация для мобильных */
     .product-card {
         margin-bottom: 1.5rem;
     }
-    
+
     .product-image {
         height: 220px;
     }
-    
+
     .product-content {
         padding: 1.25rem;
     }
-    
+
     .product-title {
         font-size: 1.1rem;
         line-height: 1.3;
     }
-    
+
     .product-actions {
         flex-direction: column;
         gap: 0.5rem;
     }
-    
+
     .product-actions .btn {
         font-size: 0.9rem;
         padding: 0.6rem 1rem;
     }
-    
+
     /* Модальные окна на мобильных */
     .modal-dialog {
         margin: 0.5rem;
     }
-    
+
     .modal-content {
         border-radius: 15px;
     }
-    
+
     .modal-body {
         padding: 1rem;
     }
-    
+
     /* Галерея изображений на мобильных */
     .main-image-container {
         height: 250px;
         margin-bottom: 10px;
     }
-    
+
     .thumbnail {
         width: 45px;
         height: 45px;
         margin: 2px;
     }
-    
+
     /* Instagram блок на мобильных */
     .promo-card {
         flex-direction: column;
         height: auto;
     }
-    
+
     .promo-image-part,
     .promo-text-part {
         width: 100%;
     }
-    
+
     .promo-image-part {
         height: 150px;
     }
-    
+
     .promo-text-part {
         padding: 15px;
     }
-    
+
     /* Форма заказа на мобильных */
     .order-summary {
         padding: 1rem;
         margin-bottom: 1rem;
     }
-    
+
     .order-item {
         font-size: 0.9rem;
     }
-    
+
     /* Консультация на мобильных */
     .consultation-card .row {
         flex-direction: column-reverse;
     }
-    
+
     .consultation-form {
         margin-top: 0;
         margin-bottom: 1rem;
     }
-    
+
     /* Навигация на мобильных */
     .navbar-nav {
         text-align: center;
         padding: 1rem 0;
     }
-    
+
     .navbar-nav .nav-link {
         padding: 0.75rem 1rem;
         font-size: 1.1rem;
     }
-    
+
     .navbar-contact {
         text-align: center;
         padding: 1rem 0;
@@ -1752,62 +1704,62 @@ h6 {
     .product-image {
         height: 180px;
     }
-    
+
     /* Дополнительная адаптация для очень маленьких экранов */
     .section-title {
         font-size: 1.75rem;
         line-height: 1.2;
     }
-    
+
     .section-subtitle {
         font-size: 1rem;
     }
-    
+
     .product-title {
         font-size: 1rem;
     }
-    
+
     .product-price {
         font-size: 1.3rem;
     }
-    
+
     .product-feature {
         font-size: 0.85rem;
     }
-    
+
     /* Карточки преимуществ */
     .advantage-item {
         padding: 0.75rem;
         margin-bottom: 1rem;
     }
-    
+
     .advantage-icon {
         width: 40px;
         height: 40px;
         font-size: 1rem;
     }
-    
+
     .advantage-item h4 {
         font-size: 1rem;
     }
-    
+
     /* Доставка */
     .delivery-card {
         padding: 1.5rem 1rem;
     }
-    
+
     .delivery-icon {
         width: 60px;
         height: 60px;
         font-size: 1.5rem;
     }
-    
+
     /* Отзывы */
     .screenshot-card {
         width: calc(50% - 0.5rem);
         max-width: 150px;
     }
-    
+
     .screenshot-card img {
         height: 45vh !important;
     }
@@ -1819,28 +1771,28 @@ h6 {
         padding-left: 10px;
         padding-right: 10px;
     }
-    
+
     .hero-title {
         font-size: 1.75rem !important;
     }
-    
+
     .hero-subtitle {
         font-size: 1rem;
     }
-    
+
     .hero-buttons .btn {
         font-size: 0.85rem;
         padding: 0.6rem 1rem;
     }
-    
+
     .product-card {
         margin-bottom: 1rem;
     }
-    
+
     .modal-dialog {
         margin: 0.25rem;
     }
-    
+
     .btn-consultation,
     .whatsapp-btn {
         font-size: 0.9rem;
@@ -1853,19 +1805,19 @@ h6 {
     .hero-title {
         font-size: 2.8rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.2rem;
     }
-    
+
     .product-image {
         height: 240px;
     }
-    
+
     .consultation-form {
         padding: 1.75rem;
     }
-    
+
     .modal-lg {
         max-width: 90%;
     }
@@ -2227,6 +2179,7 @@ h6 {
         transform: translateX(100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -2238,6 +2191,7 @@ h6 {
         transform: translateX(0);
         opacity: 1;
     }
+
     to {
         transform: translateX(100%);
         opacity: 0;

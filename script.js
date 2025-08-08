@@ -40,19 +40,6 @@ function initSmoothAnimations() {
     });
 }
 
-// Preloader
-window.addEventListener('load', function() {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(() => {
-            preloader.classList.add('hidden');
-            setTimeout(() => {
-                preloader.remove();
-            }, 500);
-        }, 1000);
-    }
-});
-
 
 // Navbar scroll effect
 window.addEventListener('scroll', function() {
@@ -989,7 +976,7 @@ function submitConsultationForm() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            showNotification('Заявка отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+            showNotification('Спасибо, что выбрали нас! Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.', 'success');
             document.getElementById('consultationForm').reset();
         } else {
             showNotification(data.message || 'Произошла ошибка при отправке', 'error');

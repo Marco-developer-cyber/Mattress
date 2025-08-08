@@ -17,7 +17,7 @@
     <meta name="geo.region" content="KZ-ZHA">
     <meta name="geo.placename" content="Алмата">
     <link rel="canonical" href="https://territoria-sna.kz/">
-    
+
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
@@ -93,26 +93,16 @@
         rel="stylesheet" media="print" onload="this.media='all'">
 
     <link rel="icon" href="img/favicon.png">
+    <link rel="preload" href="/path/to/font.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/path/to/first-image.jpg" as="image">
+
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div class="preloader d-flex align-items-center justify-content-center" id="preloader">
-        <div class="preloader-content">
-            <a href="">
-                <img src="img/logo-text-blue.png" alt="Территория Сна" class="preloader-logo">
-            </a>
-            <div class="preloader-spinner">
-                <svg viewBox="25 25 50 50">
-                    <circle r="20" cy="50" cx="50"></circle>
-                </svg>
-            </div>
-            <p class="preloader-text">Загружаем лучшие матрасы...</p>
-        </div>
-    </div>
+   
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
@@ -165,10 +155,10 @@
 
         <div class="carousel-inner">
 
-             <!-- Баннер 1 -->
+            <!-- Баннер 1 -->
             <div class="carousel-item active">
                 <div class="banner-img-wrapper">
-                    <img src="img/bg/mobile-bg-3.png" class="banner-img" alt="Баннер 1">
+                    <img src="img/bg/mobile-bg-3.webp" class="banner-img" alt="Баннер 1">
                 </div>
                 <div class="carousel-caption text-start">
                     <h2 class="banner-title bn-1">Ортопедические матрасы Алматы</h2>
@@ -184,7 +174,7 @@
             <!-- Баннер 2 -->
             <div class="carousel-item">
                 <div class="banner-img-wrapper">
-                    <img src="img/bg/mobile-bg-1.png" class="d-block w-100 banner-img" alt="Баннер 2">
+                    <img src="img/bg/mobile-bg-1.webp" class="d-block w-100 banner-img" alt="Баннер 2">
                 </div>
                 <div class="carousel-caption text-start">
                     <h1 class="banner-title">Эксперимент с яйцом пройден</h1>
@@ -193,7 +183,8 @@
                         <a href="#consultation" class="btn btn-outline-light bg-danger w-75">Забрать подароки и скидки
                             <i class="fas fa-gift"></i></a>
                         <a href="https://www.instagram.com/reel/DK9b1WGN30H/"
-                            class="btn btn-primary rounded-5 mt-2 w-auto"><i class="fas fa-play"></i> Тест-яйца</a>
+                            class="btn btn-primary rounded-5 mt-2 w-auto"><i class="fas fa-play"></i> Сотреть
+                            эксперимент</a>
                     </div>
                 </div>
             </div>
@@ -202,7 +193,7 @@
             <!-- Баннер 3 -->
             <div class="carousel-item">
                 <div class="banner-img-wrapper">
-                    <img src="img/bg/mobile-bg-2.png" class="d-block w-100 banner-img" alt="Баннер 3">
+                    <img src="img/bg/mobile-bg-2.webp" class="d-block w-100 banner-img" alt="Баннер 3">
                 </div>
                 <div class="carousel-caption text-start">
                     <h2 class="banner-title">Эксперимент со стаканом пройден</h2>
@@ -214,7 +205,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
 
@@ -236,7 +227,7 @@
                 <div class="carousel-item active bg-slide-1">
                     <div class="container hero-content">
                         <div class="row align-items-center">
-                            <div class="col-lg-10 hero-items ">
+                            <div class="col-lg-10 hero-items ms-md-5 ">
                                 <h1 class="hero-title">Эксперимент с яйцом пройден</h1>
                                 <p class="hero-subtitle">На всех наших матрасах этот тест удался</p>
                                 <div class="hero-features d-none d-sm-flex">
@@ -261,7 +252,7 @@
                 <div class="carousel-item bg-slide-2">
                     <div class="container hero-content">
                         <div class="row align-items-center">
-                            <div class="col-lg-10 hero-items">
+                            <div class="col-lg-10 hero-items ms-md-5">
                                 <h1 class="hero-title">Эксперимент со стаканом пройден</h1>
                                 <p class="hero-subtitle">Рядом с вами могут прыгать — вы даже не почувствуете</p>
                                 <div class="hero-features d-none d-sm-flex">
@@ -286,7 +277,7 @@
                 <div class="carousel-item bg-slide-3">
                     <div class="container hero-content">
                         <div class="row align-items-center">
-                            <div class="col-lg-10 hero-items">
+                            <div class="col-lg-10 hero-items ms-md-5">
                                 <h1 class="hero-title">Ортопедические матрасы Алматы</h1>
                                 <p class="hero-subtitle">💬 Скидки до −70% и водозащитный наматрасник и подушка с
                                     памятью в подарок 🎁</p>
@@ -325,7 +316,7 @@
 
 
     <!-- Advantages Section -->
-    <section id="advantages" class="advantages-section py-5">
+    <section id="advantages" class="advantages-section py-5 ms-4">
         <div class="container">
             <div class="row align-items-center">
                 <h2 class="section-title text-center mb-4">Почему выбирают нас</h2>
@@ -374,15 +365,16 @@
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="img/bg/a_beautiful_young_kazakh_woman_in_traditional_embroidered_dress_redblue_with_gold_patterns_joyfully_g37hqv5sm03gpinaiwnb_1 - Copy.png"
-                        alt="Производство металлопластиковых окон" loading="lazy" class="img-fluid rounded shadow advantage-img">
+                    <img src="img/bg/a_beautiful_young_kazakh_woman_in_traditional_embroidered_dress_redblue_with_gold_patterns_joyfully_g37hqv5sm03gpinaiwnb_1 - Copy.webp"
+                        alt="Производство металлопластиковых окон" loading="lazy"
+                        class="img-fluid rounded shadow advantage-img">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about-section py-5">
+    <section id="about" class="about-section py-5 ms-4">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -453,7 +445,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image">
-                        <img src="img/bg/about-bg.JPG" loading="lazy" alt="Производство ортопедических матрасов"
+                        <img src="img/bg/about-bg.webp" loading="lazy" alt="Производство ортопедических матрасов"
                             class="img-fluid rounded">
                     </div>
                 </div>
@@ -519,14 +511,14 @@
                     <p class="section-subtitle">Выберите свой идеальный матрас</p>
                 </div>
             </div>
-            <div class="row justify-content-center" id="products-container">
+            <div class="row justify-content-center ms-1" id="products-container">
                 <!-- Products will be loaded from JSON -->
             </div>
         </div>
     </section>
 
     <!-- Consultation Form Section -->
-    <section id="consultation" class="consultation-section py-5">
+    <section id="consultation" class="consultation-section py-5 ms-4">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
@@ -588,9 +580,9 @@
     </section>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="reviews-section py-5">
+    <section id="reviews" class="reviews-section py-5 ">
         <div class="container">
-            <div class="row mb-3 align-items-center">
+            <div class="row ms-1 mb-3 align-items-center">
                 <div class="col-12 text-center">
                     <h2 class="section-title">Отзывы наших покупателей</h2>
                     <p class="section-subtitle">Скриншоты отзывов из телефона</p>
@@ -645,7 +637,7 @@
     </div>
 
     <!-- Delivery Section -->
-    <section id="delivery" class="delivery-section py-5">
+    <section id="delivery" class="delivery-section py-5 ms-4">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
@@ -686,7 +678,7 @@
     </section>
 
     <!-- Map Section -->
-    <section id="map" class="map-section py-5">
+    <section id="map" class="map-section py-5 ms-4">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
