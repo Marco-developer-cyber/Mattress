@@ -239,7 +239,7 @@ function createProductCard(product, index) {
     col.innerHTML = `
         <div class="product-card" onclick="openProductFromUrl(${product.id})" data-product-url="${productUrl}">
             <div class="product-image">
-                <img src="${productImage}" loading="lazy" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
+                <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
                 <button class="product-test-btn" onclick="event.stopPropagation(); showProductModal(${product.id})">
                     <i class="fas fa-play"></i> Тест
                 </button>
@@ -425,7 +425,7 @@ function showProductModal(productId) {
     modalBody.innerHTML = `
         <div class="row">
             <div class="col-md-6">
-                <img src="${productImage}" loading="lazy" alt="${product.name}" 
+                <img src="${productImage}" alt="${product.name}" 
                      class="img-fluid rounded mb-3" 
                      onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
                 
@@ -454,7 +454,7 @@ function showProductModal(productId) {
                 <div class="instagram-promo-container">
                     <div class="promo-card">
                         <div class="promo-image-part">
-                            <img src="${productImage}" loading="lazy" alt="Обзор матраса" class="img-fluid h-100">
+                            <img src="${productImage}" alt="Обзор матраса" class="img-fluid h-100">
                         </div>
                         <div class="promo-text-part">
                             <div class="promo-icon">
@@ -544,7 +544,6 @@ function showProductDetails(productId) {
                     <img src="${productImage}" 
                          alt="${product.name}" 
                          class="img-fluid rounded main-product-image"
-                         loading="lazy"
                          id="mainProductImage"
                          onerror="this.src='https://via.placeholder.com/600x400?text=Image+Error'">
                 </div>
@@ -557,7 +556,6 @@ function showProductDetails(productId) {
                             <img src="${img}" 
                                  alt="Thumbnail ${index + 1}" 
                                  class="img-thumbnail"
-                                 loading="lazy"
                                  onerror="this.src='https://via.placeholder.com/100x100?text=Thumb'">
                         </div>
                     `).join('')}
@@ -798,8 +796,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Submit order via PHP
-async function submitOrder() {
+// Submit order to WhatsApp
+function submitOrder() {
     if (!currentOrderProduct || !currentOrderSize) return;
     
     const name = document.getElementById('customerName').value.trim();
@@ -811,63 +809,42 @@ async function submitOrder() {
         return;
     }
     
-    // Show loading state
-    const submitBtn = document.querySelector('.whatsapp-btn');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем заказ...';
-    submitBtn.disabled = true;
+    // Create WhatsApp message
+    let message = `🛏️ *НОВЫЙ ЗАКАЗ*\n\n`;
+    message += `👤 *Клиент:* ${name}\n`;
+    message += `📱 *Телефон:* ${phone}\n\n`;
+    message += `🛏️ *Товар:* ${currentOrderProduct.name}\n`;
+    message += `📏 *Размер:* ${currentOrderSize.name}\n`;
+    message += `💰 *Цена:* ${currentOrderSize.price.toLocaleString()} ₸\n`;
     
-    try {
-        const response = await fetch('send_order.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name,
-                phone: phone,
-                product_name: currentOrderProduct.name,
-                size: currentOrderSize.name,
-                price: currentOrderSize.price.toLocaleString() + ' ₸',
-                original_price: currentOrderSize.originalPrice ? currentOrderSize.originalPrice.toLocaleString() + ' ₸' : '',
-                comment: comment
-            })
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            // Close modal and show success message
-            const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
-            if (orderModal) {
-                orderModal.hide();
-            }
-            
-            // Reset form
-            document.getElementById('orderForm').reset();
-            
-            // Show success notification
-            showSuccessNotification();
-            
-            // Also open WhatsApp as backup
-            const whatsappMessage = `🛏️ Заказ: ${currentOrderProduct.name}, размер ${currentOrderSize.name}, цена ${currentOrderSize.price.toLocaleString()} ₸`;
-            const whatsappUrl = `https://wa.me/77758747861?text=${encodeURIComponent(whatsappMessage)}`;
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-            }, 1000);
-            
-        } else {
-            alert(result.message || 'Произошла ошибка при отправке заказа');
-        }
-        
-    } catch (error) {
-        console.error('Error sending order:', error);
-        alert('Произошла ошибка при отправке заказа. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
-    } finally {
-        // Restore button
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
+    if (currentOrderSize.originalPrice) {
+        const discount = currentOrderSize.originalPrice - currentOrderSize.price;
+        message += `🔥 *Скидка:* ${discount.toLocaleString()} ₸\n`;
     }
+    
+    message += `🎁 *Подарок:* Наматрасник\n\n`;
+    
+    if (comment) {
+        message += `💬 *Комментарий:* ${comment}\n\n`;
+    }
+    
+    message += `⏰ *Время заказа:* ${new Date().toLocaleString('ru-RU')}`;
+    
+    // Open WhatsApp
+    const whatsappUrl = `https://wa.me/77758747861?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    // Close modal and show success message
+    const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
+    if (orderModal) {
+        orderModal.hide();
+    }
+    
+    // Reset form
+    document.getElementById('orderForm').reset();
+    
+    // Show success notification
+    showSuccessNotification();
 }
 
 // Show success notification
@@ -982,6 +959,92 @@ document.head.appendChild(style);
 // Initialize floating animations
 document.addEventListener('DOMContentLoaded', addFloatingAnimation);
 
+// Submit consultation form to Telegram
+function submitConsultationForm() {
+    const name = document.getElementById('consultationName').value.trim();
+    const phone = document.getElementById('consultationPhone').value.trim();
+    
+    if (!name || !phone) {
+        showNotification('Пожалуйста, заполните все обязательные поля', 'error');
+        return;
+    }
+    
+    // Показываем индикатор загрузки
+    const submitButton = document.querySelector('#consultationForm button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...';
+    submitButton.disabled = true;
+    
+    // Отправляем данные в PHP скрипт
+    fetch('send_telegram.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: name,
+            phone: phone
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showNotification('Заявка отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+            document.getElementById('consultationForm').reset();
+        } else {
+            showNotification(data.message || 'Произошла ошибка при отправке', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('Произошла ошибка при отправке. Попробуйте позже.', 'error');
+    })
+    .finally(() => {
+        // Восстанавливаем кнопку
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+    });
+}
+
+// Show notification function
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `alert alert-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} position-fixed`;
+    notification.style.cssText = `
+        top: 100px;
+        right: 20px;
+        z-index: 9999;
+        min-width: 300px;
+        max-width: 400px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border-radius: 8px;
+        animation: slideInRight 0.3s ease-out;
+    `;
+    
+    const icon = type === 'error' ? 'fas fa-exclamation-circle' : 
+                 type === 'success' ? 'fas fa-check-circle' : 'fas fa-info-circle';
+    
+    notification.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="${icon} me-2"></i>
+            <div>
+                <div>${message}</div>
+            </div>
+            <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Автоматически удаляем через 5 секунд
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.style.animation = 'slideOutRight 0.3s ease-in';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 5000);
+}
+
 // Consultation form handling
 document.addEventListener('DOMContentLoaded', function() {
     const consultationForm = document.getElementById('consultationForm');
@@ -1009,90 +1072,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Submit consultation form via PHP
-async function submitConsultationForm() {
-    const name = document.getElementById('consultationName').value.trim();
-    const phone = document.getElementById('consultationPhone').value.trim();
-    
-    if (!name || !phone) {
-        alert('Пожалуйста, заполните все обязательные поля');
-        return;
-    }
-    
-    // Show loading state
-    const submitBtn = document.querySelector('.btn-consultation');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...';
-    submitBtn.disabled = true;
-    
-    try {
-        const response = await fetch('send_consultation.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name,
-                phone: phone
-            })
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            // Reset form and show success
-            consultationForm.reset();
-            showConsultationSuccess();
-        } else {
-            alert(result.message || 'Произошла ошибка при отправке заявки');
-        }
-        
-    } catch (error) {
-        console.error('Error sending consultation:', error);
-        alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
-    } finally {
-        // Restore button
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }
-}
-
-// Show consultation success notification
-function showConsultationSuccess() {
-    const notification = document.createElement('div');
-    notification.className = 'alert alert-success position-fixed';
-    notification.style.cssText = `
-        top: 100px;
-        right: 20px;
-        z-index: 9999;
-        min-width: 350px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        border-radius: 10px;
-    `;
-    notification.innerHTML = `
-        <div class="d-flex align-items-center">
-            <i class="fas fa-check-circle me-3" style="font-size: 1.5rem; color: #28a745;"></i>
-            <div>
-                <strong>Заявка отправлена!</strong><br>
-                <small>Наш специалист свяжется с вами в течение 5 минут</small>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Add entrance animation
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-        notification.style.opacity = '1';
-    }, 100);
-    
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        notification.style.opacity = '0';
-        setTimeout(() => notification.remove(), 300);
-    }, 5000);
-}
 
 // Performance optimizations
 function optimizePerformance() {
@@ -1146,8 +1125,8 @@ function resetUrl() {
     window.history.pushState({}, '', baseUrl);
     
     // Сброс мета-тегов к базовым значениям
-    document.title = 'Территория Сна - Ортопедические матрасы от производителя в Алмате | Купить матрас с доставкой';
-    updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Алмате');
+    document.title = 'Территория Сна - Ортопедические матрасы от производителя в Таразе | Купить матрас с доставкой';
+    updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Таразе');
     updateMetaTag('og:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет ✅ Доказываем качество!');
     updateMetaTag('og:url', baseUrl);
     updateMetaTag('twitter:title', 'Территория Сна - Ортопедические матрасы от производителя');

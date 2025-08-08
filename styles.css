@@ -184,15 +184,14 @@ h6 {
 }
 .banner-title {
     /* width:40% !important; */
-    font-size: 3rem !important;
+    font-size: 2.8rem !important;
     font-weight: 700;
     margin-bottom: 20px;
     color:rgb(255, 230, 9);
     z-index: 100;
+    width: 50% !important;
 }
-.bn-1 {
-    color: white;
-}
+
 .banner-text-md {
     font-size: 1.3rem !important;
     margin-bottom: 15px;
@@ -207,7 +206,7 @@ h6 {
 .banner-buttons {
     text-align: center;
     position: absolute;
-    bottom: 10%;
+    bottom: 15%;
     left: 11%;
     z-index: 10;
 }
@@ -297,6 +296,7 @@ h6 {
     font-size: 3.2rem !important;
     font-weight: 700;
     margin-bottom: 1rem;
+    color:rgb(255, 230, 9);
 }
 
 .hero-subtitle {
@@ -2219,4 +2219,70 @@ h6 {
         width: 50px;
         height: 50px;
     }
+}
+
+/* Notification animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Form loading state */
+.consultation-form button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Notification styles */
+.alert.position-fixed {
+    animation: slideInRight 0.3s ease-out;
+}
+
+.alert .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.alert .btn-close:hover {
+    opacity: 1;
+}
+
+/* Success notification */
+.alert-success {
+    background-color: #d1edff;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+/* Error notification */
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Info notification */
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
 }
