@@ -51,6 +51,40 @@ h6 {
     overflow-x: hidden;
 }
 
+/* Dropdown menu styles */
+.navbar .dropdown-menu {
+    background: rgba(0, 119, 204, 0.98);
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-top: 0.5rem;
+}
+
+.navbar .dropdown-item {
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.navbar .dropdown-item:hover {
+    background: rgba(255, 215, 0, 0.2);
+    color: var(--accent-color);
+}
+
+.navbar .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.2);
+    margin: 0.5rem 0;
+}
+
+.navbar .nav-link.active {
+    color: var(--accent-color) !important;
+    font-weight: 600;
+}
+
+.navbar .nav-link.dropdown-toggle::after {
+    margin-left: 0.5rem;
+}
 
 /* Burger Menu Styles */
 .burger-menu {
@@ -1439,6 +1473,24 @@ h6 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
+    /* Dropdown menu on mobile */
+    .navbar .dropdown-menu {
+        background: rgba(0, 119, 204, 0.98);
+        border: none;
+        box-shadow: none;
+        margin-top: 0;
+        padding: 0;
+    }
+    
+    .navbar .dropdown-item {
+        padding: 0.75rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar .dropdown-item:last-child {
+        border-bottom: none;
+    }
 
     /* Мобильная адаптация карусели */
     .carousel-item {

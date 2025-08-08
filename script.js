@@ -1,8 +1,309 @@
 // Initialize AOS (Animate On Scroll)
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize URL routing
+    initUrlRouting();
+    
     // Initialize smooth animations
     initSmoothAnimations();
 });
+
+// URL Routing System
+function initUrlRouting() {
+    // Handle initial page load
+    handleRoute();
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', handleRoute);
+    
+    // Handle navigation clicks
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href^="/"]');
+        if (link && !link.hasAttribute('target')) {
+            e.preventDefault();
+            const url = link.getAttribute('href');
+            navigateTo(url);
+        }
+    });
+}
+
+// Navigate to URL
+function navigateTo(url) {
+    window.history.pushState({}, '', url);
+    handleRoute();
+    updateMetaForRoute(url);
+}
+
+// Handle current route
+function handleRoute() {
+    const path = window.location.pathname;
+    const hash = window.location.hash;
+    
+    // Hide all sections first
+    hideAllSections();
+    
+    // Show relevant sections based on route
+    switch(path) {
+        case '/':
+            showHomePage();
+            break;
+        case '/about':
+            showAboutPage();
+            break;
+        case '/catalog':
+            showCatalogPage();
+            break;
+        case '/catalog/children':
+            showCatalogPage('children');
+            break;
+        case '/catalog/dependent':
+            showCatalogPage('dependent');
+            break;
+        case '/catalog/independent':
+            showCatalogPage('independent');
+            break;
+        case '/catalog/springless':
+            showCatalogPage('springless');
+            break;
+        case '/consultation':
+            showConsultationPage();
+            break;
+        case '/reviews':
+            showReviewsPage();
+            break;
+        case '/delivery':
+            showDeliveryPage();
+            break;
+        case '/contacts':
+            showContactsPage();
+            break;
+        default:
+            // Handle product URLs or show 404
+            if (path.startsWith('/product/') || hash.startsWith('#product-')) {
+                showHomePage();
+                // Handle product display
+                if (hash.startsWith('#product-')) {
+                    const productMatch = hash.match(/#product-(\d+)-/);
+                    if (productMatch) {
+                        const productId = parseInt(productMatch[1]);
+                        setTimeout(() => showProductDetails(productId), 500);
+                    }
+                }
+            } else {
+                showHomePage();
+            }
+    }
+    
+    // Update active navigation
+    updateActiveNavigation(path);
+}
+
+// Hide all sections
+function hideAllSections() {
+    const sections = document.querySelectorAll('section, .carousel');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+}
+
+// Show home page
+function showHomePage() {
+    document.getElementById('mainCarousel').style.display = 'block';
+    document.querySelector('#hero').style.display = 'block';
+    document.querySelector('#about').style.display = 'block';
+    document.querySelector('#about-details').style.display = 'block';
+    document.querySelector('#catalog').style.display = 'block';
+    document.querySelector('#consultation').style.display = 'block';
+    document.querySelector('#reviews').style.display = 'block';
+    document.querySelector('#delivery').style.display = 'block';
+    document.querySelector('#contacts').style.display = 'block';
+    
+    updatePageTitle('Территория Сна - Ортопедические матрасы от производителя в Алмате');
+    updatePageDescription('✅ Ортопедические матрасы от производителя в Алмате ✅ Бесплатная доставка ✅ Гарантия до 10 лет ✅ Доказываем качество через эксперименты!');
+}
+
+// Show about page
+function showAboutPage() {
+    document.querySelector('#about').style.display = 'block';
+    document.querySelector('#about-details').style.display = 'block';
+    
+    updatePageTitle('О нас - Территория Сна | Производитель ортопедических матрасов');
+    updatePageDescription('Узнайте больше о компании Территория Сна - казахстанском производителе ортопедических матрасов. Наши преимущества, сертификаты и гарантии качества.');
+    
+    // Scroll to about section
+    setTimeout(() => {
+        document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+}
+
+// Show catalog page
+function showCatalogPage(category = null) {
+    document.querySelector('#catalog').style.display = 'block';
+    
+    if (category) {
+        const categoryNames = {
+            'children': 'Детские матрасы',
+            'dependent': 'Матрасы с зависимыми пружинами', 
+            'independent': 'Матрасы с независимыми пружинами',
+            'springless': 'Беспружинные матрасы'
+        };
+        
+        updatePageTitle(`${categoryNames[category]} - Территория Сна`);
+        updatePageDescription(`Купить ${categoryNames[category].toLowerCase()} от производителя в Алмате. Бесплатная доставка, гарантия качества.`);
+        
+        // Filter products by category
+        setTimeout(() => {
+            filterProductsByCategory(category);
+            document.querySelector('#catalog').scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    } else {
+        updatePageTitle('Каталог матрасов - Территория Сна');
+        updatePageDescription('Полный каталог ортопедических матрасов от производителя. Детские, пружинные и беспружинные матрасы с доставкой по Алмате.');
+        
+        setTimeout(() => {
+            showAllCategories();
+            document.querySelector('#catalog').scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    }
+}
+
+// Show consultation page
+function showConsultationPage() {
+    document.querySelector('#consultation').style.display = 'block';
+    
+    updatePageTitle('Бесплатная консультация - Территория Сна');
+    updatePageDescription('Получите бесплатную консультацию по выбору ортопедического матраса. Наши эксперты помогут подобрать идеальный матрас для вас.');
+    
+    setTimeout(() => {
+        document.querySelector('#consultation').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+}
+
+// Show reviews page
+function showReviewsPage() {
+    document.querySelector('#reviews').style.display = 'block';
+    
+    updatePageTitle('Отзывы покупателей - Территория Сна');
+    updatePageDescription('Читайте реальные отзывы наших покупателей о качестве ортопедических матрасов Территория Сна.');
+    
+    setTimeout(() => {
+        document.querySelector('#reviews').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+}
+
+// Show delivery page
+function showDeliveryPage() {
+    document.querySelector('#delivery').style.display = 'block';
+    
+    updatePageTitle('Доставка и оплата - Территория Сна');
+    updatePageDescription('Условия доставки ортопедических матрасов по Алмате. Бесплатная доставка, удобные способы оплаты, возврат в течение 14 дней.');
+    
+    setTimeout(() => {
+        document.querySelector('#delivery').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+}
+
+// Show contacts page
+function showContactsPage() {
+    document.querySelector('#contacts').style.display = 'block';
+    
+    updatePageTitle('Контакты - Территория Сна');
+    updatePageDescription('Контактная информация производителя ортопедических матрасов Территория Сна в Алмате. Адрес, телефон, карта проезда.');
+    
+    setTimeout(() => {
+        document.querySelector('#contacts').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+}
+
+// Filter products by category
+function filterProductsByCategory(category) {
+    const container = document.getElementById('products-container');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    const categoryNames = {
+        'children': 'Детские матрасы',
+        'dependent': 'Матрасы с зависимыми пружинами',
+        'independent': 'Матрасы с независимыми пружинами',
+        'springless': 'Беспружинные матрасы'
+    };
+    
+    // Create category header
+    const categoryHeader = document.createElement('div');
+    categoryHeader.className = 'col-12 mb-4';
+    categoryHeader.innerHTML = `
+        <h3 class="category-title">${categoryNames[category]}</h3>
+        <hr class="category-divider">
+    `;
+    container.appendChild(categoryHeader);
+    
+    // Filter and display products
+    const filteredProducts = products.filter(product => product.category === category);
+    
+    if (filteredProducts.length > 0) {
+        const cardsContainer = document.createElement('div');
+        cardsContainer.className = 'row';
+        container.appendChild(cardsContainer);
+        
+        filteredProducts.forEach((product, index) => {
+            const productCard = createProductCard(product, index);
+            cardsContainer.appendChild(productCard);
+        });
+    } else {
+        container.innerHTML += `
+            <div class="col-12 text-center">
+                <p class="text-muted">В данной категории пока нет товаров</p>
+                <a href="/catalog" class="btn btn-primary">Посмотреть весь каталог</a>
+            </div>
+        `;
+    }
+}
+
+// Show all categories
+function showAllCategories() {
+    loadProducts(); // This will show all products grouped by categories
+}
+
+// Update active navigation
+function updateActiveNavigation(path) {
+    // Remove active class from all nav links
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Add active class to current page
+    const currentLink = document.querySelector(`.navbar-nav .nav-link[href="${path}"]`);
+    if (currentLink) {
+        currentLink.classList.add('active');
+    } else if (path.startsWith('/catalog/')) {
+        // Highlight catalog dropdown for category pages
+        const catalogLink = document.querySelector('.navbar-nav .nav-link[href="/catalog"]');
+        if (catalogLink) {
+            catalogLink.classList.add('active');
+        }
+    }
+}
+
+// Update page title and meta
+function updatePageTitle(title) {
+    document.title = title;
+    updateMetaTag('og:title', title);
+    updateMetaTag('twitter:title', title);
+}
+
+// Update page description
+function updatePageDescription(description) {
+    updateMetaTag('description', description);
+    updateMetaTag('og:description', description);
+    updateMetaTag('twitter:description', description);
+}
+
+// Update meta for specific route
+function updateMetaForRoute(url) {
+    const fullUrl = `${window.location.origin}${url}`;
+    updateMetaTag('og:url', fullUrl);
+    updateMetaTag('canonical', fullUrl);
+}
 
 // Smooth animations system
 function initSmoothAnimations() {
@@ -221,7 +522,7 @@ function createProductCard(product, index) {
     
     // Create unique URL for product with SEO-friendly slug
     const productSlug = createProductSlug(product.name);
-    const productUrl = `${window.location.origin}${window.location.pathname}#product-${product.id}-${productSlug}`;
+    const productUrl = `/product/${product.id}/${productSlug}`;
     
     col.innerHTML = `
         <div class="product-card" onclick="openProductFromUrl(${product.id})" data-product-url="${productUrl}">
@@ -279,7 +580,7 @@ function openProductFromUrl(productId) {
     
     // Create SEO-friendly URL
     const productSlug = createProductSlug(product.name);
-    const newUrl = `${window.location.origin}${window.location.pathname}#product-${productId}-${productSlug}`;
+    const newUrl = `/product/${productId}/${productSlug}`;
     window.history.pushState({productId}, '', newUrl);
     
     // Update social sharing meta tags
@@ -295,7 +596,7 @@ function updateMetaTags(productId) {
     if (!product) return;
     
     const productSlug = createProductSlug(product.name);
-    const productUrl = `${window.location.origin}${window.location.pathname}#product-${productId}-${productSlug}`;
+    const productUrl = `${window.location.origin}/product/${productId}/${productSlug}`;
     const productImage = product.images && product.images.length > 0 ? product.images[0] : '';
     
     // Update Open Graph tags
@@ -333,38 +634,15 @@ function updateMetaTag(property, content) {
 }
 // Handle URL changes
 window.addEventListener('popstate', function(event) {
-    if (event.state && event.state.productId) {
-        showProductDetails(event.state.productId);
-    } else {
-        // Handle direct URL access with new format
-        const hash = window.location.hash;
-        if (hash.startsWith('#product-')) {
-            const productMatch = hash.match(/#product-(\d+)-/);
-            if (productMatch) {
-                const productId = parseInt(productMatch[1]);
-                if (productId) {
-                    showProductDetails(productId);
-                }
-            }
-        }
-    }
+    handleRoute();
 });
 
 // Check URL on page load
 document.addEventListener('DOMContentLoaded', function() {
-    const hash = window.location.hash;
-    if (hash.startsWith('#product-')) {
-        // Extract product ID from new format: #product-id-name
-        const productMatch = hash.match(/#product-(\d+)-/);
-        if (productMatch) {
-            const productId = parseInt(productMatch[1]);
-            if (productId) {
-                setTimeout(() => {
-                    showProductDetails(productId);
-                }, 1000);
-            }
-        }
-    }
+    // Handle route after products are loaded
+    setTimeout(() => {
+        handleRoute();
+    }, 1000);
 });
 
 // Generate stars for rating
@@ -396,7 +674,7 @@ function showProductModal(productId) {
     
     // Update URL with product slug for test modal
     const productSlug = createProductSlug(product.name);
-    const newUrl = `${window.location.origin}${window.location.pathname}#product-${productId}-${productSlug}-test`;
+    const newUrl = `/product/${productId}/${productSlug}/test`;
     window.history.pushState({productId, type: 'test'}, '', newUrl);
     
     const modal = new bootstrap.Modal(document.getElementById('productModal'));
@@ -498,7 +776,13 @@ function showProductModal(productId) {
     
     // Обработчик закрытия модала
     modal._element.addEventListener('hidden.bs.modal', function() {
-        resetUrl();
+        // Return to previous page or catalog
+        const referrer = document.referrer;
+        if (referrer && referrer.includes(window.location.origin)) {
+            window.history.back();
+        } else {
+            navigateTo('/catalog');
+        }
     }, { once: true });
 }
 
@@ -509,7 +793,7 @@ function showProductDetails(productId) {
     
     // Update URL with product slug
     const productSlug = createProductSlug(product.name);
-    const newUrl = `${window.location.origin}${window.location.pathname}#product-${productId}-${productSlug}`;
+    const newUrl = `/product/${productId}/${productSlug}`;
     window.history.pushState({productId}, '', newUrl);
     
     // Update meta tags
@@ -597,7 +881,13 @@ function showProductDetails(productId) {
     
     // Обработчик закрытия модала
     modal._element.addEventListener('hidden.bs.modal', function() {
-        resetUrl();
+        // Return to previous page or catalog
+        const referrer = document.referrer;
+        if (referrer && referrer.includes(window.location.origin)) {
+            window.history.back();
+        } else {
+            navigateTo('/catalog');
+        }
     }, { once: true });
 }
 
@@ -714,7 +1004,13 @@ function openOrderModal(productId) {
     
     // Обработчик закрытия модала заказа
     orderModal._element.addEventListener('hidden.bs.modal', function() {
-        resetUrl();
+        // Return to previous page or catalog
+        const referrer = document.referrer;
+        if (referrer && referrer.includes(window.location.origin)) {
+            window.history.back();
+        } else {
+            navigateTo('/catalog');
+        }
     }, { once: true });
 }
 
@@ -1106,20 +1402,6 @@ function createProductSlug(name) {
         .trim('-');
 }
 document.addEventListener('DOMContentLoaded', function() {
-// Функция для сброса URL к базовому состоянию
-function resetUrl() {
-    const baseUrl = `${window.location.origin}${window.location.pathname}`;
-    window.history.pushState({}, '', baseUrl);
-    
-    // Сброс мета-тегов к базовым значениям
-    document.title = 'Территория Сна - Ортопедические матрасы от производителя в Таразе | Купить матрас с доставкой';
-    updateMetaTag('og:title', 'Территория Сна - Ортопедические матрасы от производителя в Таразе');
-    updateMetaTag('og:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет ✅ Доказываем качество!');
-    updateMetaTag('og:url', baseUrl);
-    updateMetaTag('twitter:title', 'Территория Сна - Ортопедические матрасы от производителя');
-    updateMetaTag('twitter:description', '✅ Ортопедические матрасы от производителя ✅ Бесплатная доставка ✅ Гарантия до 10 лет');
-}
-
     const burger = document.querySelector('.burger-menu');
     const navbar = document.getElementById('navbarNav');
     
