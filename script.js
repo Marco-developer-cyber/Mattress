@@ -950,7 +950,7 @@ document.addEventListener('DOMContentLoaded', addFloatingAnimation);
 function submitConsultationForm() {
     const name = document.getElementById('consultationName').value.trim();
     const phone = document.getElementById('consultationPhone').value.trim();
-    
+
     if (!name || !phone) {
         showNotification('Пожалуйста, заполните все обязательные поля', 'error');
         return;

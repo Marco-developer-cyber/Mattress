@@ -93,9 +93,6 @@
         rel="stylesheet" media="print" onload="this.media='all'">
 
     <link rel="icon" href="img/favicon.png">
-    <link rel="preload" href="/path/to/font.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/path/to/first-image.jpg" as="image">
-
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -227,7 +224,7 @@
                 <div class="carousel-item active bg-slide-1">
                     <div class="container hero-content">
                         <div class="row align-items-center">
-                            <div class="col-lg-10 hero-items ms-md-5 ">
+                            <div class="col-lg-10 hero-items ">
                                 <h1 class="hero-title">Эксперимент с яйцом пройден</h1>
                                 <p class="hero-subtitle">На всех наших матрасах этот тест удался</p>
                                 <div class="hero-features d-none d-sm-flex">
@@ -316,7 +313,7 @@
 
 
     <!-- Advantages Section -->
-    <section id="advantages" class="advantages-section py-5 ms-4">
+    <section id="advantages" class="advantages-section py-5 ">
         <div class="container">
             <div class="row align-items-center">
                 <h2 class="section-title text-center mb-4">Почему выбирают нас</h2>
@@ -374,7 +371,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about-section py-5 ms-4">
+    <section id="about" class="about-section py-5 ">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -511,14 +508,14 @@
                     <p class="section-subtitle">Выберите свой идеальный матрас</p>
                 </div>
             </div>
-            <div class="row justify-content-center ms-1" id="products-container">
+            <div class="row justify-content-center" id="products-container">
                 <!-- Products will be loaded from JSON -->
             </div>
         </div>
     </section>
 
     <!-- Consultation Form Section -->
-    <section id="consultation" class="consultation-section py-5 ms-4">
+    <section id="consultation" class="consultation-section py-5 ">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
@@ -556,7 +553,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="consultationPhone" class="form-label">Номер телефона *</label>
-                                            <input type="tel" class="form-control" id="consultationPhone" required
+                                            <input type="tel" class="form-control" value="+7"  id="consultationPhone" required
                                                 placeholder="+7 (___) ___-__-__">
                                         </div>
                                         <div class="d-grid">
@@ -799,7 +796,7 @@
                                 <label for="customerPhone" class="form-label">
                                     <i class="fas fa-phone"></i> Номер телефона *
                                 </label>
-                                <input type="tel" class="form-control" id="customerPhone" required
+                                <input type="tel" class="form-control" value="+7"  id="customerPhone" required
                                     placeholder="+7 (___) ___-__-__" maxlength="18">
                             </div>
                         </div>
