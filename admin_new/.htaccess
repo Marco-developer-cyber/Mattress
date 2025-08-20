@@ -1,0 +1,35 @@
+# Безопасность для новой админ панели
+# Разрешаем доступ только с определенных IP (замените на свои)
+# Order Deny,Allow
+# Deny from all
+# Allow from 127.0.0.1
+# Allow from ::1
+
+# Запрещаем доступ к системным файлам
+<Files "*.ini">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "*.log">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Запрещаем выполнение PHP в папке img
+<Directory "img">
+    <Files "*.php">
+        Order Allow,Deny
+        Deny from all
+    </Files>
+</Directory>
+
+# Безопасные заголовки
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Запрещаем просмотр директорий
+Options -Indexes 

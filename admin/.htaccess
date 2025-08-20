@@ -1,0 +1,41 @@
+# Защита админки
+<Files "products_manager.php">
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+    Allow from ::1
+    # Добавьте здесь IP адреса, с которых разрешен доступ
+    # Allow from YOUR_IP_ADDRESS
+</Files>
+
+# Запрет доступа к конфигурационным файлам
+<Files "*.ini">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Запрет доступа к логам
+<Files "*.log">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Запрет выполнения PHP в папке с изображениями
+<Directory "img">
+    <Files "*.php">
+        Order Deny,Allow
+        Deny from all
+    </Files>
+</Directory>
+
+# Базовые настройки безопасности
+Options -Indexes
+ServerSignature Off
+
+# Защита от XSS и других атак
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule> 

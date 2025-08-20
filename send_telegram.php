@@ -53,8 +53,8 @@ if (!$input) {
 }
 
 // Валидация обязательных полей
-$name = trim($input['name'] ?? '');
-$phone = trim($input['phone'] ?? '');
+$name = isset($input['name']) ? trim($input['name']) : '';
+$phone = isset($input['phone']) ? trim($input['phone']) : '';
 
 if (empty($name) || empty($phone)) {
     http_response_code(400);
@@ -91,12 +91,43 @@ if (!$usernames) {
 
 $usernamesList = array_map('trim', explode(',', $usernames));
 
+// Дополнительные поля заказа (если есть)
+$productName = isset($input['productName']) ? trim($input['productName']) : null;
+$sizeName = isset($input['sizeName']) ? trim($input['sizeName']) : null;
+$price = isset($input['price']) ? (int)$input['price'] : null;
+$originalPrice = isset($input['originalPrice']) ? (int)$input['originalPrice'] : null;
+$gift = isset($input['gift']) ? trim($input['gift']) : null;
+$commentText = isset($input['comment']) ? trim($input['comment']) : null;
+
 // Формируем сообщение
-$message = "🔔 *НОВАЯ ЗАЯВКА С САЙТА*\n\n";
+$message = "🛍️ *НОВЫЙ ЗАКАЗ С САЙТА*\n\n";
 $message .= "👤 *Имя:* " . $name . "\n";
 $message .= "📱 *Телефон:* " . $phone . "\n\n";
-$message .= "⏰ *Время:* " . date('d.m.Y H:i:s') . "\n";
-$message .= "🌐 *Источник:* Форма обратной связи";
+
+if ($productName) {
+    $message .= "🛏️ *Товар:* " . $productName . "\n";
+}
+if ($sizeName) {
+    $message .= "📏 *Размер:* " . $sizeName . "\n";
+}
+if ($price) {
+    $message .= "💰 *Цена:* " . number_format($price, 0, '.', ' ') . " ₸\n";
+}
+if ($originalPrice && $price) {
+    $discount = $originalPrice - $price;
+    if ($discount > 0) {
+        $message .= "🔥 *Скидка:* " . number_format($discount, 0, '.', ' ') . " ₸\n";
+    }
+}
+if ($gift) {
+    $message .= "🎁 *Подарок:* " . $gift . "\n";
+}
+if ($commentText) {
+    $message .= "💬 *Комментарий:* " . $commentText . "\n";
+}
+
+$message .= "\n⏰ *Время:* " . date('d.m.Y H:i:s') . "\n";
+$message .= "🌐 *Источник:* Форма заказа на сайте";
 
 // Функция для получения chat_id по username
 function getChatIdByUsername($botToken, $username) {

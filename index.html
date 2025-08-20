@@ -113,12 +113,6 @@
             <a class="navbar-brand" href="#">
                 <img src="img/logo-text-white.png" alt="Территория Сна" class="logo">
             </a>
-            <button class="navbar-toggler burger-menu" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -137,12 +131,20 @@
                         <a class="nav-link" href="#delivery">Доставка</a>
                     </li>
                 </ul>
-                <div class="navbar-contact">
+                <div class="navbar-contact d-none d-lg-block">
                     <a href="tel:+77769460022" class="btn btn-warning btn-sm">
                         <i class="fas fa-phone"></i> +7 776 946 00 22
                     </a>
                 </div>
             </div>
+            <a href="tel:+77769460022" class="navbar-call-icon d-lg-none ms-2" aria-label="Позвонить">
+                <i class="fas fa-phone"></i>
+            </a>
+            <button class="navbar-toggler burger-menu ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
         </div>
     </nav>
     <!-- New Hero Section -->
@@ -152,44 +154,27 @@
                 <div class="row align-items-center min-vh-100">
                     <div class="col-lg-6 order-2 order-lg-1">
                         <div class="hero-content-wrapper">
-                            <div class="hero-badge">
-                                <i class="fas fa-star"></i>
-                                <span>Лучшие матрасы в Алматы</span>
-                            </div>
+                            
                             <h1 class="hero-main-title">
                                 Ортопедические матрасы
-                                <span class="text-primary">от производителя</span>
+                                <span class="text-primary">с доставкой в день заказа по Алматы</span>
                             </h1>
                             <p class="hero-description">
-                                Доказываем качество через эксперименты.
-                                Гарантия до 10 лет, бесплатная доставка по Алматы
+                                Подберём жёсткость по вашему весу и особенностям спины. Подарок: водозащитный наматрасник + подушка с памятью формы.
                             </p>
-                            <div class="hero-features-list">
-                                <div class="hero-feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Эксперимент с яйцом пройден</span>
-                                </div>
-                                <div class="hero-feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Тест со стаканом воды пройден</span>
-                                </div>
-                                <div class="hero-feature-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Скидки до 70% + подарки</span>
-                                </div>
-                            </div>
-                            <div class="hero-action-buttons">
-                                <div class="row g-3">
+                            
+                            <div class="hero-action-buttons"  >
+                                <div class="row g-3" style="width: 100% !important;">
                                     <div class="col-12 col-sm-6">
                                         <a href="#catalog" class="btn btn-primary btn-hero w-100 ">
-                                            <i class="fas fa-eye"></i>
-                                            Смотреть каталог
+                                            <i class="fas fa-bed"></i>
+                                            Подобрать матрас
                                         </a>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <a href="#consultation" class="btn btn-outline-primary btn-hero  w-100 ">
-                                            <i class="fas fa-gift"></i>
-                                            Получить подарок
+                                        <a href="https://wa.me/77769460022?text=Здравствуйте!%20Хочу%20подобрать%20матрас" target="_blank" class="btn btn-outline-primary btn-hero  w-100 " >
+                                            <i class="fab fa-whatsapp"></i>
+                                            Написать в WhatsApp
                                         </a>
                                     </div>
                                 </div>
@@ -200,10 +185,10 @@
                         <div class="d-lg-none mt-4">
                             <div class="hero-image-wrapper">
                                 <div class="floating-mattress">
-                                    <img src="https://www.pngarts.com/files/4/Bed-PNG-Background-Image.png"
+                                    <img src="img/IMG_2447.PNG"
                                         alt="Ортопедический матрас" class="hero-mattress-img">
                                     <!-- Floating Discount Circle -->
-                                    <div id="floatingDiscount" class="floating-discount" style="display: none;">
+                                    <div id="floatingDiscount" class="floating-discount">
                                         <div class="discount-circle">
                                             <div class="discount-content">
                                                 <div class="discount-percent">70%</div>
@@ -224,7 +209,7 @@
                     <div class="col-lg-6 order-1 order-lg-2 d-none d-lg-block">
                         <div class="hero-image-wrapper">
                             <div class="floating-mattress">
-                                <img src="https://www.pngarts.com/files/4/Bed-PNG-Background-Image.png"
+                                <img src="img/IMG_2447.PNG"
                                     alt="Ортопедический матрас" class="hero-mattress-img">
                             </div>
                             <div class="hero-decorations">
@@ -254,17 +239,7 @@
                             </div>
                             <div>
                                 <h4>Завод изготовитель</h4>
-                                <p class="mb-0">Изготовим любой размер, любой модели</p>
-                            </div>
-                        </div>
-
-                        <div class="advantage-item d-flex mb-4">
-                            <div class="advantage-icon me-4">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h4>Срок службы</h4>
-                                <p class="mb-0">До 20 лет надежной службы</p>
+                                <p class="mb-0">Изготавливаем любой размер и модель вот уже более 10 лет</p>
                             </div>
                         </div>
 
@@ -274,25 +249,125 @@
                             </div>
                             <div>
                                 <h4>Бесплатная доставка</h4>
-                                <p class="mb-0">День в день по Алматы</p>
+                                <p class="mb-0">День в день при заказе до 15:00. До кровати</p>
+                            </div>
+                        </div>
+
+                        <div class="advantage-item d-flex mb-4">
+                            <div class="advantage-icon me-4">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Срок службы до 25 лет</h4>
+                                <p class="mb-0">Матрасы сделаны из прочных, эко материалов</p>
                             </div>
                         </div>
 
                         <div class="advantage-item d-flex">
                             <div class="advantage-icon me-4">
-                                <i class="fas fa-tags"></i>
+                                <i class="fas fa-headset"></i>
                             </div>
                             <div>
-                                <h4>Цены от производителя</h4>
-                                <p class="mb-0">Без наценок посредников</p>
+                                <h4>Бесплатная консультация 24/7</h4>
+                                <p class="mb-0">Напишите нам на WhatsApp и получайте консультацию круглые сутки</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="img/bg/a_beautiful_young_kazakh_woman_in_traditional_embroidered_dress_redblue_with_gold_patterns_joyfully_g37hqv5sm03gpinaiwnb_1 - Copy.webp"
-                        alt="Производство металлопластиковых окон" loading="lazy"
-                        class="img-fluid rounded shadow advantage-img">
+                    <div class="video-carousel-container">
+                        <div id="videoCarousel" class="carousel slide" data-bs-ride="false">
+                            <div class="carousel-inner">
+                                <!-- Видео 1 -->
+                                <div class="carousel-item active">
+                                    <div class="video-container">
+                                        <div class="video-wrapper">
+                                            <video class="advantage-video" controls preload="none" src="videos/IMG_2338.mp4" poster="img/video-covers/IMG_2315.PNG">
+                                                Ваш браузер не поддерживает видео.
+                                            </video>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="description-content">
+                                                <div class="client-info">
+                                                    <h4 class="client-name">Назим Мисанов</h4>
+                                                    <span class="client-status">Блогер</span>
+                                                </div>
+                                                <div class="rating">
+                                                    <span class="stars">★★★★★</span>
+                                                </div>
+                                                <p class="description-text">Страдал грыжей позвоночника. Для меня сон - важная часть жизни. Так как если я сплю плохо - целый день коту под хвост и каждое утро чувствую будто всю ночь меня били толпой!</p>
+                                            </div>
+                                            <div class="site-brand">
+                                                <span>territoria-san.kz</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Видео 2 -->
+                                <div class="carousel-item">
+                                    <div class="video-container">
+                                        <div class="video-wrapper">
+                                            <video class="advantage-video" controls preload="none" src="videos/IMG_2329.mp4" poster="img/video-covers/IMG_2421.PNG">
+                                                Ваш браузер не поддерживает видео.
+                                            </video>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="description-content">
+                                                <div class="client-info">
+                                                    <h4 class="client-name">Айжан Нурлановна</h4>
+                                                    <span class="client-status">Специалист пищевой безопасности</span>
+                                                </div>
+                                                <div class="rating">
+                                                    <span class="stars">★★★★★</span>
+                                                </div>
+                                                <p class="description-text">Второй раз покупаю матрасы от Территории сна. Оба раза очень довольна. В первый раз-родителям. Во второй раз себе. Ребята прлфессионалы своего дела! В обоих покупала модель Зима-Лето))</p>
+                                            </div>
+                                            <div class="site-brand">
+                                                <span>territoria-san.kz</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Видео 3 -->
+                                <div class="carousel-item">
+                                    <div class="video-container">
+                                        <div class="video-wrapper">
+                                            <video class="advantage-video" controls preload="none" src="videos/IMG_2351.mp4" poster="img/video-covers/IMG_2420.PNG">
+                                                Ваш браузер не поддерживает видео.
+                                            </video>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="description-content">
+                                                <div class="client-info">
+                                                    <h4 class="client-name">Ильхам</h4>
+                                                    <span class="client-status">Эксперт с медицинским образованием</span>
+                                                </div>
+                                                <div class="rating">
+                                                    <span class="stars">★★★★★</span>
+                                                </div>
+                                                <p class="description-text">Моя мама несколько лет назад покупала матрас ортопедический. Долго не проспала на нем. Вылезли пружины, у мамы появилась протрузия. С тех пор спала на полу. С приобретением матраса от братьев мама довольна, спит спокойно. Спасибо братьям. Подобрали самый удобный!</p>
+                                            </div>
+                                            <div class="site-brand">
+                                                <span>territoria-san.kz</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Стрелки навигации -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Предыдущий</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Следующий</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -308,20 +383,6 @@
                         «Территория Сна» — казахстанский производитель ортопедических матрасов.
                         Мы не просто говорим — мы доказываем через реальные эксперименты.
                     </p>
-                    <div class="about-features mb-4">
-                        <div class="feature-item d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle me-2"></i>
-                            <span>Только наши матрасы выдерживают яйцо/вода-тест</span>
-                        </div>
-                        <div class="feature-item d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle me-2"></i>
-                            <span>10+ лет на рынке</span>
-                        </div>
-                        <div class="feature-item d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle me-2"></i>
-                            <span>Гарантия до 10 лет</span>
-                        </div>
-                    </div>
 
                     <!-- Сертификаты -->
                     <div class="certificates-section">
@@ -664,14 +725,20 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Button -->
-    <div class="whatsapp-button">
-        <a href="https://wa.me/77769460022" target="_blank" aria-label="Связаться через WhatsApp">
+    <!-- Floating Action Button (global) -->
+    <div class="fab-container" id="fabContainer" aria-label="Быстрые действия">
+        <a href="tel:+77769460022" class="fab-action fab-call" aria-label="Позвонить">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/77769460022" target="_blank" rel="noopener" class="fab-action fab-wa" aria-label="Написать в WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
+        <button type="button" class="fab-main" id="fabMainBtn" aria-label="Открыть быстрые действия">
+            <i class="fas fa-headset"></i>
+        </button>
     </div>
-
-    <!-- Product Modal -->
+ 
+     <!-- Product Modal -->
     <div class="modal fade" id="productModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -731,8 +798,8 @@
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="whatsapp-btn">
-                                <i class="fab fa-whatsapp"></i>
-                                Отправить заказ в WhatsApp
+                                <i class="fab fa-telegram-plane"></i>
+                                Отправить заказ в Telegram
                             </button>
                         </div>
                     </form>
@@ -765,9 +832,9 @@
                             </div>
                             <h2 class="modal-main-title">
                                 🎁 ПОЛУЧИТЕ ПОДАРКИ
-                                <span class="text-gradient">НА 9000₸</span>
+                                <span class="text-gradient">НА 20 000₸</span>
                             </h2>
-                            <p class="modal-subtitle">При покупке любого матраса от 20 000₸</p>
+                            <p class="modal-subtitle">При покупке матраса с независимыми пружинами</p>
                         </div>
 
                         <!-- Подарки -->
@@ -776,12 +843,12 @@
                                 <div class="col-6">
                                     <div class="gift-card">
                                         <div class="gift-image">
-                                            <img src="https://images.uzum.uz/ctnsamdht56ksubaqe20/original.jpg"
+                                            <img src="https://png.pngtree.com/png-vector/20231108/ourmid/pngtree-mockup-white-square-pillow-3d-render-png-image_10440099.png"
                                                 alt="Подушка">
                                             <div class="gift-badge">ПОДАРОК</div>
                                         </div>
-                                        <h6>Ортопедическая подушка</h6>
-                                        <div class="gift-price">5 000 ₸</div>
+                                        <h6>Подушка с эффектом памяти</h6>
+                                        <div class="gift-price">8 000 ₸</div>
                                     </div>
                                 </div>
 
@@ -792,8 +859,8 @@
                                                 alt="Наматрасник">
                                             <div class="gift-badge">ПОДАРОК</div>
                                         </div>
-                                        <h6>Наматрасник Memory</h6>
-                                        <div class="gift-price">4 000 ₸</div>
+                                        <h6>Водозащиьный наматрасник</h6>
+                                        <div class="gift-price">12 000 ₸</div>
                                     </div>
                                 </div>
                             </div>
@@ -848,25 +915,7 @@
         </div>
     </div>
 
-    <!-- Floating Envelope -->
-    <div id="floatingEnvelope" class="floating-envelope" style="display: none;">
-        <div class="envelope-container">
-            <div class="envelope">
-                <div class="envelope-front">
-                    <div class="envelope-flap"></div>
-                    <div class="envelope-body"></div>
-                </div>
-                <div class="envelope-back"></div>
-                <div class="envelope-letter">
-                    <div class="letter-content">
-                        <i class="fas fa-gift"></i>
-                        <span>Подарки!</span>
-                    </div>
-                </div>
-            </div>
-            <div class="envelope-pulse"></div>
-        </div>
-    </div>
+
 
 
 
@@ -904,6 +953,7 @@
             console.warn('Carousel initialization error:', error);
         }
     </script>
+
 </body>
 
 </html>

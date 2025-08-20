@@ -14,9 +14,39 @@ document.addEventListener('DOMContentLoaded', function() {
         loadProductsFromJSON();
     }, 1000);
     
-    // Initialize floating envelope and discount circle
-    initFloatingEnvelope();
+    // Initialize automatic modal and discount circle
+    initAutomaticModal();
     initFloatingDiscount();
+    
+    // Initialize video carousel
+    initVideoCarousel();
+
+    const fabContainer = document.getElementById('fabContainer');
+    const fabMainBtn = document.getElementById('fabMainBtn');
+    if (fabContainer && fabMainBtn) {
+        const toggle = () => {
+            const isOpen = fabContainer.classList.toggle('open');
+            fabMainBtn.classList.toggle('open', isOpen);
+        };
+        fabMainBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggle();
+        });
+        // Close on outside click
+        document.addEventListener('click', function(e) {
+            if (!fabContainer.contains(e.target)) {
+                fabContainer.classList.remove('open');
+                fabMainBtn.classList.remove('open');
+            }
+        });
+        // Close on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                fabContainer.classList.remove('open');
+                fabMainBtn.classList.remove('open');
+            }
+        });
+    }
 });
 
 // Smooth animations system
@@ -269,7 +299,7 @@ window.createProductCard = function(product, index) {
             <div class="product-image">
                 <img src="${productImage}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center'">
                 <button class="product-test-btn" onclick="event.stopPropagation(); showProductModal(${product.id})">
-                    <i class="fas fa-play"></i> Тест
+                    <i class="fas fa-flask"></i> Эксперименты
                 </button>
                 ${discountPercent > 0 ? `<div class="product-badge">-${discountPercent}%</div>` : ''}
                 ${product.badge ? `<div class="product-badge product-badge-secondary">${product.badge}</div>` : ''}
@@ -296,11 +326,8 @@ window.createProductCard = function(product, index) {
                     `).join('')}
                 </div>
                 <div class="product-actions">
-                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openOrderModal(${product.id})">
-                        <i class="fas fa-shopping-cart"></i> Хочу заказать
-                    </button>
-                    <button class="btn btn-outline-primary btn-sm" onclick="event.stopPropagation(); showProductDetails(${product.id})">
-                        <i class="fas fa-search"></i> Подробнее
+                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); showProductDetails(${product.id})">
+                        <i class="fas fa-shopping-cart"></i> Посмотреть и заказать
                     </button>
                 </div>
                 <div class="product-gift">
@@ -410,25 +437,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Generate stars for rating
+// Generate stars for rating (kept for rating display)
 window.generateStars = function(rating) {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
     let stars = '';
-    
-    for (let i = 0; i < fullStars; i++) {
-        stars += '<i class="fas fa-star"></i>';
-    }
-    
-    if (hasHalfStar) {
-        stars += '<i class="fas fa-star-half-alt"></i>';
-    }
-    
+    for (let i = 0; i < fullStars; i++) stars += '<i class="fas fa-star"></i>';
+    if (hasHalfStar) stars += '<i class="fas fa-star-half-alt"></i>';
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-    for (let i = 0; i < emptyStars; i++) {
-        stars += '<i class="far fa-star"></i>';
-    }
-    
+    for (let i = 0; i < emptyStars; i++) stars += '<i class="far fa-star"></i>';
     return stars;
 }
 
@@ -451,7 +468,7 @@ window.showProductModal = function(productId) {
         ? product.images[0] 
         : 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center';
 
-    modalTitle.textContent = `${product.name} - Подробная информация`;
+    modalTitle.textContent = `${product.name} - Эксперименты и тесты`;
     modalBody.innerHTML = `
         <div class="row">
             <div class="col-md-6">
@@ -480,32 +497,6 @@ window.showProductModal = function(productId) {
             </div>
             
             <div class="col-md-6">
-                <!-- Наш новый блок с подсказкой и Instagram -->
-                <div class="instagram-promo-container">
-                    <div class="promo-card">
-                        <div class="promo-image-part">
-                            <img src="${productImage}" alt="Обзор матраса" class="img-fluid h-100">
-                        </div>
-                        <div class="promo-text-part">
-                            <div class="promo-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <h6>Видеообзор</h6>
-                            <p>Посмотрите наш матрас в действии! Убедитесь в его качестве и комфорте.</p>
-                        </div>
-                    </div>
-                    
-                    ${product.instagramVideo ? `
-                        <a href="${product.instagramVideo}" target="_blank" class="btn btn-instagram-promo">
-                            <i class="fab fa-instagram"></i> Смотреть видео в Instagram
-                        </a>
-                    ` : `
-                        <button class="btn btn-secondary" disabled>
-                            <i class="fas fa-info-circle"></i> Видео временно недоступно
-                        </button>
-                    `}
-                </div>
-                
                 <div class="product-options mt-4">
                     <h6>Выберите размер:</h6>
                     <select class="form-select mb-3" onchange="updateModalPrice(${product.id}, this.value)">
@@ -785,14 +776,14 @@ function updateOrderSummary() {
         </div>
         <div class="order-item">
             <span>Скидка:</span>
-            <span style="color: #28a745;">-${discountAmount.toLocaleString()} ₸</span>
+            <span style="color: #229ED9;">-${discountAmount.toLocaleString()} ₸</span>
         </div>
         ` : ''}
         <div class="order-item">
             <span><strong>Итого к оплате:</strong></span>
             <span><strong>${currentOrderSize.price.toLocaleString()} ₸</strong></span>
         </div>
-        <div class="order-item" style="border: none; padding-top: 1rem; color: #28a745;">
+        <div class="order-item" style="border: none; padding-top: 1rem; color: #229ED9;">
             <span><i class="fas fa-gift"></i> <strong>Подарок:</strong></span>
             <span>Наматрасник</span>
         </div>
@@ -826,7 +817,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Submit order to WhatsApp
+// Submit order to Telegram
 function submitOrder() {
     if (!currentOrderProduct || !currentOrderSize) return;
     
@@ -838,43 +829,41 @@ function submitOrder() {
         alert('Пожалуйста, заполните обязательные поля (имя и телефон)');
         return;
     }
-    
-    // Create WhatsApp message
-    let message = `🛏️ *НОВЫЙ ЗАКАЗ*\n\n`;
-    message += `👤 *Клиент:* ${name}\n`;
-    message += `📱 *Телефон:* ${phone}\n\n`;
-    message += `🛏️ *Товар:* ${currentOrderProduct.name}\n`;
-    message += `📏 *Размер:* ${currentOrderSize.name}\n`;
-    message += `💰 *Цена:* ${currentOrderSize.price.toLocaleString()} ₸\n`;
-    
-    if (currentOrderSize.originalPrice) {
-        const discount = currentOrderSize.originalPrice - currentOrderSize.price;
-        message += `🔥 *Скидка:* ${discount.toLocaleString()} ₸\n`;
-    }
-    
-    message += `🎁 *Подарок:* Наматрасник\n\n`;
-    
-    if (comment) {
-        message += `💬 *Комментарий:* ${comment}\n\n`;
-    }
-    
-    message += `⏰ *Время заказа:* ${new Date().toLocaleString('ru-RU')}`;
-    
-    // Open WhatsApp
-    const whatsappUrl = `https://wa.me/77769460022?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-    
-    // Close modal and show success message
-    const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
-    if (orderModal) {
-        orderModal.hide();
-    }
-    
-    // Reset form
-    document.getElementById('orderForm').reset();
-    
-    // Show success notification
-    showSuccessNotification();
+
+    const payload = {
+        name,
+        phone,
+        comment,
+        productName: currentOrderProduct.name,
+        sizeName: currentOrderSize.name,
+        price: currentOrderSize.price,
+        originalPrice: currentOrderSize.originalPrice || null,
+        gift: 'Наматрасник',
+        orderedAt: new Date().toISOString()
+    };
+
+    fetch('send_telegram.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(async (res) => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+            throw new Error(data.message || 'Ошибка отправки в Telegram');
+        }
+        return data;
+    })
+    .then(() => {
+        const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
+        if (orderModal) orderModal.hide();
+        document.getElementById('orderForm').reset();
+        showSuccessNotification();
+    })
+    .catch((err) => {
+        console.error('Ошибка отправки в Telegram:', err);
+        alert('Не удалось отправить заказ в Telegram. Попробуйте позже.');
+    });
 }
 
 // Show success notification
@@ -1042,89 +1031,38 @@ function submitToTelegram(name, phone, source) {
 }
 
 // Функция инициализации плавающего конверта
-function initFloatingEnvelope() {
-    // Функция для сброса состояния конверта (для разработчиков)
-    window.resetEnvelopeState = function() {
-        sessionStorage.removeItem('envelopeShown');
+function initAutomaticModal() {
+    // Функция для сброса состояния модала (для разработчиков)
+    window.resetModalState = function() {
         sessionStorage.removeItem('exclusiveModalShown');
         location.reload();
     };
     
     // Добавляем кнопку сброса в консоль для разработчиков
-    console.log('Для сброса состояния конверта выполните: resetEnvelopeState()');
+    console.log('Для сброса состояния модала выполните: resetModalState()');
     
-    const envelope = document.getElementById('floatingEnvelope');
-    
-    // Проверяем, показывался ли уже конверт в этой сессии
-    if (!sessionStorage.getItem('envelopeShown')) {
-            // Показываем конверт через 3 секунды
-    setTimeout(() => {
-        envelope.style.display = 'block';
-        envelope.style.opacity = '0';
-        envelope.style.transform = 'scale(0.5)';
-        
-        // Убеждаемся, что конверт в правильной позиции
-        envelope.style.position = 'fixed';
-        envelope.style.zIndex = '9999';
-        
-        // Адаптивная позиция для мобильных устройств
-        if (window.innerWidth <= 768) {
-            envelope.style.bottom = '20px';
-            envelope.style.left = '20px';
-        } else {
-            envelope.style.bottom = '30px';
-            envelope.style.left = '30px';
-        }
-        
-        // Анимация появления
+    // Проверяем, показывался ли уже модал в этой сессии
+    if (!sessionStorage.getItem('exclusiveModalShown')) {
+        // Показываем модал через 7 секунд
         setTimeout(() => {
-            envelope.style.transition = 'all 0.5s ease';
-            envelope.style.opacity = '1';
-            envelope.style.transform = 'scale(1)';
+            const modalElement = document.getElementById('exclusiveOfferModal');
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
             
-            // Логируем для отладки
-            console.log('Конверт показан в позиции:', envelope.style.bottom, envelope.style.right);
-        }, 100);
-        
-        // Помечаем, что конверт был показан
-        sessionStorage.setItem('envelopeShown', 'true');
-    }, 3000);
+            // Добавляем анимацию появления и звук
+            modalElement.addEventListener('shown.bs.modal', function() {
+                const modalContent = modalElement.querySelector('.modal-content');
+                modalContent.style.transform = 'scale(1)';
+                modalContent.style.opacity = '1';
+                
+                // Воспроизводим звук уведомления
+                playNotificationSound();
+            });
+            
+            // Помечаем, что модал был показан
+            sessionStorage.setItem('exclusiveModalShown', 'true');
+        }, 7000);
     }
-    
-    // Обработчик клика по конверту
-    envelope.addEventListener('click', function() {
-        // Добавляем анимацию клика
-        envelope.classList.add('envelope-clicked');
-        
-        // Воспроизводим звук клика
-        playNotificationSound();
-        
-        setTimeout(() => {
-            // Анимация исчезновения
-            envelope.style.transition = 'all 0.3s ease';
-            envelope.style.opacity = '0';
-            envelope.style.transform = 'scale(0.5)';
-            
-            setTimeout(() => {
-                envelope.style.display = 'none';
-                
-                // Показываем модальное окно
-                const modalElement = document.getElementById('exclusiveOfferModal');
-                const modal = new bootstrap.Modal(modalElement);
-                modal.show();
-                
-                // Добавляем анимацию появления и звук
-                modalElement.addEventListener('shown.bs.modal', function() {
-                    const modalContent = modalElement.querySelector('.modal-content');
-                    modalContent.style.transform = 'scale(1)';
-                    modalContent.style.opacity = '1';
-                    
-                    // Воспроизводим звук уведомления
-                    playNotificationSound();
-                });
-            }, 300);
-        }, 300);
-    });
 }
 
 // Функция инициализации плавающего круга со скидкой
@@ -1284,12 +1222,11 @@ function setupExclusiveOfferForm() {
             const phone = formData.get('phone') || form.querySelector('input[type="tel"]').value;
             
             if (!name || !phone) {
-                showNotification('Пожалуйста, заполните все поля', 'error');
-                return;
+                alert('Незаполнено');
             }
             
-            // Отправляем в Telegram используя существующую функцию
-            submitToTelegram(name, phone, 'Эксклюзивное предложение - модальное окно');
+            // Отправляем в Telegram (даже если пусто)
+            submitToTelegram(name || '—', phone || '—', 'Эксклюзивное предложение - модальное окно');
             
             // Закрываем модальное окно
             const modal = bootstrap.Modal.getInstance(document.getElementById('exclusiveOfferModal'));
@@ -1563,3 +1500,93 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+
+
+
+// Массив видео с описаниями и обложками
+const videoSources = [
+    {
+        src: 'videos/IMG_2338.mp4',
+        type: 'video/mp4',
+        title: 'Назим Мисанов',
+        cover: 'img/video-covers/IMG_2315.PNG',
+        rating: 5,
+        description: 'Страдал грыжей позвоночника. Для меня сон - важная часть жизни. Так как если я сплю плохо - целый день коту под хвост и каждое утро чувствую будто всю ночь меня били толпой!',
+        status: 'Блогер'
+    },
+    {
+        src: 'videos/IMG_2329.mp4',
+        type: 'video/mp4',
+        title: 'Михаил Козлов',
+        cover: 'img/video-covers/video2-cover.jpg',
+        rating: 5,
+        description: 'Второй раз покупаю матрасы от Территории сна. Оба раза очень довольна. В первый раз-родителям. Во второй раз себе. Ребята прлфессионалы своего дела! В обоих покупала модель Зима-Лето))',
+        status: 'Специалист пищевой безопасности'
+    },
+    {
+        src: 'videos/IMG_2351.mp4',
+        type: 'video/mp4',
+        title: 'Ильхам',
+        cover: 'img/video-covers/video3-cover.jpg',
+        rating: 5,
+        description: 'Моя мама несколько лет назад покупала матрас ортопедический. Долго не проспала на нем. Вылезли пружины, у мамы появилась протрузия. С тех пор спала на полу. С приобретением матраса от братьев мама довольна, спит спокойно. Спасибо братьям. Подобрали самый удобный!',
+        status: 'Эксперт с медицинским образованием'
+    }
+    // Добавьте новые видео здесь:
+    // {
+    //     src: 'videos/новое_видео.mp4',
+    //     type: 'video/mp4',
+    //     title: 'Имя клиента',
+    //     cover: 'img/video-covers/новое-видео-cover.jpg',
+    //     rating: 5,
+    //     description: 'Описание отзыва',
+    //     status: 'Статус клиента'
+    // }
+];
+
+function initVideoCarousel() {
+    const carousel = document.getElementById('videoCarousel');
+    if (!carousel) return;
+    
+    // Получаем все видео
+    const videos = carousel.querySelectorAll('.advantage-video');
+    console.log(`Найдено ${videos.length} видео`);
+    
+    // Настраиваем остановку других видео при воспроизведении
+    videos.forEach((video, index) => {
+        // Убеждаемся, что обложка отображается
+        video.poster = video.getAttribute('poster');
+        
+        // Останавливаем все другие видео при воспроизведении
+        video.addEventListener('play', function() {
+            videos.forEach((otherVideo, otherIndex) => {
+                if (otherIndex !== index) {
+                    otherVideo.pause();
+                    otherVideo.currentTime = 0;
+                }
+            });
+        });
+        
+        // Добавляем обработчик для показа обложки после паузы
+        video.addEventListener('pause', function() {
+            // Небольшая задержка для корректного отображения обложки
+            setTimeout(() => {
+                video.currentTime = 0;
+            }, 100);
+        });
+    });
+    
+    // Инициализируем Bootstrap карусель
+    const bsCarousel = new bootstrap.Carousel(carousel, {
+        interval: false, // Отключаем автоматическое переключение
+        wrap: true // Зацикливаем
+    });
+    
+    console.log('Bootstrap видеокарусель инициализирована');
+}
+
+
+
+
+
